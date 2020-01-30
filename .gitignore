@@ -1,0 +1,15 @@
+vendor/jquery/src/
+vendor/jquery/AUTHORS.txt
+vendor/jquery/bower.json
+vendor/jquery/README.md
+vendor/jquery/package.json
+
+vendor/node_modules/
+
+vendor/semantic/src/
+vendor/semantic/tasks/
+vendor/semantic/gulpfile.js
+
+vendor/semantic.json
+vendor/package.json
+vendor/package-lock.json
