@@ -114,4 +114,28 @@ $(document).ready(function() {
 		$('.ui.form').children('.inline.fields').children('.error').removeClass('error');
 		$('.ui.form').removeClass('error');
 	});
+
+	$('.ui.primary.button').click(function(e) {
+		$('.ui.modal').modal('show');
+	});
+
+	$('#sendMail').click(function(e) {
+		$('.ui.modal').modal('hide');
+		$('html, body').animate(
+			{
+				scrollTop: $('#contact').offset().top
+			},
+			500
+		);
+	});
+
+	$('#learnMore').click(function(e) {
+		$('.ui.modal').modal('hide');
+		$('html, body').animate(
+			{
+				scrollTop: $('#mainInfo').offset().top
+			},
+			500
+		);
+	});
 });
