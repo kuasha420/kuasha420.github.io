@@ -1,0 +1,38 @@
+{
+	"0": {
+		"title": "Multi-Platinum",
+		"desc": "A music career focused video tutorial platform. Users can purchase individual course or an all-access site membership. Course enrollment, progress tracking, progress report etc are all handled by custom integration and code.  ",
+		"link": "http://multi-platinum.com/",
+		"tags": [ "WordPress", "s2members" ]
+	},
+	"1": {
+		"title": "PageDab Website",
+		"desc": "A website where authors can share their work amd get paid via comission. Readers can read any book for free right from the website. Made with WordPress. Ebbok upload and rendering system is handled by a custom written plugin.",
+		"link": "http://www.pagedab.com/",
+		"tags": [ "WordPress", "BuddyPress", "EpubJS" ]
+	},
+	"2": {
+		"title": "License Delivery System",
+		"desc": "n implementation of NAMM B2B Electronic Instant License Delivery System using php, ajax, and REST API. Built using Semantic UI. It also has backend for key management, report and other housekeeping. Keys are stored in SQL Database.",
+		"link": "https://github.com/kuasha420/namm-b2b-license-delivery/",
+		"tags": [ "PHP", "Semantic-UI", "MySQL" ]
+	},
+	"3": {
+		"title": "The Solo Academy",
+		"desc": "A multi-tired membership website with activity feeds and Social networking. Built on a customized Divi theme and Elemantor. This website has realtime trading and communication powered by AJAX",
+		"link": "http://www.thesoloacademy.com/",
+		"tags": [ "WordPress", "s2members", "jQuery" ]
+	},
+	"4": {
+		"title": "Backpackers News",
+		"desc": "A travel agency website built on WordPress. It features a custom made responsive mobile friendly theme and integrates with Woocommerce for trip bookings. I've used a fully custom made them on this website as per clients' requirement.",
+		"link": "http://backpackersnews.co.nz",
+		"tags": [ "WordPress", "Woocommerce" ]
+	},
+	"5": {
+		"title": "Chillao - Simple Chat",
+		"desc": "A simple react native chatting application to allow shout-like chatting. Uses react native and expo framework. It also has Google Firebase Integration.",
+		"link": "https://github.com/kuasha420/Chillao",
+		"tags": [ "React Native", "Expo", "Firebase" ]
+	}
+}
