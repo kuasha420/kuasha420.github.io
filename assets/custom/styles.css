@@ -3,12 +3,12 @@
 }
 
 .masthead.segment {
-	min-height: 100vh;
+	min-height: 700px;
 	padding: 1em 0em;
 }
 
 .masthead.portfolio.segment {
-	min-height: 60vh;
+	min-height: 450px;
 	padding: 1em 0em;
 }
 
