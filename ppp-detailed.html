@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Mechanics: A New Vision for Rehabilitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .flowchart-item {
+            position: relative;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            z-index: 1;
+        }
+        .flowchart-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -1rem;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 1rem;
+            z-index: 0;
+        }
+        .hierarchy {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .hierarchy-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .hierarchy-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.25rem;
+            width: 2px;
+            height: 100%;
+        }
+         .hierarchy-item::after {
+            content: attr(data-level);
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            transform: translateX(-50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            z-index: 1;
+        }
+        .hub-spoke-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 350px;
+            padding: 2rem 0;
+        }
+        .hub {
+            position: relative;
+            z-index: 10;
+        }
+        .spoke {
+            position: absolute;
+            transform-origin: center;
+        }
+        .spoke::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(var(--angle));
+            width: 2px;
+            height: var(--length);
+            transform-origin: top;
+            z-index: -1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">✨ Motion Mechanics</h1>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#vision" class="hover:text-blue-600 transition-colors">The Dream</a></li>
+                <li><a href="#wellbeing" class="hover:text-blue-600 transition-colors">Our Culture</a></li>
+                <li><a href="#financials" class="hover:text-blue-600 transition-colors">The Model</a></li>
+                <li><a href="#growth" class="hover:text-blue-600 transition-colors">The Future</a></li>
+                <li><a href="#partnership" class="hover:text-blue-600 transition-colors">Join Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="vision" class="text-center py-20">
+            <h1 class="text-6xl font-extrabold mb-4 text-gray-900 leading-tight">Igniting a Movement in Modern Healing.</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">We believe physiotherapy can be beautiful again—ethical, rewarding, and life-giving. This is our blueprint for a brighter, healthier future in Bangladesh.</p>
+        </section>
+
+        <section id="problem-solution" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">A Paradigm Shift: From Burnout to Brilliance</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white border-t-4 border-gray-300 p-8 rounded-lg shadow-xl transform hover:scale-105 transition-transform">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-500">The Old Way: A System in Crisis</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><span class="font-semibold text-red-500">✕ Burnout Culture:</span> Healers sacrificing their own wellbeing.</li>
+                        <li><span class="font-semibold text-red-500">✕ Disjointed Care:</span> Patients lost in a fragmented system.</li>
+                        <li><span class="font-semibold text-red-500">✕ Stagnant Practices:</span> A reliance on intuition over innovation.</li>
+                        <li><span class="font-semibold text-red-500">✕ Unrealized Potential:</span> Therapists and patients alike held back.</li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-8 rounded-lg shadow-2xl transform hover:scale-105 transition-transform">
+                    <h3 class="text-2xl font-bold mb-4">Our Revolution: A Model of Hope</h3>
+                    <ul class="space-y-3">
+                        <li><span class="font-semibold text-green-300">✓ Empowered Clinicians:</span> Thriving in a sustainable, respectful workplace.</li>
+                        <li><span class="font-semibold text-green-300">✓ Integrated Journeys:</span> Seamless, holistic care from day one.</li>
+                        <li><span class="font-semibold text-green-300">✓ Data-Driven Empathy:</span> Combining analytics with authentic human connection.</li>
+                        <li><span class="font-semibold text-green-300">✓ Boundless Growth:</span> Unlocking the true potential of every life we touch.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="facility" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">An Ecosystem of Healing</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-transform">
+                    <h4 class="font-bold text-2xl text-blue-600">Neuro Unit</h4>
+                    <p class="text-gray-600 mt-2">Where science and resilience converge to restore movement and rewrite stories after stroke, SCI, and TBI.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-transform">
+                    <h4 class="font-bold text-2xl text-orange-500">Musculoskeletal Unit</h4>
+                    <p class="text-gray-600 mt-2">The nexus of strength and mobility, helping athletes and individuals reclaim their peak performance.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 transform hover:-translate-y-2 transition-transform">
+                    <h4 class="font-bold text-2xl text-pink-500">Pediatric Unit</h4>
+                    <p class="text-gray-600 mt-2">A world of wonder and progress, where child-centric care and playful therapy unlock developmental milestones.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 sm:col-span-2 lg:grid-cols-3 transform hover:-translate-y-2 transition-transform">
+                     <h4 class="font-bold text-2xl text-yellow-500">The Movement Arena (Rehab Gym)</h4>
+                    <p class="text-gray-600 mt-2">Our dynamic, central hub where every patient, guided by experts, builds the strength and confidence to conquer their goals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow" class="mb-20 fade-in-section">
+             <h2 class="text-4xl font-bold text-center mb-10">The Path to Transformation</h2>
+             <div class="bg-white rounded-lg shadow-xl p-8">
+                 <div class="flowchart">
+                     <div class="flowchart-item bg-blue-100 text-blue-800 font-semibold" style="--arrow-color: #3B82F6;">Step 1: The Discovery Session</div>
+                     <div class="flowchart-item bg-blue-100 text-blue-800 font-semibold" style="--arrow-color: #3B82F6;">Step 2: Personalized Therapy Blueprint</div>
+                     <div class="flowchart-item bg-blue-100 text-blue-800 font-semibold" style="--arrow-color: #3B82F6;">Step 3: Building Momentum</div>
+                     <div class="flowchart-item bg-blue-100 text-blue-800 font-semibold" style="--arrow-color: #3B82F6;">Step 4: Celebrating Milestones</div>
+                     <div class="flowchart-item bg-blue-100 text-blue-800 font-semibold" style="--arrow-color: #3B82F6;">Step 5: Empowering Families</div>
+                     <div class="flowchart-item bg-green-100 text-green-800 font-bold">Step 6: Launching a New Life</div>
+                 </div>
+             </div>
+        </section>
+
+        <section id="wellbeing" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">A Culture Where Healers Can Heal</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">“Leave is a right, not a favor. We believe rest is the first movement we must all master.” Our policies are designed to protect balance, prevent burnout, and nurture our team's wellbeing.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-extrabold text-blue-600">20</p>
+                    <p class="font-semibold text-gray-700 mt-2">Annual Leave Days</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-extrabold text-blue-600">12</p>
+                    <p class="font-semibold text-gray-700 mt-2">Weeks Maternity</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-extrabold text-blue-600">4</p>
+                    <p class="font-semibold text-gray-700 mt-2">Weeks Paternity</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-extrabold text-blue-600">15</p>
+                    <p class="font-semibold text-gray-700 mt-2">Sick Leave Days</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg col-span-2 md:col-span-1 lg:col-span-1">
+                    <p class="text-5xl font-extrabold text-blue-600">7+</p>
+                    <p class="font-semibold text-gray-700 mt-2">Humanitarian & Green Days</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="financials" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-2">A Financial Model Built on Purpose</h2>
+            <p class="text-center text-gray-600 mb-10">Our transparent framework ensures sustainability and shared prosperity, fueling our mission for years to come.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Monthly Revenue Potential</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Our growth trajectory is designed to rapidly scale our impact, enabling reinvestment and profit-sharing.</p>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Expense Allocation</h3>
+                     <p class="text-center text-sm text-gray-500 mb-4">We invest in our greatest asset—our people. Our model ensures clinician wellbeing is paramount, with breakeven at a healthy 35-40% utilization.</p>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6 lg:col-span-2">
+                    <h3 class="text-xl font-bold text-center mb-4">Beyond Profit: Our 5% Cap & Surplus Reinvestment</h3>
+                     <p class="text-center text-sm text-gray-500 mb-4">Profit is a tool, not a prize. We cap net profit at 5%, reinvesting all surplus back into our universe to foster sustainable growth and shared prosperity.</p>
+                    <div class="chart-container h-80 max-h-80">
+                        <canvas id="surplusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="growth" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">A Launchpad for Leaders</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div class="bg-white rounded-lg shadow-xl p-8">
+                    <h3 class="text-xl font-bold text-center mb-6">Your Journey from Practitioner to Pioneer</h3>
+                    <div class="hierarchy">
+                        <div class="hierarchy-item" data-level="0" style="--dot-color: #FFC300;"><h4 class="font-bold text-lg">Associate</h4><p class="text-gray-600">Interns & Aides • 15k-25k BDT/mo</p></div>
+                        <div class="hierarchy-item" data-level="1" style="--dot-color: #FF5733;"><h4 class="font-bold text-lg">Specialist</h4><p class="text-gray-600">Junior Physios • 20k-40k BDT/mo</p></div>
+                        <div class="hierarchy-item" data-level="2" style="--dot-color: #C70039;"><h4 class="font-bold text-lg">Senior</h4><p class="text-gray-600">Senior Physios • 35k-60k BDT/mo</p></div>
+                        <div class="hierarchy-item" data-level="3" style="--dot-color: #900C3F;"><h4 class="font-bold text-lg">Lead</h4><p class="text-gray-600">Unit Heads & Ops Leads • 50k-90k BDT/mo</p></div>
+                        <div class="hierarchy-item" data-level="4" style="--dot-color: #581845;"><h4 class="font-bold text-lg">Director / Partner</h4><p class="text-gray-600">Clinical & Strategic Directors • 80k-150k+ BDT/mo</p></div>
+                    </div>
+                 </div>
+                 <div class="bg-white rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">Our 3-Year Mission Horizon</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Our strategic plan is not just about growth; it's about deepening our impact and establishing a new gold standard in care.</p>
+                    <div class="chart-container">
+                        <canvas id="outlookChart"></canvas>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="values" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">Our Constitution: A Universe Built on Trust</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">🤝</p><h4 class="font-bold text-xl">Care & Empathy</h4><p class="text-gray-600">Act with kindness toward colleagues, customers, and community.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">🔍</p><h4 class="font-bold text-xl">Transparency</h4><p class="text-gray-600">Communicate openly and document decisions for all to see.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">🚀</p><h4 class="font-bold text-xl">Empowerment</h4><p class="text-gray-600">Foster ownership and autonomy within clear boundaries.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">🎯</p><h4 class="font-bold text-xl">Radical Candor</h4><p class="text-gray-600">Share honest feedback with kindness and clarity.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">🎨</p><h4 class="font-bold text-xl">Play & Joy</h4><p class="text-gray-600">Use creativity and joy as strategic advantages in our work.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-3xl mb-2">⚖️</p><h4 class="font-bold text-xl">Balance & Integrity</h4><p class="text-gray-600">Treat rest as vital to performance and make ethical choices always.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem" class="mb-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-10">An Unstoppable Force for Good</h2>
+            <div class="bg-white rounded-lg shadow-xl p-8">
+                <div class="hub-spoke-container">
+                    <div class="hub bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full p-6 text-center shadow-lg w-48 h-48 flex items-center justify-center transform hover:scale-110 transition-transform">
+                        <div>
+                            <p class="font-bold text-lg">Motion Mechanics</p>
+                            <p class="text-sm">The Heart of the Movement</p>
+                        </div>
+                    </div>
+                    <div class="spoke text-center p-3 rounded-lg bg-gray-100 shadow w-36 transform hover:scale-110 transition-transform" style="transform: translate(-150px, -120px); --angle: 135deg; --length: 120px;"><p class="font-semibold">Purrfect Software</p><p class="text-xs">Digital Nervous System</p></div>
+                    <div class="spoke text-center p-3 rounded-lg bg-gray-100 shadow w-36 transform hover:scale-110 transition-transform" style="transform: translate(150px, -120px); --angle: 45deg; --length: 120px;"><p class="font-semibold">PurrfectAir</p><p class="text-xs">Atmosphere of Wellness</p></div>
+                    <div class="spoke text-center p-3 rounded-lg bg-gray-100 shadow w-36 transform hover:scale-110 transition-transform" style="transform: translate(-150px, 120px); --angle: 225deg; --length: 120px;"><p class="font-semibold">Purrfect Builders</p><p class="text-xs">Spaces that Inspire</p></div>
+                    <div class="spoke text-center p-3 rounded-lg bg-gray-100 shadow w-36 transform hover:scale-110 transition-transform" style="transform: translate(150px, 120px); --angle: 315deg; --length: 120px;"><p class="font-semibold">Purrfect Universe HQ</p><p class="text-xs">Guardians of the Vision</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partnership" class="text-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-16 rounded-lg shadow-2xl">
+            <h2 class="text-5xl font-extrabold mb-4">Become a Founding Partner in the Future of Healing.</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-6">This is more than an investment. It's a chance to build a legacy of compassion, innovation, and profound human impact.</p>
+            <blockquote class="text-2xl italic font-light border-l-4 border-blue-300 pl-6 max-w-2xl mx-auto mb-10">"I pledge to care before I profit, to speak truth with courage and kindness... to protect this Universe — not as an employee, but as a guardian of its spirit."</blockquote>
+            <button class="bg-white text-blue-600 font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-100 transform hover:scale-105 transition-all shadow-lg">I'm Ready to Build</button>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Motion Mechanics. A Purrfect Universe Company.</p>
+            <p class="text-sm text-gray-400">All financial figures are projections in Bangladeshi Taka (BDT) and for illustrative purposes.</p>
+        </div>
+    </footer>
+
+<script>
+    function wrapLabels(label) {
+        if (typeof label === 'string' && label.length > 16) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > 16 && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+        return label;
+    }
+
+    const defaultTooltipCallback = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        } else {
+                          return label;
+                        }
+                    }
+                }
+            }
+        }
+    };
+    
+    const colors = {
+        orange: '#FF5733',
+        green: '#33FF57',
+        blue: '#3357FF',
+        pink: '#FF33A1',
+        yellow: '#F1C40F',
+        lightGray: '#E5E7EB',
+        darkGray: '#4B5563',
+        purple: '#900C3F',
+        red: '#C70039',
+        darkPurple: '#581845',
+        lightYellow: '#FFC300'
+    };
+
+    const ctxRevenue = document.getElementById('revenueChart');
+    if (ctxRevenue) {
+        new Chart(ctxRevenue, {
+            type: 'bar',
+            data: {
+                labels: ['20% (Launch)', '50% (Steady)', '70% (Target)', '90% (Max)'],
+                datasets: [{
+                    label: 'Approx. Monthly Revenue (BDT Lakh)',
+                    data: [5.5, 13.5, 18.5, 23.5],
+                    backgroundColor: [colors.yellow, colors.green, colors.blue, colors.pink],
+                    borderColor: 'rgba(255, 255, 255, 0)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...defaultTooltipCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue in BDT Lakh'
+                        }
+                    }
+                },
+                plugins: {
+                    ...defaultTooltipCallback.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    const ctxExpense = document.getElementById('expenseChart');
+    if (ctxExpense) {
+        new Chart(ctxExpense, {
+            type: 'doughnut',
+            data: {
+                labels: ['Salaries (8–10 Staff)'.split(' '), 'Rent & Utilities', 'Consumables & Supplies', 'Marketing & Outreach', 'Maintenance'],
+                datasets: [{
+                    label: 'Amount (BDT)',
+                    data: [515000, 85000, 50000, 30000, 30000],
+                    backgroundColor: [colors.blue, colors.orange, colors.yellow, colors.pink, colors.lightGray],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...defaultTooltipCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...defaultTooltipCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    }
+
+    const ctxSurplus = document.getElementById('surplusChart');
+    if (ctxSurplus) {
+        new Chart(ctxSurplus, {
+            type: 'pie',
+            data: {
+                labels: ['Employee Well-being', 'Research & Innovation', 'Community & Environment', 'Emergency Reserves'],
+                datasets: [{
+                    label: '% of Surplus',
+                    data: [40, 30, 20, 10],
+                    backgroundColor: [colors.green, colors.blue, colors.yellow, colors.lightGray],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...defaultTooltipCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...defaultTooltipCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            }
+        });
+    }
+    
+    const ctxOutlook = document.getElementById('outlookChart');
+    if (ctxOutlook) {
+        new Chart(ctxOutlook, {
+            type: 'line',
+            data: {
+                labels: ['2025', '2026', '2027'],
+                datasets: [{
+                    label: 'Target Monthly Revenue (BDT Lakh)',
+                    data: [13.5, 22.5, 30],
+                    fill: true,
+                    borderColor: colors.blue,
+                    backgroundColor: 'rgba(51, 87, 255, 0.1)',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                ...defaultTooltipCallback,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue in BDT Lakh'
+                        }
+                    }
+                },
+                plugins: {
+                    ...defaultTooltipCallback.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    const hierarchyItems = document.querySelectorAll('.hierarchy-item');
+    hierarchyItems.forEach((item, index) => {
+        const colorsCycle = [colors.lightYellow, colors.orange, colors.red, colors.purple, colors.darkPurple];
+        item.style.setProperty('--dot-color', colorsCycle[index % colorsCycle.length]);
+        const line = item.querySelector('::before');
+        if (line) {
+            line.style.backgroundColor = colors.lightGray;
+        }
+    });
+
+    const flowchartItems = document.querySelectorAll('.flowchart-item');
+    flowchartItems.forEach((item, index) => {
+        if (item.nextElementSibling) {
+            item.style.setProperty('--arrow-color', colors.blue);
+        }
+    });
+
+    const animatedSections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animatedSections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+</body>
+</html>
+
