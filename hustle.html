@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Hustles Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles and animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a2a;
+            color: #e0e0ff;
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transform: scale(0.95);
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+        
+        /* Starry background effect */
+        .stars {
+            background: #0a0a2a url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%230a0a2a" width="100" height="100"/><circle fill="%23fff" cx="20" cy="20" r="1.5"/><circle fill="%23fff" cx="80" cy="20" r="0.5"/><circle fill="%23fff" cx="50" cy="50" r="1"/><circle fill="%23fff" cx="20" cy="80" r="0.5"/><circle fill="%23fff" cx="80" cy="80" r="1"/></svg>')
+        }
+        
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(158, 204, 255, 1), rgba(255, 255, 255, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgba(197, 224, 255, 0.5));
+            animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
+        }
+        
+        @keyframes tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
+        }
+
+        @keyframes shooting {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(500px); }
+        }
+
+        .shooting-star:nth-child(1) { top: 20%; left: -50%; animation-delay: 1.3s; }
+        .shooting-star:nth-child(2) { top: 50%; left: -50%; animation-delay: 0.5s; }
+        .shooting-star:nth-child(3) { top: 80%; left: -50%; animation-delay: 2.7s; }
+
+        /* Paw print styles */
+        .paw-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            animation: spin 60s linear infinite;
+        }
+
+        .paw {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            fill: #c1a9ff;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Custom button style */
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: rgba(193, 169, 255, 0.3);
+            border-color: rgba(193, 169, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+    </style>
+</head>
+<body class="stars relative w-full h-screen">
+    <!-- Background animations -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="paw-orbit">
+            <svg class="paw" style="top: 10%; left: 25%; transform: rotate(20deg);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-4.5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-2-3c-.83 0-1.5-.67-1.5-1.5S5.67 7 6.5 7s1.5.67 1.5 1.5S7.33 10 6.5 10z"/></svg>
+            <svg class="paw" style="bottom: 20%; right: 15%; transform: rotate(-45deg);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-3-2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-4.5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-2-3c-.83 0-1.5-.67-1.5-1.5S5.67 7 6.5 7s1.5.67 1.5 1.5S7.33 10 6.5 10z"/></svg>
+        </div>
+    </div>
+    
+    <main class="relative w-full h-full">
+
+        <!-- Slide 1: Title -->
+        <div id="slide-1" class="slide active p-8 text-center">
+            <div class="relative">
+                <h1 class="font-space font-bold text-5xl md:text-7xl lg:text-8xl text-white tracking-tighter" style="text-shadow: 0 0 20px #c1a9ff;">
+                    Purrfect Hustles
+                </h1>
+                <p class="font-space text-xl md:text-2xl mt-4 text-purple-300">The Asteroid Belt of the Universe</p>
+            </div>
+            <p class="mt-8 max-w-2xl text-lg md:text-xl text-gray-300">
+                Where ideas orbit fast, collide beautifully, and sometimes turn into planets.
+            </p>
+            <div class="flex mt-8 space-x-4 items-center opacity-50">
+                 <div class="flex items-center space-x-2 text-sm text-purple-200 bg-purple-900/50 rounded-full px-3 py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M4 17v4m-1-2h4m10-4v4m-1-2h4m-4-10v4m-1-2h4"></path></svg>
+                    <span>Prototype</span>
+                </div>
+                 <div class="flex items-center space-x-2 text-sm text-purple-200 bg-purple-900/50 rounded-full px-3 py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span>Pilot</span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm text-purple-200 bg-purple-900/50 rounded-full px-3 py-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <span>Spark</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: What Are Purrfect Hustles? -->
+        <div id="slide-2" class="slide p-8 text-center max-w-4xl mx-auto">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-8">What Are <span class="text-purple-300">Purrfect Hustles</span>?</h2>
+            <div class="bg-black/20 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-lg">
+                <p class="text-lg md:text-2xl leading-relaxed text-gray-200">
+                    High-intensity, short-orbit ventures — prototypes, pilots, or micro-startups that emerge from Universe members and are powered by shared resources.
+                </p>
+                <div class="w-16 h-px bg-purple-400 mx-auto my-8"></div>
+                <p class="text-md md:text-lg italic text-purple-300">
+                    Not every idea needs a planet. Some just need a spark and a little cosmic dust.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Purpose -->
+        <div id="slide-3" class="slide p-8 max-w-4xl mx-auto w-full">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-12 text-center">Purpose</h2>
+            <ul class="space-y-6">
+                <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4m-2 2h2m-2 2h4M3 15h4m-2 2h2m-2 2h4M17 3l4 4M17 7h4M17 15l4 4m-4 0h4"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Encourage experimentation and fearless creation</h3>
+                        <p class="text-gray-400 mt-1">Provide a low-risk environment to test bold new ideas.</p>
+                    </div>
+                </li>
+                <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Offer every member a sandbox for innovation</h3>
+                        <p class="text-gray-400 mt-1">Give everyone access to tools and support for building.</p>
+                    </div>
+                </li>
+                <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.243 3.428l-1.428 1.428a2 2 0 01-2.828 0l-1.428-1.428a2 2 0 010-2.828l3.428-3.428a2 2 0 012.828 0l1.428 1.428a2 2 0 010 2.828zM12 12l2.828 2.828M4.572 8.572a2 2 0 001.243-3.428l1.428-1.428a2 2 0 012.828 0l1.428 1.428a2 2 0 010 2.828l-3.428 3.428a2 2 0 01-2.828 0L4.572 8.572z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Build ventures that can evolve, merge, or conclude gracefully</h3>
+                        <p class="text-gray-400 mt-1">Focus on learning outcomes, not just permanent companies.</p>
+                    </div>
+                </li>
+                 <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Keep the Universe alive with movement, curiosity, and learning</h3>
+                        <p class="text-gray-400 mt-1">Foster a dynamic culture of continuous creation and discovery.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: How It Works -->
+        <div id="slide-4" class="slide p-8 max-w-5xl mx-auto w-full">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-12 text-center">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Spark -->
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center">
+                    <div class="bg-purple-900/50 p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="font-space font-bold text-2xl text-purple-300">Spark</h3>
+                    <p class="text-gray-300 mt-2">Idea & pitch (1-page concept + chat with Council)</p>
+                </div>
+                <!-- Orbit -->
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center">
+                    <div class="bg-purple-900/50 p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-space font-bold text-2xl text-purple-300">Orbit</h3>
+                    <p class="text-gray-300 mt-2">60–90 days pilot or PoC phase</p>
+                </div>
+                <!-- Decision -->
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center">
+                    <div class="bg-purple-900/50 p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-space font-bold text-2xl text-purple-300">Decision</h3>
+                    <p class="text-gray-300 mt-2">Scale, merge, or sunset with reflection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Universal Support -->
+        <div id="slide-5" class="slide p-8 max-w-4xl mx-auto w-full">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-12 text-center">Universal Support</h2>
+            <ul class="space-y-6">
+                 <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Initial funding: up to BDT 1,00,000</h3>
+                        <p class="text-gray-400 mt-1">Seed funding to cover initial operational costs.</p>
+                    </div>
+                </li>
+                <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Shared Resources</h3>
+                        <p class="text-gray-400 mt-1">Workspace, branding, mentors, design & tech support.</p>
+                    </div>
+                </li>
+                <li class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 bg-purple-500/20 text-purple-300 p-3 rounded-full">
+                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl text-white">Mentorship & Network Access</h3>
+                        <p class="text-gray-400 mt-1">Guidance from senior cats, planet leaders, and the entire Universe network.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Slide 6: Roles & Ownership -->
+        <div id="slide-6" class="slide p-8 max-w-5xl mx-auto w-full">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-12 text-center">Roles & Ownership</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center justify-center">
+                    <h3 class="font-space font-bold text-5xl text-purple-300">60%</h3>
+                    <p class="font-bold text-xl mt-2 text-white">Initiator</p>
+                    <p class="text-gray-400 mt-1 text-sm">(must lead execution)</p>
+                </div>
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center justify-center">
+                    <h3 class="font-space font-bold text-5xl text-purple-300">30%</h3>
+                    <p class="font-bold text-xl mt-2 text-white">Universe Treasury</p>
+                    <p class="text-gray-400 mt-1 text-sm">(reinvested in the ecosystem)</p>
+                </div>
+                <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col items-center justify-center">
+                    <h3 class="font-space font-bold text-5xl text-purple-300">10%</h3>
+                    <p class="font-bold text-xl mt-2 text-white">Contributors</p>
+                    <p class="text-gray-400 mt-1 text-sm">(split among collaborators)</p>
+                </div>
+            </div>
+             <p class="text-center mt-8 text-gray-400 italic">Reviewed and adjusted by Council per case.</p>
+        </div>
+        
+        <!-- Slide 7: Example Hustles -->
+        <div id="slide-7" class="slide p-8 max-w-5xl mx-auto w-full">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-12 text-center">Example Hustles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-black/20 p-4 rounded-lg border border-white/10">
+                    <h3 class="font-bold text-purple-300">Purrfect Crafts</h3>
+                    <p class="text-sm text-gray-300">Catnip-infused wooden toys</p>
+                </div>
+                 <div class="bg-black/20 p-4 rounded-lg border border-white/10">
+                    <h3 class="font-bold text-purple-300">Motion Mechanics on Wheels</h3>
+                    <p class="text-sm text-gray-300">Mobile therapy camp</p>
+                </div>
+                 <div class="bg-black/20 p-4 rounded-lg border border-white/10">
+                    <h3 class="font-bold text-purple-300">Hawa’s Aroma</h3>
+                    <p class="text-sm text-gray-300">Recycled filter candles</p>
+                </div>
+                 <div class="bg-black/20 p-4 rounded-lg border border-white/10">
+                    <h3 class="font-bold text-purple-300">Purrfect Companion</h3>
+                    <p class="text-sm text-gray-300">AI-based mental wellness app</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Spirit of the Belt -->
+        <div id="slide-8" class="slide p-8 text-center max-w-4xl mx-auto">
+             <div class="bg-black/20 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-lg">
+                <blockquote class="text-xl md:text-3xl leading-relaxed text-white italic">
+                    “The Belt is where we play, test, fail, and grow. It’s where kittens learn to hunt before they rule a planet.”
+                </blockquote>
+                <cite class="block text-right mt-6 text-purple-300 not-italic">– Misty, Keeper of Cosmic Chaos</cite>
+            </div>
+        </div>
+
+        <!-- Slide 9: Launch Invitation -->
+        <div id="slide-9" class="slide p-8 text-center max-w-4xl mx-auto">
+            <h2 class="font-space text-3xl md:text-5xl font-bold text-white mb-8">Launch Invitation</h2>
+            <div class="bg-black/20 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-lg">
+                <p class="text-lg md:text-2xl leading-relaxed text-gray-200">
+                   Got an idea? A spark?
+                </p>
+                <div class="w-16 h-px bg-purple-400 mx-auto my-8"></div>
+                <p class="text-gray-300">Submit your 1-page Hustle Pitch to:</p>
+                <p class="font-mono text-lg text-purple-300 bg-purple-900/50 rounded px-2 py-1 my-2 inline-block">council@purrfecthq.com</p>
+                <p class="text-gray-400 text-sm mt-2">Subject: [Purrfect Hustle] – Your Idea Name</p>
+                <p class="mt-8 font-space text-xl text-white">The stars are waiting. Don’t keep them bored.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 p-6 flex justify-between items-center z-10">
+        <div id="slide-counter" class="text-sm font-mono text-gray-400">1 / 9</div>
+        <div class="flex space-x-2">
+            <button id="prev-btn" class="nav-btn rounded-full p-3 text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button id="next-btn" class="nav-btn rounded-full p-3 text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                
+                // Update counter
+                slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+
+                // Update button states
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === totalSlides - 1;
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+
+            // Event Listeners for buttons
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Event Listeners for arrow keys
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+
+            // Initial setup
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
+
