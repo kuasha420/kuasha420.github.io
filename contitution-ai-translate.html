@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পারফেক্ট ইউনিভার্স-এর সংবিধান</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The application is structured as a thematic, single-page dashboard rather than a linear document to enhance usability. The key sections are: 1) Core Philosophy, 2) Governance Structure, 3) Rights & Responsibilities, 4) Financial Model, and 5) The Pledge. A sticky navigation bar allows users to jump between these themes non-linearly. This structure was chosen because it groups related concepts, making the dense information more digestible. For example, placing Rights and Duties side-by-side creates a powerful visual comparison. The interactive chart for finances makes an abstract rule tangible. This user-centric design prioritizes understanding and exploration over simply replicating the source document's article order. -->
+    <!-- Visualization & Content Choices: 
+        - Preamble/Values -> Goal: Inform -> Presentation: Styled text and themed cards -> Interaction: Hover effects -> Justification: Breaks up text and highlights core principles.
+        - Governance Structure -> Goal: Organize/Relate -> Presentation: HTML/CSS diagram of the 'Governance Triangle' -> Interaction: Highlighting text on hover -> Justification: Visually clarifies the power structure more effectively than text alone. (Method: HTML/Tailwind)
+        - Rights vs. Duties -> Goal: Compare -> Presentation: Two-column layout with icons -> Interaction: None -> Justification: Emphasizes the core principle of balanced freedom and responsibility. (Method: HTML/Tailwind)
+        - Profit Redistribution -> Goal: Compare Proportions -> Presentation: Donut Chart -> Interaction: Hover tooltips with data -> Justification: Immediately visualizes the unique financial model, making percentages easy to grasp. (Library: Chart.js/Canvas)
+        - Pledge/Closing -> Goal: Inform/Inspire -> Presentation: Prominently styled text blocks -> Interaction: None -> Justification: Ends the experience on a powerful, memorable note.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
+            min-height: 300px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-[#FDFBF8]/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-[#D4A373]">পারফেক্ট ইউনিভার্স</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#philosophy" class="text-gray-600 hover:text-[#D4A373] transition">দর্শন</a>
+                    <a href="#governance" class="text-gray-600 hover:text-[#D4A373] transition">শাসনব্যবস্থা</a>
+                    <a href="#rights" class="text-gray-600 hover:text-[#D4A373] transition">অধিকার ও কর্তব্য</a>
+                    <a href="#finance" class="text-gray-600 hover:text-[#D4A373] transition">আর্থিক কাঠামো</a>
+                    <a href="#pledge" class="text-gray-600 hover:text-[#D4A373] transition">প্রতিজ্ঞা</a>
+                </div>
+                <div class="md:hidden">
+                    <select id="mobile-nav" class="bg-white border border-gray-300 rounded-md py-1 px-2 text-gray-600">
+                        <option value="#hero">প্রথম পাতা</option>
+                        <option value="#philosophy">দর্শন</option>
+                        <option value="#governance">শাসনব্যবস্থা</option>
+                        <option value="#rights">অধিকার ও কর্তব্য</option>
+                        <option value="#finance">আর্থিক কাঠামো</option>
+                        <option value="#pledge">প্রতিজ্ঞা</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <section id="hero" class="text-center mb-20 md:mb-28">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#3A3A3A] mb-4">পারফেক্ট ইউনিভার্স-এর সংবিধান</h1>
+            <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">যত্ন, সৃজনশীলতা এবং জবাবদিহিতার একটি জীবন্ত সনদ। একটি কোম্পানি নয়, একটি জীবন্ত মহাবিশ্ব।</p>
+        </section>
+
+        <section id="philosophy" class="mb-20 md:mb-28">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3A3A3A] mb-3">আমাদের দর্শন ও মূল্যবোধ</h2>
+                <p class="text-md text-gray-600 max-w-2xl mx-auto">এই বিভাগটি আমাদের মহাবিশ্বের মূল ভিত্তি এবং প্রস্তাবনা তুলে ধরে। আমরা বিশ্বাস করি, একটি কোম্পানি মুনাফার যন্ত্র নয়, বরং বিশ্বাস, যত্ন এবং খেলার ছলে কাজ করার মাধ্যমে চালিত একটি জীবন্ত সত্তা।</p>
+            </div>
+            <div class="bg-white/50 rounded-xl p-8 md:p-12 border border-gray-200/50 shadow-sm mb-12">
+                <h3 class="text-2xl font-semibold text-[#D4A373] mb-4">প্রস্তাবনা</h3>
+                <p class="text-gray-700 leading-relaxed">আমরা, পারফেক্ট ইউনিভার্স-এর স্বপ্নদ্রষ্টা, নির্মাতা, নিরাময়কারী, প্রকৌশলী, গল্পকার এবং তত্ত্বাবধায়কগণ, আমাদের সম্মিলিত অস্তিত্বের ভিত্তি হিসেবে এই সংবিধান প্রতিষ্ঠা করছি। মুনাফা একটি হাতিয়ার, পুরস্কার নয়। প্রবৃদ্ধি অহংকারের জন্য নয়, বরং স্থিতিশীলতা, সময় এবং আনন্দের জন্য অনুসরণ করা হয়। মানুষ কোনো সম্পদ নয় — তারা হলো এই মহাবিশ্বের হৃদয়।</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">যত্ন (Care)</h4>
+                    <p class="text-gray-600">সহকর্মী, গ্রাহক এবং সম্প্রদায়ের প্রতি সহানুভূতি নিয়ে কাজ করা।</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">স্বচ্ছতা (Transparency)</h4>
+                    <p class="text-gray-600">খোলামেলাভাবে যোগাযোগ করা এবং সিদ্ধান্তগুলো নথিভুক্ত করা।</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">ক্ষমতায়ন (Empowerment)</h4>
+                    <p class="text-gray-600">সুস্পষ্ট সীমানার মধ্যে মালিকানা এবং স্বায়ত্তশাসন প্রদান।</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">সহানুভূতি সহকারে সৎ মতামত</h4>
+                    <p class="text-gray-600">দয়া এবং স্বচ্ছতার সাথে সৎ মতামত দেওয়া।</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">খেলা (Play)</h4>
+                    <p class="text-gray-600">সৃজনশীলতা এবং আনন্দকে কৌশলগত সুবিধা হিসেবে দেখা।</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200/50 shadow-sm hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-semibold text-[#3A3A3A] mb-2">ভারসাম্য (Balance)</h4>
+                    <p class="text-gray-600">বিশ্রাম এবং পুনরুদ্ধারকে কাজের অংশ হিসেবে বিবেচনা করা।</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="governance" class="mb-20 md:mb-28">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3A3A3A] mb-3">শাসনব্যবস্থা ও কাঠামো</h2>
+                <p class="text-md text-gray-600 max-w-2xl mx-auto">আমাদের মহাবিশ্ব কীভাবে পরিচালিত হয় তা এখানে ব্যাখ্যা করা হয়েছে। ক্ষমতা কোনো একক কেন্দ্রে আবদ্ধ নয়, বরং নেতৃত্ব, মানবসম্পদ (HR), এবং কর্মীদের দ্বারা নির্বাচিত কাউন্সিলের মধ্যে ভারসাম্যপূর্ণভাবে বন্টিত।</p>
+            </div>
+            <div class="lg:flex lg:items-center lg:space-x-12 bg-white/50 rounded-xl p-8 md:p-12 border border-gray-200/50 shadow-sm">
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <h3 class="text-2xl font-semibold text-[#D4A373] mb-4">শাসনের ত্রিভুজ</h3>
+                    <p class="text-gray-700 mb-6">ক্ষমতা এই তিনটি স্তম্ভের মধ্যে ভাগ করা থাকে, যা একটি সুস্থ ও জবাবদিহিতামূলক পরিবেশ নিশ্চিত করে। প্রতিটি অংশের উপর মাউস হোভার করে তাদের ভূমিকা সম্পর্কে জানুন।</p>
+                    <ul class="space-y-4 text-gray-600" id="governance-info">
+                        <li data-target="leadership" class="p-3 rounded-md transition-colors cursor-pointer hover:bg-[#D4A373]/10"><strong class="font-semibold text-gray-800">নেতৃত্ব:</strong> মহাবিশ্ব এবং প্ল্যানেটের নেতারা — কৌশলগত রক্ষক, নিয়ন্ত্রক নয়।</li>
+                        <li data-target="hr" class="p-3 rounded-md transition-colors cursor-pointer hover:bg-[#D4A373]/10"><strong class="font-semibold text-gray-800">মানবসম্পদ (HR):</strong> ন্যায্যতা, সুস্থতা এবং অধিকারের রক্ষক।</li>
+                        <li data-target="council" class="p-3 rounded-md transition-colors cursor-pointer hover:bg-[#D4A373]/10"><strong class="font-semibold text-gray-800">মহাবিশ্বের কাউন্সিল (CoU):</strong> কর্মীদের নির্বাচিত প্রতিনিধি, যারা ন্যায়বিচার এবং স্বচ্ছতা তত্ত্বাবধান করে।</li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 flex items-center justify-center p-4">
+                     <div class="relative w-64 h-64 md:w-72 md:h-72">
+                        <div id="leadership-node" class="node-item absolute top-0 left-1/2 -translate-x-1/2 w-28 h-28 bg-[#EAE0D5] border-2 border-[#D4A373] rounded-full flex items-center justify-center text-center p-2 transition-all duration-300">নেতৃত্ব</div>
+                        <div id="hr-node" class="node-item absolute bottom-0 left-0 w-28 h-28 bg-[#EAE0D5] border-2 border-[#D4A373] rounded-full flex items-center justify-center text-center p-2 transition-all duration-300">মানবসম্পদ</div>
+                        <div id="council-node" class="node-item absolute bottom-0 right-0 w-28 h-28 bg-[#EAE0D5] border-2 border-[#D4A373] rounded-full flex items-center justify-center text-center p-2 transition-all duration-300">কাউন্সিল</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rights" class="mb-20 md:mb-28">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3A3A3A] mb-3">কর্মী অধিকার ও কর্তব্য</h2>
+                <p class="text-md text-gray-600 max-w-2xl mx-auto">স্বাধীনতার সাথে দায়িত্বও আসে। এই বিভাগে মহাবিশ্বের প্রতিটি সদস্যের জন্য নির্ধারিত অধিকার এবং তাদের পালনীয় কর্তব্যগুলো পাশাপাশি তুলে ধরা হয়েছে, যা আমাদের পারস্পরিক সম্মান ও সহযোগিতার ভিত্তি।</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white/50 rounded-xl p-8 border border-gray-200/50 shadow-sm">
+                    <h3 class="text-2xl font-semibold text-[#D4A373] mb-6 text-center">✅ আপনার অধিকার</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><span class="mr-2"> dignified</span>মর্যাদার অধিকার</li>
+                        <li><span class="mr-2">⚖️</span>ভারসাম্যের অধিকার</li>
+                        <li><span class="mr-2">🌱</span>বিকাশের অধিকার</li>
+                        <li><span class="mr-2">🗣️</span>সৎ মতামতের অধিকার</li>
+                        <li><span class="mr-2">🛡️</span>নিরাপত্তার অধিকার</li>
+                        <li><span class="mr-2">🤝</span>ন্যায্য প্রস্থানের অধিকার</li>
+                        <li><span class="mr-2"> whistleblower</span>অনিয়মের অভিযোগের অধিকার</li>
+                        <li><span class="mr-2">🧘</span>পুনরুদ্ধারের অধিকার</li>
+                    </ul>
+                </div>
+                <div class="bg-white/50 rounded-xl p-8 border border-gray-200/50 shadow-sm">
+                    <h3 class="text-2xl font-semibold text-[#D4A373] mb-6 text-center">ኃ আপনার কর্তব্য</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><span class="mr-2">✨</span>সততা</li>
+                        <li><span class="mr-2">❤️</span>যত্ন</li>
+                        <li><span class="mr-2">💬</span>সৎ মতামত</li>
+                        <li><span class="mr-2">🎲</span>খেলা</li>
+                        <li><span class="mr-2">🌍</span>তত্ত্বাবধান</li>
+                        <li><span class="mr-2">🎯</span>জবাবদিহিতা</li>
+                        <li><span class="mr-2">🔒</span>গোপনীয়তা</li>
+                        <li><span class="mr-2">🙏</span>সম্মান</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="finance" class="mb-20 md:mb-28">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3A3A3A] mb-3">আর্থিক ও নৈতিক কাঠামো</h2>
+                <p class="text-md text-gray-600 max-w-2xl mx-auto">মুনাফা মানুষের সেবা করার জন্য, মানুষ মুনাফার জন্য নয়। আমাদের আর্থিক মডেলটি এই দর্শনকে কেন্দ্র করে তৈরি। নেট মুনাফার মার্জিন ৫%-এ সীমাবদ্ধ এবং অতিরিক্ত মুনাফা একটি নির্দিষ্ট নীতি অনুসারে পুনঃবণ্টন করা হয়।</p>
+            </div>
+            <div class="bg-white/50 rounded-xl p-8 md:p-12 border border-gray-200/50 shadow-sm">
+                <h3 class="text-2xl font-semibold text-center text-[#D4A373] mb-8">অতিরিক্ত মুনাফা বণ্টন</h3>
+                <div class="lg:flex lg:items-center lg:space-x-12">
+                    <div class="lg:w-1/2 chart-container mb-8 lg:mb-0">
+                        <canvas id="profitChart"></canvas>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <p class="text-gray-700 mb-6">৫% মার্জিনের বেশি অর্জিত যেকোনো মুনাফা চারটি মূল ক্ষেত্রে পুনঃবন্টিত হয়। এই বন্টন নিশ্চিত করে যে আমাদের সাফল্য শুধুমাত্র কর্মীদের নয়, বরং আমাদের উদ্ভাবন, সম্প্রদায় এবং ভবিষ্যতের স্থিতিশীলতাকেও শক্তিশালী করে।</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center"><div class="w-4 h-4 rounded-full mr-3 bg-[#8E7964]"></div>কর্মীদের সুস্থতায়: ৩০%</li>
+                            <li class="flex items-center"><div class="w-4 h-4 rounded-full mr-3 bg-[#A9947B]"></div>গবেষণা ও উদ্ভাবনে: ৩০%</li>
+                            <li class="flex items-center"><div class="w-4 h-4 rounded-full mr-3 bg-[#C4AF92]"></div>সম্প্রদায় ও পরিবেশে: ২৫%</li>
+                            <li class="flex items-center"><div class="w-4 h-4 rounded-full mr-3 bg-[#E0CAAA]"></div>জরুরি রিজার্ভে: ১৫%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pledge" class="text-center">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3A3A3A] mb-3">আমাদের প্রতিজ্ঞা ও সমাপনী ঘোষণা</h2>
+                <p class="text-md text-gray-600 max-w-2xl mx-auto">এই সংবিধানের সমাপ্তি টানা হয়েছে একটি ব্যক্তিগত প্রতিজ্ঞা এবং একটি সম্মিলিত ঘোষণার মাধ্যমে, যা আমাদের মহাবিশ্বের আত্মাকে ধারণ করে। এটি আমাদের প্রতিদিনের কাজের চালিকাশক্তি।</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white/50 rounded-xl p-8 md:p-12 border border-gray-200/50 shadow-sm">
+                <h3 class="text-2xl font-semibold text-[#D4A373] mb-4">পারফেক্ট প্রতিজ্ঞা</h3>
+                <p class="text-lg text-gray-700 italic leading-relaxed">"আমি প্রতিজ্ঞা করছি যে আমি মুনাফার আগে যত্ন নেব, সাহস ও দয়ার সাথে সত্য বলব, প্রতিটি কণ্ঠকে সম্মান করব, আনন্দ ও সততার সাথে কাজ করব, এই মহাবিশ্বকে রক্ষা করব — একজন কর্মচারী হিসেবে নয়, বরং এর চেতনার একজন অভিভাবক হিসেবে।"</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white/30 border-t border-gray-200/50 mt-20">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 Purrfect Universe. সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('profitChart').getContext('2d');
+            const profitChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['কর্মীদের সুস্থতায়', 'গবেষণা ও উদ্ভাবনে', 'সম্প্রদায় ও পরিবেশে', 'জরুরি রিজার্ভে'],
+                    datasets: [{
+                        label: 'অতিরিক্ত মুনাফা বণ্টন',
+                        data: [30, 30, 25, 15],
+                        backgroundColor: [
+                            '#8E7964',
+                            '#A9947B',
+                            '#C4AF92',
+                            '#E0CAAA'
+                        ],
+                        borderColor: '#FDFBF8',
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                             labels: {
+                                color: '#4A4A4A',
+                                font: {
+                                    family: "'Hind Siliguri', sans-serif",
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            },
+                            bodyFont: {
+                                family: "'Hind Siliguri', sans-serif",
+                            },
+                             titleFont: {
+                                family: "'Hind Siliguri', sans-serif",
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+
+            const governanceInfoItems = document.querySelectorAll('#governance-info li');
+            const nodeItems = document.querySelectorAll('.node-item');
+
+            const resetNodes = () => {
+                nodeItems.forEach(node => {
+                    node.style.transform = node.id === 'leadership-node' ? 'translate(-50%, 0)' : '';
+                    node.style.backgroundColor = '#EAE0D5';
+                    node.style.fontWeight = 'normal';
+                });
+            };
+
+            const highlightNode = (targetId) => {
+                const targetNode = document.getElementById(`${targetId}-node`);
+                if(targetNode) {
+                    targetNode.style.transform = (targetNode.id === 'leadership-node' ? 'translate(-50%, 0) ' : '') + 'scale(1.1)';
+                    targetNode.style.backgroundColor = '#D4A373';
+                    targetNode.style.fontWeight = 'bold';
+                }
+            };
+            
+            governanceInfoItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    resetNodes();
+                    highlightNode(item.dataset.target);
+                });
+                item.addEventListener('mouseleave', resetNodes);
+            });
+
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.addEventListener('change', function() {
+                if (this.value) {
+                    window.location.hash = this.value;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

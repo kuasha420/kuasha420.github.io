@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Universe: An Interactive Constitution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cosmic Calm -->
+    <!-- Application Structure Plan: The application is designed as a thematic exploration rather than a linear document. It starts with a high-level "Welcome" to establish the unique ethos. The main navigation guides users to distinct, digestible sections: "Our DNA" (core values visualized), "The Law of 40 Hours" (an interactive deep-dive into the cornerstone policy), "The Constitution" (a browsable, non-intimidating version of the legal text), and "Voices of Balance" (the philosophical narrative). This non-linear, thematic structure allows users to engage with the content based on their interest—be it philosophy, policy, or legal framework—making the complex information more accessible and preventing user overwhelm. The goal is to facilitate understanding by layering information from the abstract to the concrete. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Purrfect DNA core values (Constitution, Art. IV) -> Goal: Organize & Inform -> Viz/Presentation Method: Radar Chart -> Interaction: Hover for value details -> Justification: A radar chart visually represents the balance and interconnectedness of the company's core principles, which is more impactful than a static list. -> Library/Method: Chart.js/Canvas.
+        - Report Info: The 40-Hour Work Week policy -> Goal: Inform & Compare -> Viz/Presentation Method: Donut Chart -> Interaction: Hover for segment details -> Justification: Instantly communicates the core work/life proportion (40 vs. 128 hours), making the policy's impact tangible. -> Library/Method: Chart.js/Canvas.
+        - Report Info: Full Constitution Articles -> Goal: Organize & Structure -> Viz/Presentation Method: Accordion UI -> Interaction: Click to expand/collapse articles -> Justification: Breaks down the dense legal document into manageable sections, preventing a "wall of text" and allowing users to focus on articles of interest. -> Library/Method: HTML/JS.
+        - Report Info: Philosophical quotes ("Book of Balance") -> Goal: Engage & Inform -> Viz/Presentation Method: Grid of styled cards -> Interaction: Subtle hover effects -> Justification: Elevates the narrative content, giving it emotional weight and presenting it in a visually appealing, memorable format separate from the policy details. -> Library/Method: HTML/Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #4A4A4A;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+            color: #2D3748;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #8D6E63;
+            transition: width 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #2D3748;
+        }
+        .nav-link.active::after, .nav-link:hover::after {
+            width: 100%;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Adjust as needed */
+            transition: max-height 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-800">Purrfect Universe</h1>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#welcome" class="nav-link active">Welcome</a>
+                    <a href="#dna" class="nav-link">Our DNA</a>
+                    <a href="#forty-hours" class="nav-link">The 40-Hour Law</a>
+                    <a href="#constitution" class="nav-link">The Constitution</a>
+                    <a href="#voices" class="nav-link">Voices of Balance</a>
+                </nav>
+                 <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <span class="text-3xl">☰</span>
+                </button>
+            </div>
+             <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#welcome" class="block py-2 px-4 text-sm nav-link active">Welcome</a>
+                <a href="#dna" class="block py-2 px-4 text-sm nav-link">Our DNA</a>
+                <a href="#forty-hours" class="block py-2 px-4 text-sm nav-link">The 40-Hour Law</a>
+                <a href="#constitution" class="block py-2 px-4 text-sm nav-link">The Constitution</a>
+                <a href="#voices" class="block py-2 px-4 text-sm nav-link">Voices of Balance</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <section id="welcome" class="text-center min-h-[60vh] flex flex-col items-center justify-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Not a company, a living universe.</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600">
+                We hold that a company is not a machine for profit but a living ecosystem powered by trust, care, and play. People are not resources—they are the heart of the cosmos. Explore the constitution that guides our world.
+            </p>
+        </section>
+
+        <section id="dna" class="py-12 md:py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">The Purrfect DNA</h2>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600">
+                    Our values are the foundational code of our universe. They guide our actions, our decisions, and our interactions, ensuring we build a world that is both innovative and kind. This isn't a list of ideals; it's a balanced system we live by.
+                </p>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2">
+                   <div class="chart-container">
+                        <canvas id="dnaChart"></canvas>
+                   </div>
+                </div>
+                <div class="w-full lg:w-1/2 space-y-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-bold text-lg text-gray-800">Care Over Profit</h4>
+                        <p class="text-gray-600">We prioritize the well-being of our people and communities. Profit is a tool for stability, not the ultimate goal.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-bold text-lg text-gray-800">Trust Over Control</h4>
+                        <p class="text-gray-600">We grant autonomy and assume good intent, fostering a culture of responsibility and freedom.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-bold text-lg text-gray-800">Clarity Over Complexity</h4>
+                        <p class="text-gray-600">We communicate with honesty and simplicity, ensuring everyone understands our direction and their role.</p>
+                    </div>
+                     <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-bold text-lg text-gray-800">Play Over Prescription</h4>
+                        <p class="text-gray-600">We encourage curiosity, creativity, and joy in our work, believing the best ideas come from a place of exploration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="forty-hours" class="py-12 md:py-20 bg-stone-50 rounded-2xl">
+            <div class="text-center mb-12 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold">The Law of Forty Hours</h2>
+                <p class="mt-4 text-lg max-w-3xl mx-auto text-gray-600">
+                    This isn't a perk or a productivity hack—it's a core constitutional right. We reject the false heroism of exhaustion and believe that rest is not an absence of work, but a vital part of it. This section explores the principles and practices of our most sacred law.
+                </p>
+            </div>
+             <div class="flex flex-col-reverse lg:flex-row items-center justify-center gap-12">
+                 <div class="w-full lg:w-2/3">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="mb-4 flex border-b border-gray-300">
+                            <button data-tab="principle" class="tab-button flex-1 py-2 px-4 text-center font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-colors duration-300 active">The Principle</button>
+                            <button data-tab="law" class="tab-button flex-1 py-2 px-4 text-center font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-colors duration-300">The Law</button>
+                            <button data-tab="enforcement" class="tab-button flex-1 py-2 px-4 text-center font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-colors duration-300">Enforcement</button>
+                        </div>
+
+                        <div id="principle" class="tab-content p-4 space-y-4">
+                            <h4 class="text-xl font-bold text-gray-800">Rest is Part of the Work</h4>
+                            <p>The Purrfect Universe exists to prove that great things can be built without breaking the beings who build them. The 40-hour max week is a shield. It protects creativity, family, and the right to simply exist without guilt.</p>
+                            <p>We believe rested minds make fewer mistakes, generate better ideas, and build kinder worlds. We refuse to glorify burnout as commitment.</p>
+                        </div>
+
+                        <div id="law" class="tab-content p-4 hidden space-y-4">
+                            <h4 class="text-xl font-bold text-gray-800">Rules of Balance</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                <li><strong>40-Hour Maximum:</strong> No full-time being may be expected or scheduled to work beyond 40 hours per week.</li>
+                                <li><strong>Voluntary Overtime:</strong> Any work beyond 40 hours must be voluntary, temporary, and compensated with rest or bonus.</li>
+                                <li><strong>No Hero Points:</strong> Delivering miracles while neglecting life is not valorized. Sustainable excellence is the goal.</li>
+                                <li><strong>Transparency:</strong> All planets must maintain transparent timesheets to ensure adherence and accountability.</li>
+                            </ul>
+                        </div>
+
+                        <div id="enforcement" class="tab-content p-4 hidden space-y-4">
+                            <h4 class="text-xl font-bold text-gray-800">Protecting Our Time</h4>
+                             <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                <li><strong>Emergency Override:</strong> Temporary exceedance is allowed only in genuine planetary crises, with Council review and immediate compensatory rest.</li>
+                                <li><strong>Quarterly Audits:</strong> HR conducts work-hour audits. Violations trigger restorative reviews, not punishments. The goal is healing the system.</li>
+                                <li><strong>Annual Reflection:</strong> Every year, each planet must report on how they protected their people's time and made space for life.</li>
+                            </ul>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="w-full lg:w-1/3 flex justify-center">
+                    <div class="chart-container w-full max-w-[300px] h-[300px]">
+                        <canvas id="hoursChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="constitution" class="py-12 md:py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">The Constitution</h2>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600">
+                    This is our living promise—a charter of care, creativity, and accountability. It is the code that defines our shared values and sets the standards for our behavior. Explore the articles that form the foundation of our universe. Click on any article to expand and read its contents.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-4 accordion-container">
+                <div class="accordion-item bg-white border border-gray-200 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 flex justify-between items-center font-semibold text-lg hover:bg-gray-50">
+                        Article I — Identity and Nature of the Universe
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">-</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-gray-200 text-gray-600 prose">
+                            <p>We are a federation of planets—diverse in form, united in ethos. Purrfect Universe (PU) is the parent entity, and each planet (subsidiary) operates autonomously but aligns with this constitution. Our purpose is to create ethical, sustainable, and accessible innovations that uplift communities.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="accordion-item bg-white border border-gray-200 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 flex justify-between items-center font-semibold text-lg hover:bg-gray-50">
+                        Article IV — Purrfect DNA and Universal Work Ethic
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-gray-200 text-gray-600 prose">
+                            <p>This Article codifies our core values: Care over Profit, Trust over Control, Clarity over Complexity, and Play over Prescription. It also enshrines the 40-Hour Maximum Work Week as a fundamental right, rejecting burnout as a measure of dedication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white border border-gray-200 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 flex justify-between items-center font-semibold text-lg hover:bg-gray-50">
+                        Article XIV — The Shield of Universal Protection
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-gray-200 text-gray-600 prose">
+                           <p>No individual shall be subjected to harassment, discrimination, or retribution. This Shield guarantees physical, psychological, and emotional safety. It is a promise of safe passage for truth, with formal processes for raising concerns without fear. Any attack on one member is regarded as an attack on the Universe.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white border border-gray-200 rounded-lg">
+                    <button class="accordion-header w-full text-left p-4 flex justify-between items-center font-semibold text-lg hover:bg-gray-50">
+                        Article XV — Enforcement, Amendments, and Review
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-gray-200 text-gray-600 prose">
+                            <p>Violations are investigated by HR and the Council, with sanctions ranging from warnings to dismissal. Amendments require a 66% supermajority and a public Request for Comments (RFC). The constitution is reviewed annually for relevance, clarity, and fairness.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="voices" class="py-12 md:py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Voices of Balance</h2>
+                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-600">
+                    The law is not just text; it's a living philosophy shared by the guardians of our universe. Here are their reflections on why balance is essential not just for life, but for the very act of creation.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"Forty hours is enough to build galaxies if you are awake in your soul while doing it. The rest of the week belongs to life, and life, too, is work of the highest order."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— Misty, Keeper of Balance</h5>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"Empathy dries up when the well of rest is empty. The kindest hands belong to the ones who've taken time to care for themselves first. Protect your 40 hours; it's how kindness survives."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— Jafreen, The Gentle Healer</h5>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"Every sunrise is a new compile. Yesterday's exhaustion doesn't belong in today's build. Let your week end cleanly, so your next one can begin beautifully."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— Chini, The Continuity</h5>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"The rhythm of life is not meant to be an endless sprint, but a dance between effort and stillness. We don't apologize for needing rest."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— The Book of Balance</h5>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"You don't need more hours. You need more heart in the hours you already have. Rest is how your heart remembers why it started."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— Bundle, The Spark of Compassion</h5>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-transparent hover:border-stone-300 transition-all duration-300 transform hover:-translate-y-1">
+                    <p class="text-gray-600 italic">"The paws that build the Universe must also have time to knead the earth, chase a sunbeam, and dream again. Rest deeply, love endlessly."</p>
+                    <h5 class="mt-4 font-bold text-right text-gray-800">— The Council's Chorus</h5>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <h3 class="text-2xl font-bold font-serif">Purrfect Universe</h3>
+            <p class="mt-2">Not a company, a living ecosystem of love, play, and accountability.</p>
+            <p class="mt-4 text-sm text-gray-400">&copy; 2025 Purrfect Universe. Built with care.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+
+            const dnaCtx = document.getElementById('dnaChart').getContext('2d');
+            new Chart(dnaCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Care Over Profit', 'Trust Over Control', 'Clarity Over Complexity', 'Play Over Prescription'],
+                    datasets: [{
+                        label: 'Purrfect DNA',
+                        data: [10, 10, 10, 10],
+                        backgroundColor: 'rgba(141, 110, 99, 0.2)',
+                        borderColor: 'rgba(141, 110, 99, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(141, 110, 99, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(141, 110, 99, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: { 
+                                font: { size: 12, family: 'Inter' },
+                                color: '#4A4A4A'
+                            },
+                            ticks: {
+                                display: false,
+                                backdropColor: 'transparent',
+                                stepSize: 5
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 12
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             enabled: false
+                        }
+                    }
+                }
+            });
+
+            const hoursCtx = document.getElementById('hoursChart').getContext('2d');
+            new Chart(hoursCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Work (40h)', 'Life (128h)'],
+                    datasets: [{
+                        data: [40, 128],
+                        backgroundColor: [
+                            'rgba(141, 110, 99, 1)',
+                            'rgba(222, 212, 202, 1)'
+                        ],
+                        borderColor: '#FDFBF8',
+                        borderWidth: 4,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 14,
+                                },
+                                color: '#4A4A4A'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + ' hours';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+
+                    tabButtons.forEach(btn => btn.classList.remove('active', 'border-stone-500'));
+                    button.classList.add('active', 'border-stone-500');
+
+                    tabContents.forEach(content => {
+                        if (content.id === tabId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            document.querySelector('.tab-button[data-tab="principle"]').style.borderBottomColor = '#8D6E63';
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-gray-900', 'border-b-2', 'border-stone-500');
+                        btn.classList.add('text-gray-500', 'border-transparent');
+                    });
+                    button.classList.remove('text-gray-500', 'border-transparent');
+                    button.classList.add('text-gray-900', 'border-b-2', 'border-stone-500');
+                    tabContents.forEach(content => {
+                        content.id === tabId ? content.classList.remove('hidden') : content.classList.add('hidden');
+                    });
+                });
+            });
+             document.querySelector('.tab-button[data-tab="principle"]').click();
+
+
+            const accordionContainer = document.querySelector('.accordion-container');
+            if (accordionContainer) {
+                const firstItem = accordionContainer.querySelector('.accordion-item');
+                const firstContent = firstItem.querySelector('.accordion-content');
+                const firstIcon = firstItem.querySelector('.accordion-icon');
+
+                firstContent.classList.add('open');
+                firstIcon.textContent = '-';
+                firstIcon.classList.add('rotate-180');
+                
+                accordionContainer.addEventListener('click', function(e) {
+                    const header = e.target.closest('.accordion-header');
+                    if (!header) return;
+                    
+                    const item = header.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const icon = item.querySelector('.accordion-icon');
+                    const isOpen = content.classList.contains('open');
+
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        icon.textContent = '-';
+                        icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.remove('open');
+                        icon.textContent = '+';
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>
