@@ -13,3 +13,5 @@ vendor/semantic/gulpfile.js
 vendor/semantic.json
 vendor/package.json
 vendor/package-lock.json
+
+.DS_Store
