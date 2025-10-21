@@ -67,6 +67,64 @@
             border-color: rgba(142, 68, 173, 0.5);
         }
         
+        /* --- Tooltip Styles --- */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px dotted rgba(52, 152, 219, 0.6);
+            transition: border-bottom-color 0.3s ease;
+        }
+        .tooltip:hover {
+            border-bottom-color: rgba(52, 152, 219, 1);
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 280px;
+            background-color: #1f1f3d;
+            color: #e0e0e0;
+            text-align: left;
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -140px; /* Half of the width to center */
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            border: 1px solid rgba(142, 68, 173, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            font-style: italic;
+            transform: translateY(10px);
+        }
+        .tooltip .tooltip-text strong {
+            display: block;
+            font-style: normal;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1f1f3d transparent transparent transparent;
+        }
+        /* --- End Tooltip Styles --- */
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -136,10 +194,10 @@
                 Seeds of Creation & Ownership
             </h2>
             <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                Universal Investment Schema · Companion to Articles IX & X · Ratified October 2025
+                Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
             </p>
             <div class="mt-4 text-sm text-gray-400">
-                <span>Custodian: Purrfect Treasury & Fixer Labs</span>
+                <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
                 <span class="mx-2">|</span>
                 <span>Applies To: All planets and entities</span>
             </div>
@@ -166,12 +224,12 @@
                  <div class="grid md:grid-cols-2 gap-8 mb-12">
                      <div class="card rounded-2xl p-8">
                          <h4 class="font-orbitron text-xl text-white mb-3">Universal <span class="text-gray-400">(Macro Gravity)</span></h4>
-                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> Purrfect Treasury + Council</p>
+                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Purrfect Treasury + Council<span class="tooltip-text"><strong>ARTICLE III:</strong> "The Council of the Universe, composed of elected Planet Leaders and Founders, is the highest governing body, overseeing universal strategy and constitutional integrity."</span></span></p>
                          <p><span class="font-semibold text-gray-200">Purpose:</span> Holds brand IP, legal identity, shared systems and AI infrastructure. Seeds and stabilizes planets.</p>
                      </div>
                      <div class="card rounded-2xl p-8">
                          <h4 class="font-orbitron text-xl text-white mb-3">Planetary <span class="text-gray-400">(Micro Biosphere)</span></h4>
-                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> Planet Leader + Local Treasury</p>
+                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Planet Leader + Local Treasury<span class="tooltip-text"><strong>PLANETARY GOVERNANCE:</strong> "Each planet operates autonomously under a Planet Leader, who is responsible for local operations, culture, and financial health, while aligning with the universal constitution."</span></span></p>
                          <p><span class="font-semibold text-gray-200">Purpose:</span> Operates autonomously within constitutional ethos; returns value to the Universe through surplus and shared fees.</p>
                      </div>
                  </div>
@@ -213,8 +271,8 @@
                             <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">B. Capital Flow Dynamics</h5>
                             <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
                                 <li><span class="font-bold text-white">Downstream (Universe → Planet):</span> Mission-aligned Seed Grants or Convertible Advances.</li>
-                                <li><span class="font-bold text-white">Upstream (Planet → Universe):</span> ≤ 5% Universal Infrastructure Contribution (UIC) + 1-3% Planetary Tithe.</li>
-                                <li><span class="font-bold text-white">Cross-Planet Exchange (Planet ↔ Planet):</span> Governed by audited Interplanetary Agreements (IAs).</li>
+                                <li><span class="font-bold text-white">Upstream (Planet → Universe):</span> ≤ 5% <span class="tooltip">Universal Infrastructure Contribution (UIC)<span class="tooltip-text">A fee paid by planets to maintain shared universal resources like legal, brand IP, and AI systems.</span></span> + 1-3% <span class="tooltip">Planetary Tithe<span class="tooltip-text">A contribution that flows into the Universal Treasury Fund (UTF) to seed new planets and provide stability during crises.</span></span>.</li>
+                                <li><span class="font-bold text-white">Cross-Planet Exchange (Planet ↔ Planet):</span> Governed by audited <span class="tooltip">Interplanetary Agreements (IAs)<span class="tooltip-text">Formal, audited contracts governing the exchange of services, capital, or equity between two or more planets.</span></span>.</li>
                             </ul>
                         </div>
                         
@@ -321,7 +379,7 @@
                         <div class="card rounded-2xl p-8 space-y-6 h-full">
                              <div>
                                 <h4 class="text-xl font-bold text-white mb-2">Sweat Equity Program</h4>
-                                <p class="text-gray-400">Employees may invest a portion of their net salary, converted monthly to Planet Credits (PCs). Safeguarded by a Minimum Living Standard (MLS) review.</p>
+                                <p class="text-gray-400">Employees may invest a portion of their net salary, converted monthly to Planet Credits (PCs). Safeguarded by a <span class="tooltip">Minimum Living Standard (MLS)<span class="tooltip-text"><strong>ARTICLE X:</strong> "Every member of the Universe is guaranteed a Minimum Living Standard (MLS), ensuring that basic needs for safety, health, and dignity are met before any capital investment."</span></span> review.</p>
                              </div>
                               <div>
                                 <h4 class="text-xl font-bold text-white mb-2">Micro-Investment Pools</h4>
@@ -329,7 +387,7 @@
                              </div>
                               <div>
                                 <h4 class="text-xl font-bold text-white mb-2">Surplus Redistribution</h4>
-                                <p class="text-gray-400">Surplus above the 5% profit cap is redistributed: 40% to Employees, 20% to R&D, 20% to Community, and 20% to the Treasury.</p>
+                                <p class="text-gray-400"><span class="tooltip">Surplus above the 5% profit cap<span class="tooltip-text"><strong>ARTICLE IX:</strong> "Profit is capped at 5% of net revenue to prioritize sustainability over extraction. All surplus beyond this cap is deemed a 'Community Dividend' and is reinvested."</span></span> is redistributed: 40% to Employees, 20% to R&D, 20% to Community, and 20% to the Treasury.</p>
                              </div>
                         </div>
                     </div>
@@ -347,9 +405,9 @@
                                 </thead>
                                 <tbody>
                                     <tr><td>Founders</td><td>All stages</td><td>Council + Treasury</td></tr>
-                                    <tr><td>Employees</td><td>Seed 1+</td><td>Planet Leader + Fixer Labs</td></tr>
+                                    <tr><td>Employees</td><td>Seed 1+</td><td>Planet Leader + <span class="tooltip">Fixer Labs<span class="tooltip-text">Fixer Labs acts as an independent auditor to ensure employee solvency reviews and ethical checks are performed correctly and without bias.</span></span></td></tr>
                                     <tr><td>Friends / Family</td><td>Seed 1–2</td><td>Planet Leader</td></tr>
-                                    <tr><td>External Investors</td><td>Seed 2+</td><td>Council of Universe</td></tr>
+                                    <tr><td>External Investors</td><td>Seed 2+</td><td><span class="tooltip">Council of Universe<span class="tooltip-text">The Council performs an Ethical Alignment Test to ensure external investors share the Universe's core values of care, creativity, and accountability.</span></span></td></tr>
                                     <tr><td>Other Planets</td><td>Seed 3+</td><td>Treasury Council</td></tr>
                                 </tbody>
                             </table>
@@ -363,7 +421,7 @@
                  <div class="grid md:grid-cols-3 gap-8">
                      <!-- Universal Alignment Score -->
                      <div class="card rounded-2xl p-8">
-                        <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🌍</span> UAS</h3>
+                        <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="tooltip"><span class="text-xl mr-2">🌍</span> UAS<span class="tooltip-text"><strong>Universal Alignment Score (UAS):</strong> A holistic metric ratified by the Council to ensure planets mature in alignment with the Constitution's values before advancing to new seed stages.</span></span></h3>
                         <p class="text-center text-gray-400 mb-6">A minimum score of 80% is required to advance stages.</p>
                         <div class="space-y-3">
                             <p class="flex justify-between"><span>Cultural Fit & Ethics</span> <span class="font-bold text-cyan-300">30%</span></p>
@@ -376,14 +434,14 @@
                      <div class="card rounded-2xl p-8">
                         <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">⚖️</span> Auditing</h3>
                         <p class="text-gray-300 leading-relaxed">
-                            Each planet issues Quarterly Transparency Reports (QTRs) covering finance, Planet Credit status, and investors. Fixer Labs conducts annual audits for Treasury and Council records to ensure full transparency and accountability.
+                            Each planet issues <span class="tooltip">Quarterly Transparency Reports (QTRs)<span class="tooltip-text"><strong>ARTICLE XI:</strong> "To uphold trust, all planets must maintain accessible records. QTRs are a core part of this mandate, ensuring all stakeholders are informed."</span></span> covering finance, Planet Credit status, and investors. Fixer Labs conducts annual audits for Treasury and Council records to ensure full transparency and accountability.
                         </p>
                      </div>
                      <!-- Significance -->
                      <div class="card rounded-2xl p-8">
                         <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🐾</span> Significance</h3>
                         <p class="text-gray-300 leading-relaxed">
-                            This article extends Articles IX and X to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
+                            This article <span class="tooltip">extends Articles IX and X<span class="tooltip-text">Article IX (Profit & Surplus) and Article X (Compensation & Welfare) define the 'what' of our economic ethos. This Article XV-A provides the 'how'—the mechanisms for investment and ownership that bring those principles to life.</span></span> to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
                         </p>
                      </div>
                  </div>
@@ -401,3 +459,4 @@
     </div>
 </body>
 </html>
+
