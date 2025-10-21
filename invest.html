@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purrfect Universe | Article XV — Economic Framework</title>
+    <title>Purrfect Universe | Article IX — Economic Framework</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -186,7 +186,7 @@
             align-items: center;
             gap: 1.5rem;
             padding: 1.5rem;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto 3rem auto;
         }
 
@@ -200,7 +200,7 @@
         }
 
         .article-toggle-btn {
-            width: 50%;
+            width: 33.33%;
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             border: none;
@@ -210,6 +210,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            white-space: nowrap;
         }
 
         .article-toggle-btn.active {
@@ -228,6 +229,7 @@
             padding: 4px;
             position: relative;
             width: 220px;
+            transition: opacity 0.3s, visibility 0.3s;
         }
         .toggle-switch-label {
             width: 50%;
@@ -264,18 +266,37 @@
 
         <!-- Header Section -->
         <header class="text-center pt-20 pb-10 px-4">
-             <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
-                Article XV
-            </h1>
             <div class="grid"> <!-- Grid container to stack headers and prevent layout shift -->
+                 <!-- Header for Base Article -->
+                 <div id="header-base" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                    <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
+                        Article IX
+                    </h1>
+                     <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
+                        Financial & Ethical Framework
+                    </h2>
+                     <div id="detailed-header-base" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                        <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                            The foundational principles governing profit, surplus, and our collective safety net.
+                        </p>
+                    </div>
+                     <div id="simplified-header-base" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                        <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                           A simple guide to our core rules about money, fairness, and safety.
+                        </p>
+                    </div>
+                </div>
                  <!-- Header for Investment Article -->
-                <div id="header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                <div id="header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                     <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
+                        Article IX-A
+                    </h1>
                     <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
-                        A: Seeds of Creation & Ownership
+                        Seeds of Creation & Ownership
                     </h2>
                      <div id="detailed-header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
                          <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                            Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
+                            Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>CONSTITUTIONAL AMENDMENT:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
                         </p>
                         <div class="mt-4 text-sm text-gray-400">
                             <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
@@ -291,12 +312,15 @@
                 </div>
                  <!-- Header for Profit Article -->
                 <div id="header-profit" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                     <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
+                        Article IX-B
+                    </h1>
                     <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
-                        B: Profit Redistribution
+                        Profit Redistribution
                     </h2>
                      <div id="detailed-header-profit" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
                          <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                            The Ethics of Sharing Prosperity · <span class="tooltip">Companion to Articles IX & XV-A<span class="tooltip-text"><strong>ARTICLES IX & XV-A:</strong> Govern the principles of profit caps, surplus, and ethical investment that this article builds upon.</span></span>
+                            The Ethics of Sharing Prosperity · <span class="tooltip">Companion to Articles IX & IX-A<span class="tooltip-text"><strong>ARTICLES IX & IX-A:</strong> Govern the principles of profit caps, surplus, and ethical investment that this article builds upon.</span></span>
                         </p>
                         <div class="mt-4 text-sm text-gray-400">
                            <span>Custodian: <span class="tooltip">Purrfect Treasury & Council<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury executes the distribution, while the Council provides final oversight and approval, ensuring alignment with constitutional values.</span></span></span>
@@ -316,8 +340,9 @@
         <!-- Control Panel -->
         <div class="control-panel card">
             <div class="article-toggle">
-                <button id="select-investment" class="article-toggle-btn active">XV-A: Investment</button>
-                <button id="select-profit" class="article-toggle-btn">XV-B: Profit</button>
+                <button id="select-base" class="article-toggle-btn active">IX: Framework</button>
+                <button id="select-investment" class="article-toggle-btn">IX-A: Investment</button>
+                <button id="select-profit" class="article-toggle-btn">IX-B: Profit</button>
             </div>
             <div id="view-toggle" class="toggle-switch">
                 <div class="toggle-switch-handle"></div>
@@ -327,8 +352,196 @@
         </div>
 
         <main class="container mx-auto px-4 pb-20">
-            <!-- ARTICLE XV-A (INVESTMENT) CONTENT -->
-            <div id="article-investment-content">
+            <!-- DETAILED BASE VIEW: ARTICLE IX & X -->
+            <div id="detailed-base-view">
+                <div class="space-y-16">
+                    <!-- Article IX -->
+                    <section>
+                         <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-4">Article IX — Financial and Ethical Framework</h3>
+                            <p class="text-xl font-semibold text-cyan-300 italic">"Profit exists to serve people, not the other way around."</p>
+                        </div>
+
+                        <div class="card rounded-2xl p-8 md:p-10 mt-8 max-w-5xl mx-auto space-y-8">
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">1. Profit Cap</h4>
+                                <p class="text-gray-300">Net profit margin for all planets and the Universe is capped at <strong class="text-white">5%</strong> of total revenue. Any earnings beyond this threshold become <strong class="text-white">Surplus</strong>, redistributed per Articles IX-A (Investment & Ownership) and IX-B (Profit Redistribution).</p>
+                                <div class="mt-6">
+                                    <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">Quarterly Surplus Redistribution Guideline</h5>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full table-custom">
+                                            <thead>
+                                                <tr><th>Allocation</th><th>Standard Share</th><th>Purpose</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>Employee Well-being</td><td>30%</td><td>Health, training, and bonus systems</td></tr>
+                                                <tr><td>Research & Innovation</td><td>40%</td><td>R&D, automation, and continuous improvement</td></tr>
+                                                <tr><td>Emergency Reserves</td><td>20%</td><td>Financial buffer for unforeseen crises</td></tr>
+                                                <tr><td>Community & Environment</td><td>10%</td><td>Social impact and sustainability initiatives</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                     <p class="text-sm text-gray-400 mt-4">These base ratios may adjust within the boundaries of Articles IX-A and IX-B when employee and community shares remain above a combined 40%.</p>
+                                </div>
+                            </div>
+                            
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">2. Definitions</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-custom">
+                                        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Profit</td><td>Verified post-tax retained earnings after UIC obligations under IX-A.</td></tr>
+                                            <tr><td>Surplus</td><td>Profit exceeding the 5% margin, eligible for redistribution under IX-B.</td></tr>
+                                            <tr><td>Reinvestment</td><td>Allocation of resources into welfare, training, R&D, or infrastructure improvement.</td></tr>
+                                            <tr><td>Sweat Equity</td><td>Employee investment mechanism defined in IX-A §4.1.</td></tr>
+                                            <tr><td>Seed Investor</td><td>Individual or entity providing early-stage funding as defined in IX-A §2.</td></tr>
+                                            <tr><td>Planet Credit (PC)</td><td>Internal unit of ownership linked to reinvestment and redistribution per IX-A §4.</td></tr>
+                                            <tr><td>Universal Infrastructure Contribution (UIC)</td><td>Up to 5% of revenue remitted to the Universal Treasury for shared systems per IX-A §2.2 B.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">3. Transparency and Auditing</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Each planet issues a <strong class="text-white">Quarterly Surplus Allocation Report (QSAR)</strong> covering profit, surplus, and redistribution details.</li>
+                                    <li>Rotating employee auditors verify reinvestment accuracy and compliance with Articles IX-A & IX-B.</li>
+                                    <li>Fixer Labs performs annual cross-planet audits; summaries published in the State of the Universe report.</li>
+                                    <li><strong class="text-white">Ethical Investment Clause:</strong> No partnership or reinvestment may harm people, animals, or the environment.</li>
+                                    <li>All financial documents, reports, and version histories are maintained in the Google Workspace Treasury Archive for traceability.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Article X -->
+                    <section>
+                         <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-4">Article X — Universal Support Pool (USP)</h3>
+                            <p class="text-xl font-semibold text-cyan-300 italic">"A safety net woven from trust."</p>
+                        </div>
+                        <div class="card rounded-2xl p-8 md:p-10 mt-8 max-w-5xl mx-auto space-y-8">
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">1. Contribution</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Planets with surplus profits contribute <strong class="text-white">10–20%</strong> of Surplus to the Universal Support Pool (USP).</li>
+                                    <li>No planet contributes more than 15% of its total Profit, ensuring operational sustainability.</li>
+                                    <li>The USP is separate from the Universal Infrastructure Contribution (UIC) under IX-A.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">2. Purpose of USP Funds</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Support early-stage planets (Seed 0–1).</li>
+                                    <li>Provide employee or family aid during crises.</li>
+                                    <li>Fund cross-universe R&D and rehabilitation projects.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">3. Governance</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Disbursements reviewed quarterly by HR + Council of the Universe.</li>
+                                    <li>Emergency release: up to 10% within 72 hours with joint HR + Council approval.</li>
+                                    <li>Audited quarterly by rotating employee auditors and Fixer Labs Treasury auditors.</li>
+                                    <li>All allocations logged in the Universal Ledger (Google Sheets-based) linked to the Treasury Archive.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">4. Ethos</h4>
+                                <p class="text-lg text-purple-300 italic leading-relaxed">We rise together; we endure together. The Universe’s strength is measured not by retained profit but by the safety of its weakest orbit.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- SIMPLIFIED BASE VIEW: ARTICLE IX & X -->
+            <div id="simplified-base-view" class="hidden">
+                <div class="space-y-16">
+                     <!-- Simplified Article IX -->
+                    <section>
+                         <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-4">Article IX (Simplified)</h3>
+                            <p class="text-xl font-semibold text-cyan-300 italic">"Profit exists to serve people — not the other way around."</p>
+                        </div>
+
+                        <div class="card rounded-2xl p-8 md:p-10 mt-8 max-w-5xl mx-auto space-y-8">
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">1. Profit Limit</h4>
+                                <p class="text-gray-300">Every planet can earn a maximum of <strong class="text-white">5% profit</strong> after all expenses. Anything above that 5% is called <strong class="text-white">Surplus</strong>, which must be shared or reinvested fairly.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">2. How Normal Profit Is Used</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-custom">
+                                        <thead>
+                                            <tr><th>Purpose</th><th>What It Means</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>30% → Employee Well-being</td><td>Pay, bonuses, training, rest, and care.</td></tr>
+                                            <tr><td>40% → Research & Innovation</td><td>Better tools, technology, and creativity.</td></tr>
+                                            <tr><td>20% → Emergency Reserve</td><td>Safety money for hard times.</td></tr>
+                                            <tr><td>10% → Community & Environment</td><td>Giving back, social work, animal care, and sustainability.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-4">Percentages can move a little, but <strong class="text-white">employee + community</strong> combined must stay above 40%.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">3. Key Terms</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li><strong class="text-white">Profit:</strong> Money left after paying all costs and taxes.</li>
+                                    <li><strong class="text-white">Surplus:</strong> Profit over the 5% limit.</li>
+                                    <li><strong class="text-white">Sweat Equity:</strong> When employees invest part of their salary to own a piece of the planet.</li>
+                                    <li><strong class="text-white">UIC:</strong> Up to 5% of revenue paid to the Universal Treasury for shared systems (legal, HR, etc.).</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">4. Transparency</h4>
+                                <p class="text-gray-300">Every planet publishes a <strong class="text-white">Quarterly Finance Report</strong> showing where money went. Employees help audit these reports, and everything is stored safely in Google Workspace for anyone to trace.</p>
+                            </div>
+                        </div>
+                    </section>
+                     <!-- Simplified Article X -->
+                    <section>
+                         <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-4">Article X (Simplified) — Universal Support Pool (USP)</h3>
+                            <p class="text-xl font-semibold text-cyan-300 italic">"A safety net woven from trust."</p>
+                        </div>
+                        <div class="card rounded-2xl p-8 md:p-10 mt-8 max-w-5xl mx-auto space-y-8">
+                            <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">Purpose</h4>
+                                <p class="text-gray-300">To help any planet or person in need — whether that’s funding a new idea or supporting someone during a crisis.</p>
+                            </div>
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">Contributions</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Planets give <strong class="text-white">10–20% of their surplus profit</strong> to the pool.</li>
+                                    <li>This is separate from the 5% infrastructure fee (UIC).</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">Uses</h4>
+                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                    <li>Support new or struggling planets.</li>
+                                    <li>Provide emergency financial aid for employees or families.</li>
+                                    <li>Fund Universe-wide research and development.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-orbitron text-2xl text-white mb-4">Governance & Transparency</h4>
+                                <p class="text-gray-300">HR and the Council review requests quarterly. Everything is logged in the <strong class="text-white">Universal Ledger (a Google Sheet)</strong> so anyone can see where the help went.</p>
+                                <p class="text-lg text-purple-300 italic leading-relaxed mt-4">We rise together. We endure together.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+            <!-- ARTICLE IX-A (INVESTMENT) CONTENT -->
+            <div id="article-investment-content" class="hidden">
                 <!-- DETAILED VIEW -->
                 <div id="detailed-investment-view">
                     <!-- 1. Purpose & Philosophy -->
@@ -567,7 +780,7 @@
                              <div class="card rounded-2xl p-8">
                                 <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🐾</span> Significance</h3>
                                 <p class="text-gray-300 leading-relaxed">
-                                    This article <span class="tooltip">extends Articles IX and X<span class="tooltip-text">Article IX (Profit & Surplus) and Article X (Compensation & Welfare) define the 'what' of our economic ethos. This Article XV-A provides the 'how'—the mechanisms for investment and ownership that bring those principles to life.</span></span> to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
+                                    This article <span class="tooltip">extends Articles IX and X<span class="tooltip-text">Article IX (Profit & Surplus) and Article X (Compensation & Welfare) define the 'what' of our economic ethos. This Article IX-A provides the 'how'—the mechanisms for investment and ownership that bring those principles to life.</span></span> to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
                                 </p>
                              </div>
                          </div>
@@ -717,7 +930,7 @@
                 </div>
             </div>
 
-            <!-- ARTICLE XV-B (PROFIT) CONTENT -->
+            <!-- ARTICLE IX-B (PROFIT) CONTENT -->
             <div id="article-profit-content" class="hidden">
                 <!-- DETAILED VIEW -->
                 <div id="detailed-profit-view">
@@ -768,10 +981,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><td>Employees (Active & Eligible)</td><td>30%</td><td>Weighted by <span class="tooltip">Planet Credits<span class="tooltip-text"><strong>PLANET CREDITS (PCs):</strong> Sweat-equity units earned by employees through the program defined in Article XV-A §4.1.</span></span> + tenure</td></tr>
+                                            <tr><td>Employees (Active & Eligible)</td><td>30%</td><td>Weighted by <span class="tooltip">Planet Credits<span class="tooltip-text"><strong>PLANET CREDITS (PCs):</strong> Sweat-equity units earned by employees through the program defined in Article IX-A §4.1.</span></span> + tenure</td></tr>
                                             <tr><td>Founders & Planet Leaders</td><td>10%</td><td>Fixed cap to prevent excessive bonuses</td></tr>
                                             <tr><td>Sweat Equity Holders</td><td>15%</td><td>Proportional to PC ownership (vested)</td></tr>
-                                            <tr><td>External Seed Investors</td><td>15%</td><td>Proportional to <span class="tooltip">Seed Tokens<span class="tooltip-text"><strong>SEED TOKENS:</strong> Early-stage, non-tradable investment units for friends and family as defined in Article XV-A §4.2.</span></span></td></tr>
+                                            <tr><td>External Seed Investors</td><td>15%</td><td>Proportional to <span class="tooltip">Seed Tokens<span class="tooltip-text"><strong>SEED TOKENS:</strong> Early-stage, non-tradable investment units for friends and family as defined in Article IX-A §4.2.</span></span></td></tr>
                                             <tr><td>Universal Treasury Reserve</td><td>10%</td><td>Mandatory remittance for new planet creation</td></tr>
                                             <tr><td>Community & Compassion Funds</td><td>10%</td><td>Governed by Council + HR for welfare & aid</td></tr>
                                         </tbody>
@@ -901,16 +1114,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // State
-            let activeArticle = 'investment'; // 'investment' or 'profit'
+            let activeArticle = 'base'; // 'base', 'investment', or 'profit'
             let activeView = 'detailed'; // 'detailed' or 'simplified'
 
             // --- Element Selectors ---
+            const baseBtn = document.getElementById('select-base');
             const investmentBtn = document.getElementById('select-investment');
             const profitBtn = document.getElementById('select-profit');
 
             const viewToggle = document.getElementById('view-toggle');
             const viewToggleLabels = viewToggle.querySelectorAll('.toggle-switch-label');
 
+            const headerBase = document.getElementById('header-base');
+            const detailedHeaderBase = document.getElementById('detailed-header-base');
+            const simplifiedHeaderBase = document.getElementById('simplified-header-base');
             const headerInvestment = document.getElementById('header-investment');
             const headerProfit = document.getElementById('header-profit');
 
@@ -919,6 +1136,8 @@
             const detailedHeaderProfit = document.getElementById('detailed-header-profit');
             const simplifiedHeaderProfit = document.getElementById('simplified-header-profit');
             
+            const detailedBaseView = document.getElementById('detailed-base-view');
+            const simplifiedBaseView = document.getElementById('simplified-base-view');
             const contentInvestment = document.getElementById('article-investment-content');
             const contentProfit = document.getElementById('article-profit-content');
             
@@ -930,6 +1149,7 @@
             // --- Main Update Function ---
             function updateDisplay() {
                 // 1. Update Article Buttons
+                baseBtn.classList.toggle('active', activeArticle === 'base');
                 investmentBtn.classList.toggle('active', activeArticle === 'investment');
                 profitBtn.classList.toggle('active', activeArticle === 'profit');
 
@@ -939,44 +1159,60 @@
                 viewToggleLabels[1].classList.toggle('active', activeView === 'simplified');
 
                 // 3. Update Headers
+                const isBase = activeArticle === 'base';
                 const isInvestment = activeArticle === 'investment';
+                const isProfit = activeArticle === 'profit';
                 const isDetailed = activeView === 'detailed';
 
+                headerBase.classList.toggle('opacity-0', !isBase);
+                headerBase.classList.toggle('pointer-events-none', !isBase);
                 headerInvestment.classList.toggle('opacity-0', !isInvestment);
                 headerInvestment.classList.toggle('pointer-events-none', !isInvestment);
-                headerProfit.classList.toggle('opacity-0', isInvestment);
-                headerProfit.classList.toggle('pointer-events-none', isInvestment);
+                headerProfit.classList.toggle('opacity-0', !isProfit);
+                headerProfit.classList.toggle('pointer-events-none', !isProfit);
                 
                 // Toggle sub-headers based on both article and view
+                detailedHeaderBase.style.gridArea = '1 / 1';
+                simplifiedHeaderBase.style.gridArea = '1 / 1';
                 detailedHeaderInvestment.style.gridArea = '1 / 1';
                 simplifiedHeaderInvestment.style.gridArea = '1 / 1';
                 detailedHeaderProfit.style.gridArea = '1 / 1';
                 simplifiedHeaderProfit.style.gridArea = '1 / 1';
 
+                detailedHeaderBase.classList.toggle('opacity-0', !(isBase && isDetailed));
+                simplifiedHeaderBase.classList.toggle('opacity-0', !(isBase && !isDetailed));
                 detailedHeaderInvestment.classList.toggle('opacity-0', !(isInvestment && isDetailed));
                 simplifiedHeaderInvestment.classList.toggle('opacity-0', !(isInvestment && !isDetailed));
-                detailedHeaderProfit.classList.toggle('opacity-0', !(!isInvestment && isDetailed));
-                simplifiedHeaderProfit.classList.toggle('opacity-0', !(!isInvestment && !isDetailed));
+                detailedHeaderProfit.classList.toggle('opacity-0', !(isProfit && isDetailed));
+                simplifiedHeaderProfit.classList.toggle('opacity-0', !(isProfit && !isDetailed));
                 
+                detailedHeaderBase.classList.toggle('pointer-events-none', !(isBase && isDetailed));
+                simplifiedHeaderBase.classList.toggle('pointer-events-none', !(isBase && !isDetailed));
                 detailedHeaderInvestment.classList.toggle('pointer-events-none', !(isInvestment && isDetailed));
                 simplifiedHeaderInvestment.classList.toggle('pointer-events-none', !(isInvestment && !isDetailed));
-                detailedHeaderProfit.classList.toggle('pointer-events-none', !(!isInvestment && isDetailed));
-                simplifiedHeaderProfit.classList.toggle('pointer-events-none', !(!isInvestment && !isDetailed));
+                detailedHeaderProfit.classList.toggle('pointer-events-none', !(isProfit && isDetailed));
+                simplifiedHeaderProfit.classList.toggle('pointer-events-none', !(isProfit && !isDetailed));
 
                 // 4. Update Main Content
+                detailedBaseView.classList.toggle('hidden', !(isBase && isDetailed));
+                simplifiedBaseView.classList.toggle('hidden', !(isBase && !isDetailed));
                 contentInvestment.classList.toggle('hidden', !isInvestment);
-                contentProfit.classList.toggle('hidden', isInvestment);
+                contentProfit.classList.toggle('hidden', !isProfit);
 
                 if (isInvestment) {
                     detailedInvestmentView.classList.toggle('hidden', !isDetailed);
                     simplifiedInvestmentView.classList.toggle('hidden', isDetailed);
-                } else {
+                } else if (isProfit) {
                     detailedProfitView.classList.toggle('hidden', !isDetailed);
                     simplifiedProfitView.classList.toggle('hidden', isDetailed);
                 }
             }
 
             // --- Event Listeners ---
+             baseBtn.addEventListener('click', () => {
+                activeArticle = 'base';
+                updateDisplay();
+            });
             investmentBtn.addEventListener('click', () => {
                 activeArticle = 'investment';
                 updateDisplay();
