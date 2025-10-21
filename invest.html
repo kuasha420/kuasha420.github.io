@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purrfect Universe | Article XV-A — Seeds of Creation & Ownership</title>
+    <title>Purrfect Universe | Article XV — Economic Framework</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -179,12 +179,45 @@
             border-bottom: none;
         }
         
-        /* --- Toggle Switch Styles --- */
-        /* * Note on Layout Shift: This component is designed to prevent layout shifts.
-         * The main '.toggle-switch' container has a fixed width and remains static in the page flow.
-         * The moving '.toggle-switch-handle' uses `position: absolute` and `transform`, which do not
-         * affect the layout of surrounding elements, ensuring a smooth visual transition without reflow.
-        */
+        /* --- Control Panel & Toggles --- */
+        .control-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .article-toggle {
+            display: flex;
+            background-color: rgba(23, 23, 43, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            padding: 4px;
+            width: 100%;
+        }
+
+        .article-toggle-btn {
+            width: 50%;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: none;
+            background: transparent;
+            color: #a0a0b0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .article-toggle-btn.active {
+            background-color: #9b59b6;
+            color: #FFFFFF;
+            box-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
+        }
+        
         .toggle-switch {
             display: inline-flex;
             align-items: center;
@@ -193,39 +226,36 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 9999px;
             padding: 4px;
-            position: relative; /* Set positioning context */
-            width: 220px; /* Give it a consistent width */
+            position: relative;
+            width: 220px;
         }
         .toggle-switch-label {
             width: 50%;
             text-align: center;
             font-size: 0.875rem;
-            font-weight: 600; /* Increased font weight for clarity */
+            font-weight: 600;
             transition: color 0.3s ease;
-            z-index: 10; /* Ensure labels are clickable and render above the handle */
-            color: #a0a0b0; /* Slightly muted color for inactive state */
+            z-index: 10;
+            color: #a0a0b0;
         }
-        /* Accessibility Update: Changed active color to white for high contrast */
         .toggle-switch-label.active {
             color: #FFFFFF;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add a subtle glow to active text */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         .toggle-switch-handle {
             position: absolute;
             top: 4px;
             left: 4px;
-            width: calc(50% - 4px); /* Half the width minus padding offset */
+            width: calc(50% - 4px);
             height: 30px;
-            /* Accessibility Update: Slightly brightened purple for better vibrancy */
-            background-color: #9b59b6;
+            background-color: #8e44ad; /* Darker than active btn for distinction */
             border-radius: 9999px;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 5; /* Place it below the labels */
+            z-index: 5;
         }
         .toggle-switch.simplified .toggle-switch-handle {
-            transform: translateX(calc(100% + 4px)); /* Move it one full label-width to the right */
+            transform: translateX(calc(100% + 4px));
         }
-
     </style>
 </head>
 <body class="bg-[#0a0a1a]">
@@ -234,33 +264,61 @@
 
         <!-- Header Section -->
         <header class="text-center pt-20 pb-10 px-4">
-            <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
-                Article XV-A
+             <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
+                Article XV
             </h1>
-            <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
-                Seeds of Creation & Ownership
-            </h2>
             <div class="grid"> <!-- Grid container to stack headers and prevent layout shift -->
-                <div id="detailed-header-info" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
-                     <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                        Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
-                    </p>
-                    <div class="mt-4 text-sm text-gray-400">
-                        <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
-                        <span class="mx-2">|</span>
-                        <span>Applies To: All planets and entities</span>
+                 <!-- Header for Investment Article -->
+                <div id="header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                    <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
+                        A: Seeds of Creation & Ownership
+                    </h2>
+                     <div id="detailed-header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                         <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                            Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
+                        </p>
+                        <div class="mt-4 text-sm text-gray-400">
+                            <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
+                            <span class="mx-2">|</span>
+                            <span>Applies To: All planets and entities</span>
+                        </div>
+                    </div>
+                     <div id="simplified-header-investment" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                         <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                            A simple guide to how investment, salary-sharing, and universe money work.
+                        </p>
                     </div>
                 </div>
-                 <div id="simplified-header-info" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
-                     <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                        A simple guide to how investment, salary-sharing, and universe money work.
-                    </p>
+                 <!-- Header for Profit Article -->
+                <div id="header-profit" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                    <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
+                        B: Profit Redistribution
+                    </h2>
+                     <div id="detailed-header-profit" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                         <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                            The Ethics of Sharing Prosperity · <span class="tooltip">Companion to Articles IX & XV-A<span class="tooltip-text"><strong>ARTICLES IX & XV-A:</strong> Govern the principles of profit caps, surplus, and ethical investment that this article builds upon.</span></span>
+                        </p>
+                        <div class="mt-4 text-sm text-gray-400">
+                           <span>Custodian: <span class="tooltip">Purrfect Treasury & Council<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury executes the distribution, while the Council provides final oversight and approval, ensuring alignment with constitutional values.</span></span></span>
+                            <span class="mx-2">|</span>
+                            <span>Applies To: All planets and entities</span>
+                        </div>
+                    </div>
+                     <div id="simplified-header-profit" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                         <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                            A simple guide to how profit is shared fairly across the Universe.
+                        </p>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Toggle Switch -->
-        <div class="text-center mb-12">
+        <!-- Control Panel -->
+        <div class="control-panel card">
+            <div class="article-toggle">
+                <button id="select-investment" class="article-toggle-btn active">XV-A: Investment</button>
+                <button id="select-profit" class="article-toggle-btn">XV-B: Profit</button>
+            </div>
             <div id="view-toggle" class="toggle-switch">
                 <div class="toggle-switch-handle"></div>
                 <span class="toggle-switch-label active">Detailed</span>
@@ -268,395 +326,566 @@
             </div>
         </div>
 
-
         <main class="container mx-auto px-4 pb-20">
-            <!-- DETAILED VIEW CONTENT -->
-            <div id="detailed-view">
-                <!-- 1. Purpose & Philosophy -->
-                <section id="philosophy" class="mb-16">
-                     <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
-                        <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Purpose & Philosophy</h3>
-                        <p class="text-lg text-gray-300 leading-relaxed">
-                            The Seeds of Creation & Ownership framework defines how capital, sweat, and belief combine to build and sustain life within the Universe. Every planet begins as a seed — nourished by intent, community, and care.
-                        </p>
-                        <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
-                            <p class="text-xl font-semibold text-cyan-300 italic">"No seed shall grow faster than its roots. Funding follows maturity, not vanity."</p>
+            <!-- ARTICLE XV-A (INVESTMENT) CONTENT -->
+            <div id="article-investment-content">
+                <!-- DETAILED VIEW -->
+                <div id="detailed-investment-view">
+                    <!-- 1. Purpose & Philosophy -->
+                    <section class="mb-16">
+                         <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Purpose & Philosophy</h3>
+                            <p class="text-lg text-gray-300 leading-relaxed">
+                                The Seeds of Creation & Ownership framework defines how capital, sweat, and belief combine to build and sustain life within the Universe. Every planet begins as a seed — nourished by intent, community, and care.
+                            </p>
+                            <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
+                                <p class="text-xl font-semibold text-cyan-300 italic">"No seed shall grow faster than its roots. Funding follows maturity, not vanity."</p>
+                            </div>
                         </div>
-                    </div>
-                </section>
-                
-                <!-- 2. Investment Structure -->
-                <section id="structure" class="mb-16">
-                     <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪴</span> Investment Structure Overview</h3>
-                     <div class="grid md:grid-cols-2 gap-8 mb-12">
-                         <div class="card rounded-2xl p-8">
-                             <h4 class="font-orbitron text-xl text-white mb-3">Universal <span class="text-gray-400">(Macro Gravity)</span></h4>
-                             <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Purrfect Treasury + Council<span class="tooltip-text"><strong>ARTICLE III:</strong> "The Council of the Universe, composed of elected Planet Leaders and Founders, is the highest governing body, overseeing universal strategy and constitutional integrity."</span></span></p>
-                             <p><span class="font-semibold text-gray-200">Purpose:</span> Holds brand IP, legal identity, shared systems and AI infrastructure. Seeds and stabilizes planets.</p>
+                    </section>
+                    
+                    <!-- 2. Investment Structure -->
+                    <section class="mb-16">
+                         <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪴</span> Investment Structure Overview</h3>
+                         <div class="grid md:grid-cols-2 gap-8 mb-12">
+                             <div class="card rounded-2xl p-8">
+                                 <h4 class="font-orbitron text-xl text-white mb-3">Universal <span class="text-gray-400">(Macro Gravity)</span></h4>
+                                 <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Purrfect Treasury + Council<span class="tooltip-text"><strong>ARTICLE III:</strong> "The Council of the Universe, composed of elected Planet Leaders and Founders, is the highest governing body, overseeing universal strategy and constitutional integrity."</span></span></p>
+                                 <p><span class="font-semibold text-gray-200">Purpose:</span> Holds brand IP, legal identity, shared systems and AI infrastructure. Seeds and stabilizes planets.</p>
+                             </div>
+                             <div class="card rounded-2xl p-8">
+                                 <h4 class="font-orbitron text-xl text-white mb-3">Planetary <span class="text-gray-400">(Micro Biosphere)</span></h4>
+                                 <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Planet Leader + Local Treasury<span class="tooltip-text"><strong>PLANETARY GOVERNANCE:</strong> "Each planet operates autonomously under a Planet Leader, who is responsible for local operations, culture, and financial health, while aligning with the universal constitution."</span></span></p>
+                                 <p><span class="font-semibold text-gray-200">Purpose:</span> Operates autonomously within constitutional ethos; returns value to the Universe through surplus and shared fees.</p>
+                             </div>
                          </div>
-                         <div class="card rounded-2xl p-8">
-                             <h4 class="font-orbitron text-xl text-white mb-3">Planetary <span class="text-gray-400">(Micro Biosphere)</span></h4>
-                             <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> <span class="tooltip">Planet Leader + Local Treasury<span class="tooltip-text"><strong>PLANETARY GOVERNANCE:</strong> "Each planet operates autonomously under a Planet Leader, who is responsible for local operations, culture, and financial health, while aligning with the universal constitution."</span></span></p>
-                             <p><span class="font-semibold text-gray-200">Purpose:</span> Operates autonomously within constitutional ethos; returns value to the Universe through surplus and shared fees.</p>
-                         </div>
-                     </div>
 
-                     <div class="card rounded-2xl p-8 md:p-10">
-                        <h4 class="font-orbitron text-2xl text-white mb-6">Capital Interaction & Usage Framework</h4>
-                        <div class="space-y-8">
-                            <div>
-                               <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">A. Capital Streams and Purposes</h5>
-                               <div class="overflow-x-auto">
+                         <div class="card rounded-2xl p-8 md:p-10">
+                            <h4 class="font-orbitron text-2xl text-white mb-6">Capital Interaction & Usage Framework</h4>
+                            <div class="space-y-8">
+                                <div>
+                                   <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">A. Capital Streams and Purposes</h5>
+                                   <div class="overflow-x-auto">
+                                        <table class="w-full table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th>Level</th>
+                                                    <th>Capital Name</th>
+                                                    <th>Custodian</th>
+                                                    <th>Primary Purpose</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Universal Capital</td>
+                                                    <td>Universal Treasury Fund (UTF)</td>
+                                                    <td>Treasury + Council</td>
+                                                    <td>Seeding, stabilization & maintenance</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Planetary Capital</td>
+                                                    <td>Planet Operating Fund (POF)</td>
+                                                    <td>Planet Leader + Local Treasury</td>
+                                                    <td>Daily operations & growth</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                   </div>
+                                </div>
+
+                                <div>
+                                    <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">B. Capital Flow Dynamics</h5>
+                                    <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                        <li><span class="font-bold text-white">Downstream (Universe → Planet):</span> Mission-aligned Seed Grants or Convertible Advances.</li>
+                                        <li><span class="font-bold text-white">Upstream (Planet → Universe):</span> ≤ 5% <span class="tooltip">Universal Infrastructure Contribution (UIC)<span class="tooltip-text">A fee paid by planets to maintain shared universal resources like legal, brand IP, and AI systems.</span></span> + 1-3% <span class="tooltip">Planetary Tithe<span class="tooltip-text">A contribution that flows into the Universal Treasury Fund (UTF) to seed new planets and provide stability during crises.</span></span>.</li>
+                                        <li><span class="font-bold text-white">Cross-Planet Exchange (Planet ↔ Planet):</span> Governed by audited <span class="tooltip">Interplanetary Agreements (IAs)<span class="tooltip-text">Formal, audited contracts governing the exchange of services, capital, or equity between two or more planets.</span></span>.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">C. Planetary Capital Use Hierarchy (% of gross revenue)</h5>
+                                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">40-50%</div>
+                                            <div class="text-sm">Compensation & Welfare</div>
+                                        </div>
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">20-25%</div>
+                                            <div class="text-sm">Operational Expenses</div>
+                                        </div>
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">10-15%</div>
+                                            <div class="text-sm">R&D & Innovation</div>
+                                        </div>
+                                         <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">5-10%</div>
+                                            <div class="text-sm">Marketing & Expansion</div>
+                                        </div>
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">5%</div>
+                                            <div class="text-sm">Planet Reserve Fund</div>
+                                        </div>
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">0-5%</div>
+                                            <div class="text-sm">UIC Contribution</div>
+                                        </div>
+                                        <div class="bg-gray-800/50 rounded-lg p-4">
+                                            <div class="text-2xl font-bold text-teal-300">1-3%</div>
+                                            <div class="text-sm">Universal Tithe</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div>
+                                     <p class="italic text-center text-purple-300 mt-6 text-lg">"The Universe lends gravity; the planets return light. This reciprocal orbit ensures that no world shines alone."</p>
+                                </div>
+
+                            </div>
+                         </div>
+                    </section>
+                    
+                    <!-- 3. Seed Stages & Life Cycle -->
+                    <section class="mb-16">
+                         <h3 class="font-orbitron text-3xl text-white mb-12 text-center"><span class="text-2xl mr-2">🌱</span> Seed Stages & Life Cycle</h3>
+                         <div class="relative max-w-2xl mx-auto pl-8">
+                             <!-- Timeline Item 0 -->
+                             <div class="timeline-item relative pb-12">
+                                 <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                                 <div class="card rounded-xl p-6">
+                                    <p class="text-purple-300 font-semibold mb-1">Stage 0</p>
+                                    <h4 class="text-xl font-bold text-white mb-2">Conception Seed</h4>
+                                    <p class="text-gray-400">Validate concept and achieve the first milestone. Capital comes from founding equity or concept credits.</p>
+                                 </div>
+                             </div>
+                             <!-- Timeline Item 1 -->
+                             <div class="timeline-item relative pb-12">
+                                 <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                                  <div class="card rounded-xl p-6">
+                                    <p class="text-purple-300 font-semibold mb-1">Stage 1</p>
+                                    <h4 class="text-xl font-bold text-white mb-2">Operational / Sweat Round</h4>
+                                    <p class="text-gray-400">Operate for ~12 months and establish team ownership. Capital from employees and friends via cash or sweat equity.</p>
+                                 </div>
+                             </div>
+                             <!-- Timeline Item 2 -->
+                             <div class="timeline-item relative pb-12">
+                                 <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                                  <div class="card rounded-xl p-6">
+                                    <p class="text-purple-300 font-semibold mb-1">Stage 2</p>
+                                    <h4 class="text-xl font-bold text-white mb-2">Profitability Seed</h4>
+                                    <p class="text-gray-400">Expand post break-even. Open to aligned external investors via equity or revenue share.</p>
+                                 </div>
+                             </div>
+                             <!-- Timeline Item 3 -->
+                             <div class="timeline-item relative pb-12">
+                                 <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                                  <div class="card rounded-xl p-6">
+                                    <p class="text-purple-300 font-semibold mb-1">Stage 3</p>
+                                    <h4 class="text-xl font-bold text-white mb-2">Expansion Seed</h4>
+                                    <p class="text-gray-400">Launch cross-planet ventures. Funded by other planets and the Treasury through cross-equity or JVs.</p>
+                                 </div>
+                             </div>
+                             <!-- Timeline Item 4 -->
+                             <div class="timeline-item relative pb-8">
+                                 <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                                  <div class="card rounded-xl p-6">
+                                    <p class="text-purple-300 font-semibold mb-1">Stage 4</p>
+                                    <h4 class="text-xl font-bold text-white mb-2">Universal Alignment</h4>
+                                    <p class="text-gray-400">Mature, audited, and sustainable. Access to Council-approved externals via long-term equity or trust.</p>
+                                 </div>
+                             </div>
+                         </div>
+                    </section>
+                    
+                    <!-- 4 & 5. Modalities & Governance -->
+                    <section class="mb-16">
+                        <div class="grid md:grid-cols-2 gap-8">
+                             <!-- Investment Modalities -->
+                            <div class="w-full">
+                                <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💎</span> Investment Modalities</h3>
+                                <div class="card rounded-2xl p-8 space-y-6 h-full">
+                                     <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">Sweat Equity Program</h4>
+                                        <p class="text-gray-400">Employees may invest a portion of their net salary, converted monthly to Planet Credits (PCs). Safeguarded by a <span class="tooltip">Minimum Living Standard (MLS)<span class="tooltip-text"><strong>ARTICLE X:</strong> "Every member of the Universe is guaranteed a Minimum Living Standard (MLS), ensuring that basic needs for safety, health, and dignity are met before any capital investment."</span></span> review.</p>
+                                     </div>
+                                      <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">Micro-Investment Pools</h4>
+                                        <p class="text-gray-400">Friends & family may buy non-tradable Seed Tokens until the planet reaches Seed Stage 2.</p>
+                                     </div>
+                                      <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">Surplus Redistribution</h4>
+                                        <p class="text-gray-400"><span class="tooltip">Surplus above the 5% profit cap<span class="tooltip-text"><strong>ARTICLE IX:</strong> "Profit is capped at 5% of net revenue to prioritize sustainability over extraction. All surplus beyond this cap is deemed a 'Community Dividend' and is reinvested."</span></span> is redistributed: 40% to Employees, 20% to R&D, 20% to Community, and 20% to the Treasury.</p>
+                                     </div>
+                                </div>
+                            </div>
+                            <!-- Governance & Access -->
+                            <div class="w-full">
+                                 <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪐</span> Governance & Access Rules</h3>
+                                 <div class="card rounded-2xl p-8 h-full overflow-x-auto">
                                     <table class="w-full table-custom">
                                         <thead>
                                             <tr>
-                                                <th>Level</th>
-                                                <th>Capital Name</th>
-                                                <th>Custodian</th>
-                                                <th>Primary Purpose</th>
+                                                <th>Entity</th>
+                                                <th>Eligibility</th>
+                                                <th>Oversight</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Universal Capital</td>
-                                                <td>Universal Treasury Fund (UTF)</td>
-                                                <td>Treasury + Council</td>
-                                                <td>Seeding, stabilization & maintenance</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Planetary Capital</td>
-                                                <td>Planet Operating Fund (POF)</td>
-                                                <td>Planet Leader + Local Treasury</td>
-                                                <td>Daily operations & growth</td>
-                                            </tr>
+                                            <tr><td>Founders</td><td>All stages</td><td>Council + Treasury</td></tr>
+                                            <tr><td>Employees</td><td>Seed 1+</td><td>Planet Leader + <span class="tooltip">Fixer Labs<span class="tooltip-text">Fixer Labs acts as an independent auditor to ensure employee solvency reviews and ethical checks are performed correctly and without bias.</span></span></td></tr>
+                                            <tr><td>Friends / Family</td><td>Seed 1–2</td><td>Planet Leader</td></tr>
+                                            <tr><td>External Investors</td><td>Seed 2+</td><td><span class="tooltip">Council of Universe<span class="tooltip-text">The Council performs an Ethical Alignment Test to ensure external investors share the Universe's core values of care, creativity, and accountability.</span></span></td></tr>
+                                            <tr><td>Other Planets</td><td>Seed 3+</td><td>Treasury Council</td></tr>
                                         </tbody>
                                     </table>
-                               </div>
+                                 </div>
                             </div>
+                        </div>
+                    </section>
 
-                            <div>
-                                <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">B. Capital Flow Dynamics</h5>
-                                <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
-                                    <li><span class="font-bold text-white">Downstream (Universe → Planet):</span> Mission-aligned Seed Grants or Convertible Advances.</li>
-                                    <li><span class="font-bold text-white">Upstream (Planet → Universe):</span> ≤ 5% <span class="tooltip">Universal Infrastructure Contribution (UIC)<span class="tooltip-text">A fee paid by planets to maintain shared universal resources like legal, brand IP, and AI systems.</span></span> + 1-3% <span class="tooltip">Planetary Tithe<span class="tooltip-text">A contribution that flows into the Universal Treasury Fund (UTF) to seed new planets and provide stability during crises.</span></span>.</li>
-                                    <li><span class="font-bold text-white">Cross-Planet Exchange (Planet ↔ Planet):</span> Governed by audited <span class="tooltip">Interplanetary Agreements (IAs)<span class="tooltip-text">Formal, audited contracts governing the exchange of services, capital, or equity between two or more planets.</span></span>.</li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">C. Planetary Capital Use Hierarchy (% of gross revenue)</h5>
-                                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">40-50%</div>
-                                        <div class="text-sm">Compensation & Welfare</div>
-                                    </div>
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">20-25%</div>
-                                        <div class="text-sm">Operational Expenses</div>
-                                    </div>
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">10-15%</div>
-                                        <div class="text-sm">R&D & Innovation</div>
-                                    </div>
-                                     <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">5-10%</div>
-                                        <div class="text-sm">Marketing & Expansion</div>
-                                    </div>
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">5%</div>
-                                        <div class="text-sm">Planet Reserve Fund</div>
-                                    </div>
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">0-5%</div>
-                                        <div class="text-sm">UIC Contribution</div>
-                                    </div>
-                                    <div class="bg-gray-800/50 rounded-lg p-4">
-                                        <div class="text-2xl font-bold text-teal-300">1-3%</div>
-                                        <div class="text-sm">Universal Tithe</div>
-                                    </div>
+                    <!-- 6, 7, 8. UAS, Auditing & Significance -->
+                    <section>
+                         <div class="grid md:grid-cols-3 gap-8">
+                             <!-- Universal Alignment Score -->
+                             <div class="card rounded-2xl p-8">
+                                <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="tooltip"><span class="text-xl mr-2">🌍</span> UAS<span class="tooltip-text"><strong>Universal Alignment Score (UAS):</strong> A holistic metric ratified by the Council to ensure planets mature in alignment with the Constitution's values before advancing to new seed stages.</span></span></h3>
+                                <p class="text-center text-gray-400 mb-6">A minimum score of 80% is required to advance stages.</p>
+                                <div class="space-y-3">
+                                    <p class="flex justify-between"><span>Cultural Fit & Ethics</span> <span class="font-bold text-cyan-300">30%</span></p>
+                                    <p class="flex justify-between"><span>Operational Clarity</span> <span class="font-bold text-cyan-300">25%</span></p>
+                                    <p class="flex justify-between"><span>Employee Welfare</span> <span class="font-bold text-cyan-300">25%</span></p>
+                                    <p class="flex justify-between"><span>Social/Environmental Impact</span> <span class="font-bold text-cyan-300">20%</span></p>
                                 </div>
-                            </div>
+                             </div>
+                             <!-- Auditing & Transparency -->
+                             <div class="card rounded-2xl p-8">
+                                <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">⚖️</span> Auditing</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    Each planet issues <span class="tooltip">Quarterly Transparency Reports (QTRs)<span class="tooltip-text"><strong>ARTICLE XI:</strong> "To uphold trust, all planets must maintain accessible records. QTRs are a core part of this mandate, ensuring all stakeholders are informed."</span></span> covering finance, Planet Credit status, and investors. Fixer Labs conducts annual audits for Treasury and Council records to ensure full transparency and accountability.
+                                </p>
+                             </div>
+                             <!-- Significance -->
+                             <div class="card rounded-2xl p-8">
+                                <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🐾</span> Significance</h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    This article <span class="tooltip">extends Articles IX and X<span class="tooltip-text">Article IX (Profit & Surplus) and Article X (Compensation & Welfare) define the 'what' of our economic ethos. This Article XV-A provides the 'how'—the mechanisms for investment and ownership that bring those principles to life.</span></span> to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
+                                </p>
+                             </div>
+                         </div>
+                    </section>
+                </div>
 
-                             <div>
-                                 <p class="italic text-center text-purple-300 mt-6 text-lg">"The Universe lends gravity; the planets return light. This reciprocal orbit ensures that no world shines alone."</p>
+                <!-- SIMPLIFIED VIEW -->
+                <div id="simplified-investment-view" class="hidden">
+                    <div class="space-y-12">
+                        <!-- Why this exists -->
+                        <section>
+                             <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Why this exists</h3>
+                                <p class="text-lg text-gray-300 leading-relaxed">
+                                    Every new project in the Purrfect Universe is called a "planet." Each one begins small—a "seed"—and grows through the effort and belief of its people. This article explains how money moves, how people can invest, and how profits are shared in a fair way.
+                                </p>
                             </div>
-
-                        </div>
-                     </div>
-                </section>
-                
-                <!-- 3. Seed Stages & Life Cycle -->
-                <section id="stages" class="mb-16">
-                     <h3 class="font-orbitron text-3xl text-white mb-12 text-center"><span class="text-2xl mr-2">🌱</span> Seed Stages & Life Cycle</h3>
-                     <div class="relative max-w-2xl mx-auto pl-8">
-                         <!-- Timeline Item 0 -->
-                         <div class="timeline-item relative pb-12">
-                             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-                             <div class="card rounded-xl p-6">
-                                <p class="text-purple-300 font-semibold mb-1">Stage 0</p>
-                                <h4 class="text-xl font-bold text-white mb-2">Conception Seed</h4>
-                                <p class="text-gray-400">Validate concept and achieve the first milestone. Capital comes from founding equity or concept credits.</p>
-                             </div>
-                         </div>
-                         <!-- Timeline Item 1 -->
-                         <div class="timeline-item relative pb-12">
-                             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-                              <div class="card rounded-xl p-6">
-                                <p class="text-purple-300 font-semibold mb-1">Stage 1</p>
-                                <h4 class="text-xl font-bold text-white mb-2">Operational / Sweat Round</h4>
-                                <p class="text-gray-400">Operate for ~12 months and establish team ownership. Capital from employees and friends via cash or sweat equity.</p>
-                             </div>
-                         </div>
-                         <!-- Timeline Item 2 -->
-                         <div class="timeline-item relative pb-12">
-                             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-                              <div class="card rounded-xl p-6">
-                                <p class="text-purple-300 font-semibold mb-1">Stage 2</p>
-                                <h4 class="text-xl font-bold text-white mb-2">Profitability Seed</h4>
-                                <p class="text-gray-400">Expand post break-even. Open to aligned external investors via equity or revenue share.</p>
-                             </div>
-                         </div>
-                         <!-- Timeline Item 3 -->
-                         <div class="timeline-item relative pb-12">
-                             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-                              <div class="card rounded-xl p-6">
-                                <p class="text-purple-300 font-semibold mb-1">Stage 3</p>
-                                <h4 class="text-xl font-bold text-white mb-2">Expansion Seed</h4>
-                                <p class="text-gray-400">Launch cross-planet ventures. Funded by other planets and the Treasury through cross-equity or JVs.</p>
-                             </div>
-                         </div>
-                         <!-- Timeline Item 4 -->
-                         <div class="timeline-item relative pb-8">
-                             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-                              <div class="card rounded-xl p-6">
-                                <p class="text-purple-300 font-semibold mb-1">Stage 4</p>
-                                <h4 class="text-xl font-bold text-white mb-2">Universal Alignment</h4>
-                                <p class="text-gray-400">Mature, audited, and sustainable. Access to Council-approved externals via long-term equity or trust.</p>
-                             </div>
-                         </div>
-                     </div>
-                </section>
-                
-                <!-- 4 & 5. Modalities & Governance -->
-                <section id="modalities" class="mb-16">
-                    <div class="grid md:grid-cols-2 gap-8">
-                         <!-- Investment Modalities -->
-                        <div class="w-full">
-                            <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💎</span> Investment Modalities</h3>
-                            <div class="card rounded-2xl p-8 space-y-6 h-full">
-                                 <div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Sweat Equity Program</h4>
-                                    <p class="text-gray-400">Employees may invest a portion of their net salary, converted monthly to Planet Credits (PCs). Safeguarded by a <span class="tooltip">Minimum Living Standard (MLS)<span class="tooltip-text"><strong>ARTICLE X:</strong> "Every member of the Universe is guaranteed a Minimum Living Standard (MLS), ensuring that basic needs for safety, health, and dignity are met before any capital investment."</span></span> review.</p>
+                        </section>
+                        
+                        <!-- Two kinds of money -->
+                        <section>
+                            <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪴</span> Two Kinds of Money</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                 <div class="card rounded-2xl p-8">
+                                    <h4 class="font-orbitron text-xl text-white mb-3">Universal Money</h4>
+                                    <p class="text-gray-400">Managed by the Purrfect Treasury and Council. It pays for things every planet uses: the brand, servers, legal support, AI tools, and more. It also helps start or rescue planets.</p>
                                  </div>
-                                  <div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Micro-Investment Pools</h4>
-                                    <p class="text-gray-400">Friends & family may buy non-tradable Seed Tokens until the planet reaches Seed Stage 2.</p>
-                                 </div>
-                                  <div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Surplus Redistribution</h4>
-                                    <p class="text-gray-400"><span class="tooltip">Surplus above the 5% profit cap<span class="tooltip-text"><strong>ARTICLE IX:</strong> "Profit is capped at 5% of net revenue to prioritize sustainability over extraction. All surplus beyond this cap is deemed a 'Community Dividend' and is reinvested."</span></span> is redistributed: 40% to Employees, 20% to R&D, 20% to Community, and 20% to the Treasury.</p>
+                                 <div class="card rounded-2xl p-8">
+                                    <h4 class="font-orbitron text-xl text-white mb-3">Planet Money</h4>
+                                    <p class="text-gray-400">Managed by each planet’s leader and local team. It pays salaries, rent, tools, R&D, and daily costs.</p>
                                  </div>
                             </div>
-                        </div>
-                        <!-- Governance & Access -->
-                        <div class="w-full">
-                             <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪐</span> Governance & Access Rules</h3>
-                             <div class="card rounded-2xl p-8 h-full overflow-x-auto">
+                        </section>
+                        
+                         <!-- How money moves -->
+                        <section>
+                             <div class="card rounded-2xl p-8 md:p-10 max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">💱</span> How Money Moves</h3>
+                                 <ul class="list-disc list-inside space-y-4 text-lg text-gray-300">
+                                    <li><strong class="text-white">Universe → Planet:</strong> The Universe can give startup funds ("seed grants"). When the planet makes a profit, it pays part back (40% to Treasury) and the Universe keeps a share (60% ownership).</li>
+                                    <li><strong class="text-white">Planet → Universe:</strong> Stable planets pay up to 5% of revenue for shared infrastructure (UIC) and donate 1-3% of profit to community projects (Planetary Tithe).</li>
+                                    <li><strong class="text-white">Planet ↔ Planet:</strong> Planets can work together, but all deals must be fair, open, and approved by the Treasury.</li>
+                                 </ul>
+                            </div>
+                        </section>
+                        
+                        <!-- How planets spend their income -->
+                        <section>
+                            <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💰</span> How Planets Spend Their Income</h3>
+                            <div class="card rounded-2xl p-8 md:p-10 overflow-x-auto">
                                 <table class="w-full table-custom">
                                     <thead>
                                         <tr>
-                                            <th>Entity</th>
-                                            <th>Eligibility</th>
-                                            <th>Oversight</th>
+                                            <th>Use</th>
+                                            <th>Typical Share of Revenue</th>
+                                            <th>Example</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><td>Founders</td><td>All stages</td><td>Council + Treasury</td></tr>
-                                        <tr><td>Employees</td><td>Seed 1+</td><td>Planet Leader + <span class="tooltip">Fixer Labs<span class="tooltip-text">Fixer Labs acts as an independent auditor to ensure employee solvency reviews and ethical checks are performed correctly and without bias.</span></span></td></tr>
-                                        <tr><td>Friends / Family</td><td>Seed 1–2</td><td>Planet Leader</td></tr>
-                                        <tr><td>External Investors</td><td>Seed 2+</td><td><span class="tooltip">Council of Universe<span class="tooltip-text">The Council performs an Ethical Alignment Test to ensure external investors share the Universe's core values of care, creativity, and accountability.</span></span></td></tr>
-                                        <tr><td>Other Planets</td><td>Seed 3+</td><td>Treasury Council</td></tr>
+                                        <tr><td>People & welfare</td><td>40–50 %</td><td>Salaries, training, rest</td></tr>
+                                        <tr><td>Operations</td><td>20–25 %</td><td>Rent, utilities, tools</td></tr>
+                                        <tr><td>Research & innovation</td><td>10–15 %</td><td>New ideas, automation</td></tr>
+                                        <tr><td>Marketing & growth</td><td>5–10 %</td><td>Branding, ads</td></tr>
+                                        <tr><td>Safety reserve</td><td>5 %</td><td>Buffer for slow months</td></tr>
+                                        <tr><td>Universal Infrastructure Contribution</td><td>up to 5 %</td><td>Shared systems</td></tr>
+                                        <tr><td>Planetary Tithe</td><td>1–3 %</td><td>Community, charity</td></tr>
                                     </tbody>
                                 </table>
-                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 6, 7, 8. UAS, Auditing & Significance -->
-                <section id="conclusion">
-                     <div class="grid md:grid-cols-3 gap-8">
-                         <!-- Universal Alignment Score -->
-                         <div class="card rounded-2xl p-8">
-                            <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="tooltip"><span class="text-xl mr-2">🌍</span> UAS<span class="tooltip-text"><strong>Universal Alignment Score (UAS):</strong> A holistic metric ratified by the Council to ensure planets mature in alignment with the Constitution's values before advancing to new seed stages.</span></span></h3>
-                            <p class="text-center text-gray-400 mb-6">A minimum score of 80% is required to advance stages.</p>
-                            <div class="space-y-3">
-                                <p class="flex justify-between"><span>Cultural Fit & Ethics</span> <span class="font-bold text-cyan-300">30%</span></p>
-                                <p class="flex justify-between"><span>Operational Clarity</span> <span class="font-bold text-cyan-300">25%</span></p>
-                                <p class="flex justify-between"><span>Employee Welfare</span> <span class="font-bold text-cyan-300">25%</span></p>
-                                <p class="flex justify-between"><span>Social/Environmental Impact</span> <span class="font-bold text-cyan-300">20%</span></p>
                             </div>
-                         </div>
-                         <!-- Auditing & Transparency -->
-                         <div class="card rounded-2xl p-8">
-                            <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">⚖️</span> Auditing</h3>
-                            <p class="text-gray-300 leading-relaxed">
-                                Each planet issues <span class="tooltip">Quarterly Transparency Reports (QTRs)<span class="tooltip-text"><strong>ARTICLE XI:</strong> "To uphold trust, all planets must maintain accessible records. QTRs are a core part of this mandate, ensuring all stakeholders are informed."</span></span> covering finance, Planet Credit status, and investors. Fixer Labs conducts annual audits for Treasury and Council records to ensure full transparency and accountability.
-                            </p>
-                         </div>
-                         <!-- Significance -->
-                         <div class="card rounded-2xl p-8">
-                            <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🐾</span> Significance</h3>
-                            <p class="text-gray-300 leading-relaxed">
-                                This article <span class="tooltip">extends Articles IX and X<span class="tooltip-text">Article IX (Profit & Surplus) and Article X (Compensation & Welfare) define the 'what' of our economic ethos. This Article XV-A provides the 'how'—the mechanisms for investment and ownership that bring those principles to life.</span></span> to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
-                            </p>
-                         </div>
-                     </div>
-                </section>
+                        </section>
+
+                        <!-- Investment & Fairness -->
+                        <section>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="card rounded-2xl p-8 space-y-6">
+                                    <h3 class="font-orbitron text-2xl text-white text-center"><span class="text-xl mr-2">💎</span> Sweat Equity Program</h3>
+                                    <p class="text-gray-300">During early stages, employees can invest part of their salary (up to 80% at Seed 1, 20% at Seeds 2-3) to own a share of their planet, called Planet Credits (PCs). If this creates hardship, HR must step in to protect the employee's living standard.</p>
+                                </div>
+                                 <div class="card rounded-2xl p-8 space-y-6">
+                                    <h3 class="font-orbitron text-2xl text-white text-center"><span class="text-xl mr-2">💠</span> Other Ways to Invest</h3>
+                                    <p class="text-gray-300">Friends or family can buy "Seed Tokens" in early stages. Small outside investors are only allowed after a planet is profitable and passes an ethics check to ensure they share our values.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                         <!-- How profits are shared -->
+                        <section>
+                             <div class="card rounded-2xl p-8 md:p-10 text-center max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🪐</span> How Profits are Shared</h3>
+                                <p class="text-lg text-gray-300 leading-relaxed">
+                                    Profit is limited to a 5% margin. Anything extra ("surplus") is split:
+                                </p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
+                                    <div class="bg-gray-800/50 rounded-lg p-4">
+                                        <div class="text-2xl font-bold text-teal-300">40%</div>
+                                        <div class="text-sm">To Employees</div>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-4">
+                                        <div class="text-2xl font-bold text-teal-300">20%</div>
+                                        <div class="text-sm">To Research</div>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-4">
+                                        <div class="text-2xl font-bold text-teal-300">20%</div>
+                                        <div class="text-sm">To Community</div>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-4">
+                                        <div class="text-2xl font-bold text-teal-300">20%</div>
+                                        <div class="text-sm">To Universe Reserve</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Oversight & Stages -->
+                         <section>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                 <div class="card rounded-2xl p-8">
+                                    <h3 class="font-orbitron text-2xl text-white text-center mb-4"><span class="text-xl mr-2">⚙️</span> Oversight & Fairness</h3>
+                                    <ul class="list-disc list-inside space-y-3 text-gray-300">
+                                        <li>Two people must always approve payments (Planet Leader + Treasury Officer).</li>
+                                        <li>Fixer Labs (our auditor) can freeze funds if misuse is suspected.</li>
+                                        <li>All transactions are recorded in a shared Interplanetary Ledger.</li>
+                                    </ul>
+                                 </div>
+                                 <div class="card rounded-2xl p-8">
+                                    <h3 class="font-orbitron text-2xl text-white text-center mb-4"><span class="text-xl mr-2">🌍</span> Moving Between Seed Stages</h3>
+                                    <p class="text-gray-300">A planet can only grow to the next stage (e.g., from Seed 1 to 2) after passing a Universal Alignment Score (UAS) check with 80% or higher. This measures its culture, employee welfare, and impact.</p>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Conclusion -->
+                         <section>
+                             <div class="card rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">💚</span> In Simple Words</h3>
+                                 <ul class="space-y-4 text-lg text-gray-200">
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Anyone can help grow a planet through effort or small investment.</span></li>
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Money always stays ethical, transparent, and community-minded.</span></li>
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Success is shared between the people who build it and the Universe that supports it.</span></li>
+                                 </ul>
+                                 <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
+                                    <p class="text-xl font-semibold text-center text-cyan-300 italic">"The Universe gives gravity; the planets give light—and both keep each other alive."</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </div>
 
-            <!-- SIMPLIFIED VIEW CONTENT -->
-            <div id="simplified-view" class="hidden">
-                <div class="space-y-12">
-                    <!-- Why this exists -->
-                    <section>
+            <!-- ARTICLE XV-B (PROFIT) CONTENT -->
+            <div id="article-profit-content" class="hidden">
+                <!-- DETAILED VIEW -->
+                <div id="detailed-profit-view">
+                     <!-- 1. Purpose & Principle -->
+                    <section class="mb-16">
                          <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
-                            <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Why this exists</h3>
+                            <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Purpose & Principle</h3>
                             <p class="text-lg text-gray-300 leading-relaxed">
-                                Every new project in the Purrfect Universe is called a "planet." Each one begins small—a "seed"—and grows through the effort and belief of its people. This article explains how money moves, how people can invest, and how profits are shared in a fair way.
+                                Profit in the Purrfect Universe is not a trophy — it is fuel for fairness. This Article defines how profit is redistributed among employees, investors, the Treasury, and the community after meeting all constitutional obligations.
                             </p>
-                        </div>
-                    </section>
-                    
-                    <!-- Two kinds of money -->
-                    <section>
-                        <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪴</span> Two Kinds of Money</h3>
-                        <div class="grid md:grid-cols-2 gap-8">
-                             <div class="card rounded-2xl p-8">
-                                <h4 class="font-orbitron text-xl text-white mb-3">Universal Money</h4>
-                                <p class="text-gray-400">Managed by the Purrfect Treasury and Council. It pays for things every planet uses: the brand, servers, legal support, AI tools, and more. It also helps start or rescue planets.</p>
-                             </div>
-                             <div class="card rounded-2xl p-8">
-                                <h4 class="font-orbitron text-xl text-white mb-3">Planet Money</h4>
-                                <p class="text-gray-400">Managed by each planet’s leader and local team. It pays salaries, rent, tools, R&D, and daily costs.</p>
-                             </div>
-                        </div>
-                    </section>
-                    
-                     <!-- How money moves -->
-                    <section>
-                         <div class="card rounded-2xl p-8 md:p-10 max-w-4xl mx-auto">
-                            <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">💱</span> How Money Moves</h3>
-                             <ul class="list-disc list-inside space-y-4 text-lg text-gray-300">
-                                <li><strong class="text-white">Universe → Planet:</strong> The Universe can give startup funds ("seed grants"). When the planet makes a profit, it pays part back (40% to Treasury) and the Universe keeps a share (60% ownership).</li>
-                                <li><strong class="text-white">Planet → Universe:</strong> Stable planets pay up to 5% of revenue for shared infrastructure (UIC) and donate 1-3% of profit to community projects (Planetary Tithe).</li>
-                                <li><strong class="text-white">Planet ↔ Planet:</strong> Planets can work together, but all deals must be fair, open, and approved by the Treasury.</li>
-                             </ul>
-                        </div>
-                    </section>
-                    
-                    <!-- How planets spend their income -->
-                    <section>
-                        <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💰</span> How Planets Spend Their Income</h3>
-                        <div class="card rounded-2xl p-8 md:p-10 overflow-x-auto">
-                            <table class="w-full table-custom">
-                                <thead>
-                                    <tr>
-                                        <th>Use</th>
-                                        <th>Typical Share of Revenue</th>
-                                        <th>Example</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>People & welfare</td><td>40–50 %</td><td>Salaries, training, rest</td></tr>
-                                    <tr><td>Operations</td><td>20–25 %</td><td>Rent, utilities, tools</td></tr>
-                                    <tr><td>Research & innovation</td><td>10–15 %</td><td>New ideas, automation</td></tr>
-                                    <tr><td>Marketing & growth</td><td>5–10 %</td><td>Branding, ads</td></tr>
-                                    <tr><td>Safety reserve</td><td>5 %</td><td>Buffer for slow months</td></tr>
-                                    <tr><td>Universal Infrastructure Contribution</td><td>up to 5 %</td><td>Shared systems</td></tr>
-                                    <tr><td>Planetary Tithe</td><td>1–3 %</td><td>Community, charity</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
-
-                    <!-- Investment & Fairness -->
-                    <section>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="card rounded-2xl p-8 space-y-6">
-                                <h3 class="font-orbitron text-2xl text-white text-center"><span class="text-xl mr-2">💎</span> Sweat Equity Program</h3>
-                                <p class="text-gray-300">During early stages, employees can invest part of their salary (up to 80% at Seed 1, 20% at Seeds 2-3) to own a share of their planet, called Planet Credits (PCs). If this creates hardship, HR must step in to protect the employee's living standard.</p>
-                            </div>
-                             <div class="card rounded-2xl p-8 space-y-6">
-                                <h3 class="font-orbitron text-2xl text-white text-center"><span class="text-xl mr-2">💠</span> Other Ways to Invest</h3>
-                                <p class="text-gray-300">Friends or family can buy "Seed Tokens" in early stages. Small outside investors are only allowed after a planet is profitable and passes an ethics check to ensure they share our values.</p>
-                            </div>
-                        </div>
-                    </section>
-                    
-                     <!-- How profits are shared -->
-                    <section>
-                         <div class="card rounded-2xl p-8 md:p-10 text-center max-w-4xl mx-auto">
-                            <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🪐</span> How Profits are Shared</h3>
-                            <p class="text-lg text-gray-300 leading-relaxed">
-                                Profit is limited to a 5% margin. Anything extra ("surplus") is split:
-                            </p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mt-6">
-                                <div class="bg-gray-800/50 rounded-lg p-4">
-                                    <div class="text-2xl font-bold text-teal-300">40%</div>
-                                    <div class="text-sm">To Employees</div>
-                                </div>
-                                <div class="bg-gray-800/50 rounded-lg p-4">
-                                    <div class="text-2xl font-bold text-teal-300">20%</div>
-                                    <div class="text-sm">To Research</div>
-                                </div>
-                                <div class="bg-gray-800/50 rounded-lg p-4">
-                                    <div class="text-2xl font-bold text-teal-300">20%</div>
-                                    <div class="text-sm">To Community</div>
-                                </div>
-                                <div class="bg-gray-800/50 rounded-lg p-4">
-                                    <div class="text-2xl font-bold text-teal-300">20%</div>
-                                    <div class="text-sm">To Universe Reserve</div>
-                                </div>
+                            <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
+                                <p class="text-xl font-semibold text-cyan-300 italic">"Prosperity is a shared emotion, not a private possession."</p>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Oversight & Stages -->
-                     <section>
-                        <div class="grid md:grid-cols-2 gap-8">
-                             <div class="card rounded-2xl p-8">
-                                <h3 class="font-orbitron text-2xl text-white text-center mb-4"><span class="text-xl mr-2">⚙️</span> Oversight & Fairness</h3>
-                                <ul class="list-disc list-inside space-y-3 text-gray-300">
-                                    <li>Two people must always approve payments (Planet Leader + Treasury Officer).</li>
-                                    <li>Fixer Labs (our auditor) can freeze funds if misuse is suspected.</li>
-                                    <li>All transactions are recorded in a shared Interplanetary Ledger.</li>
-                                </ul>
+                    <!-- 2. Hierarchy of Profit Use -->
+                    <section class="mb-16">
+                         <div class="card rounded-2xl p-8 md:p-10 max-w-5xl mx-auto">
+                            <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">🧮</span> Hierarchy of Profit Use</h3>
+                             <div class="space-y-6">
+                                <p class="text-center text-gray-300">When a planet achieves positive net profit, funds are allocated in the following order:</p>
+                                <div class="grid md:grid-cols-3 gap-6 text-center">
+                                    <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-purple-300 mb-2">1. Compliance</div>
+                                        <p>Verify profit is ≤ 5% of net margin. Any <span class="tooltip">Surplus<span class="tooltip-text"><strong>SURPLUS:</strong> Defined in Article IX §2 as any profit exceeding the constitutional 5% cap.</span></span> is handled by this framework.</p>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-purple-300 mb-2">2. Reinvestment</div>
+                                        <p>Minimum 40% of total surplus is reinvested into employee well-being, R&D, and infrastructure, as determined by the Planet Council.</p>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-purple-300 mb-2">3. Redistribution</div>
+                                        <p>The remaining surplus is shared among all stakeholders according to the defined allocation schema.</p>
+                                    </div>
+                                </div>
                              </div>
-                             <div class="card rounded-2xl p-8">
-                                <h3 class="font-orbitron text-2xl text-white text-center mb-4"><span class="text-xl mr-2">🌍</span> Moving Between Seed Stages</h3>
-                                <p class="text-gray-300">A planet can only grow to the next stage (e.g., from Seed 1 to 2) after passing a Universal Alignment Score (UAS) check with 80% or higher. This measures its culture, employee welfare, and impact.</p>
-                            </div>
+
+                             <div class="mt-12">
+                                <h4 class="font-orbitron text-2xl text-white mb-6 text-center">Redistribution Layer (Shared Value)</h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>Recipient Category</th>
+                                                <th>Share of Surplus</th>
+                                                <th>Basis of Allocation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>Employees (Active & Eligible)</td><td>30%</td><td>Weighted by <span class="tooltip">Planet Credits<span class="tooltip-text"><strong>PLANET CREDITS (PCs):</strong> Sweat-equity units earned by employees through the program defined in Article XV-A §4.1.</span></span> + tenure</td></tr>
+                                            <tr><td>Founders & Planet Leaders</td><td>10%</td><td>Fixed cap to prevent excessive bonuses</td></tr>
+                                            <tr><td>Sweat Equity Holders</td><td>15%</td><td>Proportional to PC ownership (vested)</td></tr>
+                                            <tr><td>External Seed Investors</td><td>15%</td><td>Proportional to <span class="tooltip">Seed Tokens<span class="tooltip-text"><strong>SEED TOKENS:</strong> Early-stage, non-tradable investment units for friends and family as defined in Article XV-A §4.2.</span></span></td></tr>
+                                            <tr><td>Universal Treasury Reserve</td><td>10%</td><td>Mandatory remittance for new planet creation</td></tr>
+                                            <tr><td>Community & Compassion Funds</td><td>10%</td><td>Governed by Council + HR for welfare & aid</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-4 text-center">Up to 20% of this pool may be diverted to the <span class="tooltip">Universal Support Pool (USP)<span class="tooltip-text"><strong>ARTICLE X:</strong> A safety net funded by planet contributions to provide aid during crises and support early-stage ventures.</span></span> in times of need.</p>
+                             </div>
                         </div>
                     </section>
-                    
-                    <!-- Conclusion -->
-                     <section>
-                         <div class="card rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-                            <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">💚</span> In Simple Words</h3>
-                             <ul class="space-y-4 text-lg text-gray-200">
-                                <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Anyone can help grow a planet through effort or small investment.</span></li>
-                                <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Money always stays ethical, transparent, and community-minded.</span></li>
-                                <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span>Success is shared between the people who build it and the Universe that supports it.</span></li>
-                             </ul>
-                             <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
-                                <p class="text-xl font-semibold text-center text-cyan-300 italic">"The Universe gives gravity; the planets give light—and both keep each other alive."</p>
+
+                    <!-- 3 & 4. Mechanics & Ethics -->
+                    <section class="mb-16">
+                        <div class="grid md:grid-cols-2 gap-8">
+                             <!-- Distribution Mechanics -->
+                            <div class="w-full">
+                                <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💼</span> Distribution Mechanics</h3>
+                                <div class="card rounded-2xl p-8 space-y-4 h-full">
+                                     <p><strong class="text-purple-300">Timing:</strong> Quarterly, within 45 days of audit approval.</p>
+                                     <p><strong class="text-purple-300">Transparency:</strong> Planets must publish a Profit Redistribution Report (PRR) listing categories and percentages.</p>
+                                     <p><strong class="text-purple-300">Form:</strong> Can be a cash bonus, reinvestment credit, equipment grant, or equity top-up.</p>
+                                     <p><strong class="text-purple-300">Reinvestment Option:</strong> Recipients can convert their share back into Planet Credits to compound ownership.</p>
+                                </div>
+                            </div>
+                            <!-- Investor Ethics -->
+                            <div class="w-full">
+                                 <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">⚖️</span> Investor Ethics & Hierarchy</h3>
+                                 <div class="card rounded-2xl p-8 space-y-4 h-full">
+                                    <p><strong class="text-purple-300">Equal Return:</strong> No investor class gets preferential rates beyond their proportional risk.</p>
+                                     <p><strong class="text-purple-300">Human First Clause:</strong> Employee redistributions are always executed before external investor returns.</p>
+                                     <p><strong class="text-purple-300">Ethical Test:</strong> All investors must align with Purrfect Values per <span class="tooltip">Article II §3<span class="tooltip-text"><strong>CORE VALUES:</strong> Care, Transparency, Empowerment, Radical Candor, Play, Balance, and Integrity.</span></span>.</p>
+                                     <p><strong class="text-purple-300">Transparency Obligation:</strong> All investment agreements are filed with the Treasury and Council.</p>
+                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-            </div>
 
+                <!-- SIMPLIFIED VIEW -->
+                <div id="simplified-profit-view" class="hidden">
+                    <div class="space-y-12">
+                        <!-- 1. Purpose -->
+                        <section>
+                             <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Purpose</h3>
+                                <p class="text-lg text-gray-300 leading-relaxed">
+                                    This guide explains how we share any profit that a planet makes. In the Purrfect Universe, profit is meant to be shared fairly with everyone who helped create it.
+                                </p>
+                                <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
+                                    <p class="text-xl font-semibold text-cyan-300 italic">"Prosperity is to be shared, not stored."</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 2. The Basic Idea -->
+                        <section>
+                            <div class="card rounded-2xl p-8 md:p-10 max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">💡</span> The Basic Idea</h3>
+                                 <ul class="list-disc list-inside space-y-4 text-lg text-gray-300">
+                                    <li><strong class="text-white">Profit is Capped:</strong> Planets aim for a healthy, but not excessive, 5% profit margin.</li>
+                                    <li><strong class="text-white">Extra is "Surplus":</strong> Any profit made above that 5% is called "surplus."</li>
+                                    <li><strong class="text-white">Surplus Gets Shared:</strong> This surplus money is then given back to the people, the planet, and the Universe.</li>
+                                 </ul>
+                            </div>
+                        </section>
+
+                        <!-- 3. How Surplus is Split -->
+                        <section>
+                             <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">몫</span> How Surplus is Split</h3>
+                             <div class="card rounded-2xl p-8 md:p-10">
+                                <p class="text-center text-gray-300 mb-8 text-lg">First, at least 40% is reinvested in the planet (R&D, training). The rest is shared like this:</p>
+                                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                     <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-white mb-2">Employees</div>
+                                        <p class="text-2xl font-bold text-teal-300 mb-2">30%</p>
+                                        <p class="text-sm text-gray-400">Bonuses or extra ownership credits for the team.</p>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-white mb-2">Investors</div>
+                                        <p class="text-2xl font-bold text-teal-300 mb-2">30%</p>
+                                        <p class="text-sm text-gray-400">15% for employees who invested sweat equity, and 15% for early external supporters.</p>
+                                    </div>
+                                     <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-white mb-2">Leaders</div>
+                                        <p class="text-2xl font-bold text-teal-300 mb-2">10%</p>
+                                        <p class="text-sm text-gray-400">A capped bonus to ensure fairness.</p>
+                                    </div>
+                                     <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-white mb-2">Universe Reserve</div>
+                                        <p class="text-2xl font-bold text-teal-300 mb-2">10%</p>
+                                        <p class="text-sm text-gray-400">Helps fund new planets and ideas.</p>
+                                    </div>
+                                     <div class="bg-gray-800/50 rounded-lg p-6">
+                                        <div class="font-orbitron text-xl text-white mb-2">Community Fund</div>
+                                        <p class="text-2xl font-bold text-teal-300 mb-2">10%</p>
+                                        <p class="text-sm text-gray-400">For welfare, therapy, and crisis aid.</p>
+                                    </div>
+                                </div>
+                             </div>
+                        </section>
+
+                         <!-- 4. Fairness Rules -->
+                        <section>
+                            <div class="card rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+                                <h3 class="font-orbitron text-3xl text-white mb-6 text-center"><span class="text-2xl mr-2">⚖️</span> Fairness Rules</h3>
+                                 <ul class="space-y-4 text-lg text-gray-200">
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span><strong class="text-white">People First:</strong> Employees always get their share before any outside investors are paid.</span></li>
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span><strong class="text-white">Full Transparency:</strong> Every planet must publish a report showing exactly how the money was shared.</span></li>
+                                    <li class="flex items-start"><span class="text-cyan-300 mr-3 mt-1">✓</span><span><strong class="text-white">Reinvestment Choice:</strong> You can take your share as cash or reinvest it to increase your ownership for the future.</span></li>
+                                 </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </main>
         
         <!-- Footer -->
@@ -671,42 +900,101 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const toggle = document.getElementById('view-toggle');
-            const detailedView = document.getElementById('detailed-view');
-            const simplifiedView = document.getElementById('simplified-view');
-            const detailedHeader = document.getElementById('detailed-header-info');
-            const simplifiedHeader = document.getElementById('simplified-header-info');
-            const labels = toggle.querySelectorAll('.toggle-switch-label');
+            // State
+            let activeArticle = 'investment'; // 'investment' or 'profit'
+            let activeView = 'detailed'; // 'detailed' or 'simplified'
 
-            toggle.addEventListener('click', () => {
-                const isSimplified = toggle.classList.toggle('simplified');
+            // --- Element Selectors ---
+            const investmentBtn = document.getElementById('select-investment');
+            const profitBtn = document.getElementById('select-profit');
+
+            const viewToggle = document.getElementById('view-toggle');
+            const viewToggleLabels = viewToggle.querySelectorAll('.toggle-switch-label');
+
+            const headerInvestment = document.getElementById('header-investment');
+            const headerProfit = document.getElementById('header-profit');
+
+            const detailedHeaderInvestment = document.getElementById('detailed-header-investment');
+            const simplifiedHeaderInvestment = document.getElementById('simplified-header-investment');
+            const detailedHeaderProfit = document.getElementById('detailed-header-profit');
+            const simplifiedHeaderProfit = document.getElementById('simplified-header-profit');
+            
+            const contentInvestment = document.getElementById('article-investment-content');
+            const contentProfit = document.getElementById('article-profit-content');
+            
+            const detailedInvestmentView = document.getElementById('detailed-investment-view');
+            const simplifiedInvestmentView = document.getElementById('simplified-investment-view');
+            const detailedProfitView = document.getElementById('detailed-profit-view');
+            const simplifiedProfitView = document.getElementById('simplified-profit-view');
+
+            // --- Main Update Function ---
+            function updateDisplay() {
+                // 1. Update Article Buttons
+                investmentBtn.classList.toggle('active', activeArticle === 'investment');
+                profitBtn.classList.toggle('active', activeArticle === 'profit');
+
+                // 2. Update View Toggle
+                viewToggle.classList.toggle('simplified', activeView === 'simplified');
+                viewToggleLabels[0].classList.toggle('active', activeView === 'detailed');
+                viewToggleLabels[1].classList.toggle('active', activeView === 'simplified');
+
+                // 3. Update Headers
+                const isInvestment = activeArticle === 'investment';
+                const isDetailed = activeView === 'detailed';
+
+                headerInvestment.classList.toggle('opacity-0', !isInvestment);
+                headerInvestment.classList.toggle('pointer-events-none', !isInvestment);
+                headerProfit.classList.toggle('opacity-0', isInvestment);
+                headerProfit.classList.toggle('pointer-events-none', isInvestment);
                 
-                if (isSimplified) {
-                    // Toggle main content visibility
-                    detailedView.classList.add('hidden');
-                    simplifiedView.classList.remove('hidden');
-                    
-                    // Animate header with opacity to prevent layout shift
-                    detailedHeader.classList.add('opacity-0', 'pointer-events-none');
-                    simplifiedHeader.classList.remove('opacity-0', 'pointer-events-none');
+                // Toggle sub-headers based on both article and view
+                detailedHeaderInvestment.style.gridArea = '1 / 1';
+                simplifiedHeaderInvestment.style.gridArea = '1 / 1';
+                detailedHeaderProfit.style.gridArea = '1 / 1';
+                simplifiedHeaderProfit.style.gridArea = '1 / 1';
 
-                    labels[0].classList.remove('active');
-                    labels[1].classList.add('active');
+                detailedHeaderInvestment.classList.toggle('opacity-0', !(isInvestment && isDetailed));
+                simplifiedHeaderInvestment.classList.toggle('opacity-0', !(isInvestment && !isDetailed));
+                detailedHeaderProfit.classList.toggle('opacity-0', !(!isInvestment && isDetailed));
+                simplifiedHeaderProfit.classList.toggle('opacity-0', !(!isInvestment && !isDetailed));
+                
+                detailedHeaderInvestment.classList.toggle('pointer-events-none', !(isInvestment && isDetailed));
+                simplifiedHeaderInvestment.classList.toggle('pointer-events-none', !(isInvestment && !isDetailed));
+                detailedHeaderProfit.classList.toggle('pointer-events-none', !(!isInvestment && isDetailed));
+                simplifiedHeaderProfit.classList.toggle('pointer-events-none', !(!isInvestment && !isDetailed));
+
+                // 4. Update Main Content
+                contentInvestment.classList.toggle('hidden', !isInvestment);
+                contentProfit.classList.toggle('hidden', isInvestment);
+
+                if (isInvestment) {
+                    detailedInvestmentView.classList.toggle('hidden', !isDetailed);
+                    simplifiedInvestmentView.classList.toggle('hidden', isDetailed);
                 } else {
-                    // Toggle main content visibility
-                    detailedView.classList.remove('hidden');
-                    simplifiedView.classList.add('hidden');
-
-                    // Animate header with opacity
-                    detailedHeader.classList.remove('opacity-0', 'pointer-events-none');
-                    simplifiedHeader.classList.add('opacity-0', 'pointer-events-none');
-
-                    labels[0].classList.add('active');
-                    labels[1].classList.remove('active');
+                    detailedProfitView.classList.toggle('hidden', !isDetailed);
+                    simplifiedProfitView.classList.toggle('hidden', isDetailed);
                 }
+            }
+
+            // --- Event Listeners ---
+            investmentBtn.addEventListener('click', () => {
+                activeArticle = 'investment';
+                updateDisplay();
             });
+
+            profitBtn.addEventListener('click', () => {
+                activeArticle = 'profit';
+                updateDisplay();
+            });
+
+            viewToggle.addEventListener('click', () => {
+                activeView = (activeView === 'detailed') ? 'simplified' : 'detailed';
+                updateDisplay();
+            });
+            
+            // Initial render
+            updateDisplay();
         });
     </script>
 </body>
 </html>
-
