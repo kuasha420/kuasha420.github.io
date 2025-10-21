@@ -1,0 +1,560 @@
+[
+  {
+    "question": "What is the maximum net profit margin a planet is allowed to have under Article IX?",
+    "options": ["3%", "5%", "10%", "There is no limit"],
+    "correctAnswer": "5%",
+    "explanation": "Article IX §1 explicitly states that the net profit margin for all planets is capped at 5% of total revenue to prioritize sustainability over extraction."
+  },
+  {
+    "question": "Profit earned beyond the constitutional cap is called:",
+    "options": ["Overflow", "Bonus", "Surplus", "Reserve"],
+    "correctAnswer": "Surplus",
+    "explanation": "According to Article IX §2, any profit exceeding the 5% margin is defined as 'Surplus' and becomes eligible for redistribution."
+  },
+  {
+    "question": "What is the Universal Infrastructure Contribution (UIC)?",
+    "options": ["A donation to charity", "A tax paid to a local government", "A fee of up to 5% of revenue for shared systems", "A 10% profit share for founders"],
+    "correctAnswer": "A fee of up to 5% of revenue for shared systems",
+    "explanation": "The UIC is a contribution of up to 5% of a planet's revenue to the Universal Treasury to maintain shared resources like legal, brand IP, and AI systems (Article IX-A §2.2 B)."
+  },
+  {
+    "question": "The Universal Support Pool (USP) is primarily funded by:",
+    "options": ["Founder contributions", "A 10-20% share of a planet's Surplus", "External investors", "A flat universal tax"],
+    "correctAnswer": "A 10-20% share of a planet's Surplus",
+    "explanation": "Article X §1 specifies that planets with surplus profits contribute 10-20% of that surplus to the USP to act as a universal safety net."
+  },
+  {
+    "question": "What is 'Sweat Equity' in the Purrfect Universe?",
+    "options": ["Physical labor on a project", "An employee investment mechanism using salary", "A type of cryptocurrency", "A bonus for working overtime"],
+    "correctAnswer": "An employee investment mechanism using salary",
+    "explanation": "The Sweat Equity Program allows employees to invest a portion of their net salary, which is converted into Planet Credits (PCs), representing ownership (Article IX-A §4.1)."
+  },
+  {
+    "question": "At which Seed Stage can a planet start accepting ethically-aligned external investors?",
+    "options": ["Stage 0 (Conception)", "Stage 1 (Operational)", "Stage 2 (Profitability)", "Stage 4 (Universal Alignment)"],
+    "correctAnswer": "Stage 2 (Profitability)",
+    "explanation": "Article IX-A §5 outlines that external investors are eligible to participate from Seed Stage 2 onwards, after the planet is post break-even and has passed an Ethical Alignment Test."
+  },
+  {
+    "question": "According to the standard redistribution model in Article IX-B, what percentage of surplus is allocated to Employees?",
+    "options": ["10%", "20%", "30%", "40%"],
+    "correctAnswer": "30%",
+    "explanation": "Article IX-B §3 specifies that 30% of the distributable surplus is allocated to active and eligible employees, weighted by their Planet Credits and tenure."
+  },
+  {
+    "question": "What is the 'Human First Clause' in Article IX-B?",
+    "options": ["Humans must be hired over AI", "Employee redistributions are paid before external investor returns", "All products must be tested by humans", "Human resources has final say on budgets"],
+    "correctAnswer": "Employee redistributions are paid before external investor returns",
+    "explanation": "The Human First Clause (Article IX-B §5) is an ethical rule ensuring that the people who built the value (employees) receive their share of profits before any capital investors."
+  },
+  {
+    "question": "To advance to a new Seed Stage, a planet must achieve a Universal Alignment Score (UAS) of at least:",
+    "options": ["60%", "75%", "80%", "95%"],
+    "correctAnswer": "80%",
+    "explanation": "Article IX-A §6 states that a minimum UAS of 80% is required to advance. The score measures cultural fit, ethics, welfare, and impact."
+  },
+  {
+    "question": "Who performs the annual, independent, cross-planet audits to ensure transparency?",
+    "options": ["The Council of the Universe", "The Purrfect Treasury", "Fixer Labs", "A team of rotating founders"],
+    "correctAnswer": "Fixer Labs",
+    "explanation": "Fixer Labs serves as the Universe's independent auditor, responsible for verifying financial accuracy and compliance across all planets (Article IX §3)."
+  },
+  {
+    "question": "What is the purpose of the 'Planetary Tithe'?",
+    "options": ["To fund the military", "To pay for marketing", "A 1-3% profit contribution to community projects", "To repay initial founder investment"],
+    "correctAnswer": "A 1-3% profit contribution to community projects",
+    "explanation": "The Planetary Tithe is a donation of 1-3% of profit that flows into the Universal Treasury Fund (UTF) to seed new planets and provide stability during crises. (IX-A §2.2 B)"
+  },
+  {
+    "question": "What is the standard allocation of surplus for Research & Innovation under the redistribution guideline?",
+    "options": ["10%", "40%", "20%", "30%"],
+    "correctAnswer": "40%",
+    "explanation": "Under the Quarterly Surplus Redistribution Guideline (Article IX §1), 40% is allocated to Research & Innovation, for R&D and continuous improvement."
+  },
+  {
+    "question": "What are Planet Credits (PCs)?",
+    "options": ["A form of currency", "Vacation days", "Internal units of ownership from sweat equity", "Company awards"],
+    "correctAnswer": "Internal units of ownership from sweat equity",
+    "explanation": "Planet Credits (PCs) are the internal units that represent an employee's ownership stake in their planet, earned through the Sweat Equity program. (Article IX §2)"
+  },
+  {
+    "question": "What does the 'Ethical Investment Clause' prohibit?",
+    "options": ["Investing in competing planets", "Partnerships that harm people, animals, or the environment", "Investing less than a certain amount", "Taking on debt"],
+    "correctAnswer": "Partnerships that harm people, animals, or the environment",
+    "explanation": "This clause in Article IX §3 explicitly forbids any partnership or reinvestment that could cause harm, ensuring all financial activities align with core values."
+  },
+  {
+    "question": "Who can invest using 'Seed Tokens'?",
+    "options": ["Anyone", "Only founders", "Friends & Family during early stages", "Accredited external investors"],
+    "correctAnswer": "Friends & Family during early stages",
+    "explanation": "Seed Tokens are a specific, non-tradable investment vehicle for friends and family to support a planet during its Seed 1-2 stages. (Article IX-A §4.2)"
+  },
+  {
+    "question": "In the profit redistribution hierarchy (Article IX-B), what happens immediately after verifying the 5% profit cap?",
+    "options": ["Pay out all investors", "A minimum of 40% of surplus is reinvested", "Give bonuses to the founders", "Donate to the USP"],
+    "correctAnswer": "A minimum of 40% of surplus is reinvested",
+    "explanation": "Article IX-B §3 specifies a clear hierarchy. After the Compliance Layer (checking the cap), the next step is the Reinvestment Layer, where at least 40% of surplus goes back into the planet."
+  },
+  {
+    "question": "Which two groups govern the Universal Support Pool (USP)?",
+    "options": ["Founders and Fixer Labs", "Treasury and Planet Leaders", "HR and the Council of the Universe", "Marketing and R&D"],
+    "correctAnswer": "HR and the Council of the Universe",
+    "explanation": "Article X §3 states that disbursements from the USP are reviewed quarterly by a joint body of HR and the Council of the Universe to ensure funds are used properly."
+  },
+  {
+    "question": "What is the purpose of a QSAR?",
+    "options": ["A report on employee happiness", "A quarterly report on how surplus was allocated", "A sales and marketing report", "A technical systems report"],
+    "correctAnswer": "A quarterly report on how surplus was allocated",
+    "explanation": "A Quarterly Surplus Allocation Report (QSAR) is a mandatory transparency document that details a planet's profit, surplus, and how that surplus was redistributed. (Article IX §3)"
+  },
+  {
+    "question": "The ethos of Article X (USP) states that the Universe's strength is measured by what?",
+    "options": ["Total revenue", "Number of planets", "Retained profit", "The safety of its weakest orbit"],
+    "correctAnswer": "The safety of its weakest orbit",
+    "explanation": "Article X §4 concludes with the ethos: 'The Universe’s strength is measured not by retained profit but by the safety of its weakest orbit,' emphasizing collective care."
+  },
+  {
+    "question": "Under Article IX-B, what share of surplus is reserved for the 'Community & Compassion Funds'?",
+    "options": ["5%", "10%", "15%", "20%"],
+    "correctAnswer": "10%",
+    "explanation": "The redistribution schema in Article IX-B §3 allocates 10% of the surplus to Community & Compassion Funds, which are governed by the Council and HR for welfare and aid."
+  },
+  {
+    "question": "What is the primary purpose of the Universal Treasury Fund (UTF)?",
+    "options": ["Daily planet operations", "Paying employee bonuses", "Seeding, stabilization & maintenance of shared infrastructure", "Marketing campaigns"],
+    "correctAnswer": "Seeding, stabilization & maintenance of shared infrastructure",
+    "explanation": "Article IX-A §2.2 A defines the UTF's purpose as seeding new planets, stabilizing the ecosystem, and maintaining shared infrastructure like brand and legal systems."
+  },
+  {
+    "question": "What are Interplanetary Agreements (IAs)?",
+    "options": ["Informal trade deals", "A social media platform", "Formal, audited contracts for cross-planet exchange", "A treaty for peace"],
+    "correctAnswer": "Formal, audited contracts for cross-planet exchange",
+    "explanation": "IAs are formal contracts that govern the exchange of services, capital, or equity between two or more planets, and they must be audited for fairness (Article IX-A §2.2 B)."
+  },
+  {
+    "question": "In the typical Planetary Capital Use Hierarchy, what is the largest expense category?",
+    "options": ["R&D & Innovation", "Operational Expenses", "Marketing & Expansion", "Compensation & Welfare"],
+    "correctAnswer": "Compensation & Welfare",
+    "explanation": "Article IX-A §2.2 C allocates 40-50% of gross revenue to Compensation & Welfare, making it the largest priority for planetary spending."
+  },
+  {
+    "question": "What is the main activity in Seed Stage 1?",
+    "options": ["Validating a concept", "Operating for ~12 months and establishing team ownership", "Expanding after break-even", "Launching cross-planet ventures"],
+    "correctAnswer": "Operating for ~12 months and establishing team ownership",
+    "explanation": "Seed Stage 1, the 'Operational / Sweat Round', is focused on establishing the team and operating for about a year, funded primarily by employee sweat equity and friends/family. (Article IX-A §3)"
+  },
+  {
+    "question": "Which entity provides oversight for employee sweat equity investments?",
+    "options": ["The Council of the Universe", "The Purrfect Treasury", "The Planet Leader and Fixer Labs", "Only the Planet Leader"],
+    "correctAnswer": "The Planet Leader and Fixer Labs",
+    "explanation": "Article IX-A §5 specifies that employee investments are overseen by the Planet Leader for local context and Fixer Labs for an independent, ethical audit."
+  },
+  {
+    "question": "Which component of the Universal Alignment Score (UAS) has the highest weight?",
+    "options": ["Operational Clarity", "Social/Environmental Impact", "Employee Welfare", "Cultural Fit & Ethics"],
+    "correctAnswer": "Cultural Fit & Ethics",
+    "explanation": "Cultural Fit & Ethical Alignment is weighted at 30%, the highest of the four components, emphasizing that values are the most important factor for growth. (Article IX-A §6)"
+  },
+  {
+    "question": "What is a core principle of the Profit Redistribution in Article IX-B?",
+    "options": ["Investors always get paid first", "Prosperity is a shared emotion, not a private possession", "Profit should be maximized at all costs", "Only founders receive surplus"],
+    "correctAnswer": "Prosperity is a shared emotion, not a private possession",
+    "explanation": "This principle from Article IX-B §1 establishes the core philosophy that profit is not for hoarding but for sharing fairly among all who contributed to it."
+  },
+  {
+    "question": "What is the fixed cap for Founders & Planet Leaders in the surplus redistribution schema?",
+    "options": ["5%", "10%", "15%", "There is no cap"],
+    "correctAnswer": "10%",
+    "explanation": "To prevent excessive executive bonuses and ensure fairness, the share for Founders and Leaders is capped at 10% of the distributable surplus. (Article IX-B §3)"
+  },
+  {
+    "question": "What form can surplus redistribution take?",
+    "options": ["Only cash bonuses", "Only equity top-ups", "Cash, reinvestment credit, equipment grant, or equity", "Only company store credit"],
+    "correctAnswer": "Cash, reinvestment credit, equipment grant, or equity",
+    "explanation": "Article IX-B §4 allows for flexibility, stating that redistribution can take various forms, including cash, credits, grants, or additional equity."
+  },
+  {
+    "question": "What is the 'Equal Return Principle' for investors?",
+    "options": ["All investors get the same dollar amount", "No investor class gets preferential rates beyond their proportional risk", "Early investors get a guaranteed 5x return", "Only employees can be investors"],
+    "correctAnswer": "No investor class gets preferential rates beyond their proportional risk",
+    "explanation": "This ethical rule from Article IX-B §5 ensures fairness by prohibiting special deals for certain investors; returns are based on the risk and timing of their investment."
+  },
+  {
+    "question": "According to the Simplified Article IX, what combined percentage of profit must be allocated to 'employee + community'?",
+    "options": ["20%", "30%", "40%", "50%"],
+    "correctAnswer": "40%",
+    "explanation": "The simplified guide for Article IX §2 explicitly states that while individual percentages can be adjusted, the combined share for employee well-being and community initiatives must always remain above 40%."
+  },
+  {
+    "question": "What is the purpose of the Universal Ledger mentioned in Article X?",
+    "options": ["To track employee work hours", "A private log for founders", "A shared, transparent record of all major financial decisions", "The company's marketing plan"],
+    "correctAnswer": "A shared, transparent record of all major financial decisions",
+    "explanation": "The Universal Ledger (Article X §3) is a public record, typically a Google Sheet, where all USP allocations and major financial movements are logged for transparency."
+  },
+  {
+    "question": "In the simplified guide, what is the first priority of surplus funds in Article IX-B?",
+    "options": ["Pay investors", "Give leaders a bonus", "Reinvest at least 40% back into the planet", "Buy new office furniture"],
+    "correctAnswer": "Reinvest at least 40% back into the planet",
+    "explanation": "The simplified version of Article IX-B §3 clearly states that before any distribution, a minimum of 40% of the surplus must be put back into the planet for things like R&D and training."
+  },
+  {
+    "question": "What happens if an employee's 'Sweat Equity' investment creates hardship?",
+    "options": ["The investment is automatically doubled", "Nothing, it's the employee's risk", "HR must step in to protect the employee's living standard", "The employee is demoted"],
+    "correctAnswer": "HR must step in to protect the employee's living standard",
+    "explanation": "The simplified guide for Article IX-A highlights the MLS safeguard: if a sweat equity investment negatively impacts an employee's well-being, HR is obligated to intervene."
+  },
+  {
+    "question": "Who must approve all external investors after Seed Stage 2?",
+    "options": ["The Planet Leader", "The Purrfect Treasury", "Fixer Labs", "The Council of the Universe"],
+    "correctAnswer": "The Council of the Universe",
+    "explanation": "Article IX-A §5 makes it clear that the Council of the Universe has the final say on all external investors, ensuring they pass an Ethical Alignment Test."
+  },
+  {
+    "question": "What is the main principle of the entire economic framework?",
+    "options": ["Maximize shareholder value", "Profit exists to serve people", "Expand as quickly as possible", "The founders' vision is absolute"],
+    "correctAnswer": "Profit exists to serve people",
+    "explanation": "The framework's guiding principle, stated at the beginning of Article IX, is 'Profit exists to serve people, not the other way around,' which informs all subsequent rules."
+  },
+  {
+    "question": "What is the emergency release protocol for the USP?",
+    "options": ["Up to 50% can be released anytime", "Up to 10% can be released within 72 hours with joint HR + Council approval", "Funds are locked for one year", "Only founders can authorize an emergency release"],
+    "correctAnswer": "Up to 10% can be released within 72 hours with joint HR + Council approval",
+    "explanation": "Article X §3 details the emergency protocol, allowing for rapid access to a portion of the USP funds in a crisis, provided both HR and the Council agree."
+  },
+  {
+    "question": "The Quarterly Transparency Report (QTR) is issued by which entity?",
+    "options": ["The Council", "The Treasury", "Each Planet", "Fixer Labs"],
+    "correctAnswer": "Each Planet",
+    "explanation": "Article IX-A §7 mandates that each individual planet is responsible for issuing its own QTR to ensure local transparency and accountability."
+  },
+  {
+    "question": "What is the total share of surplus allocated to all investors (Sweat Equity + External Seed) in Article IX-B?",
+    "options": ["15%", "20%", "30%", "40%"],
+    "correctAnswer": "30%",
+    "explanation": "Article IX-B §3 combines the shares for Sweat Equity Holders (15%) and External Seed Investors (15%), for a total of 30% allocated to capital providers."
+  },
+  {
+    "question": "What is the core idea behind the Seed Stage lifecycle?",
+    "options": ["To get as much funding as possible, as fast as possible", "Funding follows maturity, not vanity", "To sell the planet to the highest bidder", "To remain small forever"],
+    "correctAnswer": "Funding follows maturity, not vanity",
+    "explanation": "This principle from Article IX-A §1 governs the entire lifecycle. Planets unlock more funding and access to different investors only after they have proven their stability, ethical alignment, and maturity."
+  },
+  {
+    "question": "In the simplified guide to Article IX-B, the leadership bonus is capped at what level?",
+    "options": ["The same as the lowest-paid employee", "Whatever the founders decide", "2x the median employee reward", "10x the median employee reward"],
+    "correctAnswer": "2x the median employee reward",
+    "explanation": "The simplified framework for Article IX-B adds a specific, easy-to-understand cap on leadership bonuses to ensure fairness and prevent extreme pay disparities."
+  },
+  {
+    "question": "What is the primary function of the 'Reinvestment Option' in Article IX-B?",
+    "options": ["To force employees to give back their bonus", "To allow recipients to compound their ownership", "To pay for company parties", "A way to donate to charity"],
+    "correctAnswer": "To allow recipients to compound their ownership",
+    "explanation": "Article IX-B §4 gives recipients the choice to convert their share of surplus back into Planet Credits, allowing them to increase their long-term stake in the planet's success."
+  },
+  {
+    "question": "Which of the following is NOT a core component of the UAS?",
+    "options": ["Cultural Fit", "Employee Welfare", "Revenue Growth Rate", "Social/Environmental Impact"],
+    "correctAnswer": "Revenue Growth Rate",
+    "explanation": "The Universal Alignment Score (UAS) deliberately focuses on ethical and operational health (culture, welfare, impact) rather than purely financial metrics like growth rate. (Article IX-A §6)"
+  },
+  {
+    "question": "The 'Downstream' flow of capital refers to what?",
+    "options": ["Planet paying the Universe", "Universe investing in a Planet", "Planets trading with each other", "Profit being paid out"],
+    "correctAnswer": "Universe investing in a Planet",
+    "explanation": "Article IX-A §2.2 B defines 'Downstream' as capital flowing from the larger universal body down to a specific planet, typically in the form of seed grants."
+  },
+  {
+    "question": "What happens to a planet's surplus if there are no investors?",
+    "options": ["The Treasury takes it all", "The founder keeps it", "The investor shares are redistributed among employees and the community", "It is discarded"],
+    "correctAnswer": "The investor shares are redistributed among employees and the community",
+    "explanation": "The framework implies that if a recipient category is not applicable (e.g., no external investors), its share would be proportionally redistributed among the other stakeholders, prioritizing employees and the community."
+  },
+  {
+    "question": "What is the minimum percentage of surplus that MUST be reinvested back into the planet?",
+    "options": ["10%", "25%", "40%", "50%"],
+    "correctAnswer": "40%",
+    "explanation": "Article IX-B §3 establishes the 'Reinvestment Layer' as a mandatory first step for surplus, requiring at least 40% to be put back into employee well-being and R&D."
+  },
+  {
+    "question": "The concept that 'profit is a tool, not a prize' comes from which part of the Constitution?",
+    "options": ["The Preamble", "Article IX-A", "Article X", "The final clause of Article IX-B"],
+    "correctAnswer": "The Preamble",
+    "explanation": "This foundational philosophy is established in the Preamble of the main Constitution, setting the tone for all subsequent financial articles."
+  },
+  {
+    "question": "What is the main difference between the UIC and the Planetary Tithe?",
+    "options": ["There is no difference", "The UIC is for infrastructure, the Tithe is for community/seeding", "The UIC is optional, the Tithe is mandatory", "The UIC is larger than the Tithe"],
+    "correctAnswer": "The UIC is for infrastructure, the Tithe is for community/seeding",
+    "explanation": "The UIC is a fee for services rendered (shared systems), while the Planetary Tithe is a value-aligned contribution to the collective good (seeding new planets, universal stability). (Article IX-A §2.2 B)"
+  },
+  {
+    "question": "A planet in the 'Conception Seed' stage (Stage 0) is primarily focused on what?",
+    "options": ["Maximizing profit", "Hiring a large team", "Validating its core concept", "Expanding to new markets"],
+    "correctAnswer": "Validating its core concept",
+    "explanation": "Stage 0 is the very beginning, where the goal is simply to prove that the initial idea is viable and to achieve the first key milestone. (Article IX-A §3)"
+  },
+  {
+    "question": "Which of these is NOT a stated purpose of the Universal Support Pool (USP)?",
+    "options": ["Provide aid during crises", "Fund cross-universe R&D", "Support early-stage planets", "Pay for marketing and advertising"],
+    "correctAnswer": "Pay for marketing and advertising",
+    "explanation": "Article X §2 clearly defines the USP's purpose for aid, R&D, and seeding. Marketing is a planetary operational expense, not a function of the universal safety net."
+  },
+  {
+    "question": "What does 'Macro Gravity' refer to in the Investment Structure Overview?",
+    "options": ["A planet's local market", "The universal-level entity", "The force of the market", "A type of investment fund"],
+    "correctAnswer": "The universal-level entity",
+    "explanation": "Article IX-A §2.1 uses 'Macro Gravity' as a metaphor for the Universal entity that holds everything together (brand, IP, core systems) and 'Micro Biosphere' for the individual planets."
+  },
+  {
+    "question": "A rotating team of which group helps to audit financial reports?",
+    "options": ["Founders", "External consultants", "Employees", "Planet Leaders"],
+    "correctAnswer": "Employees",
+    "explanation": "Article IX §3 and Article X §3 both mention that rotating employee auditors are involved in verifying financial accuracy, promoting transparency and engagement."
+  },
+  {
+    "question": "What is the primary role of the Council of the Universe in the financial framework?",
+    "options": ["Managing daily planetary operations", "Writing marketing copy", "Providing high-level oversight and final approval", "Directly managing employee salaries"],
+    "correctAnswer": "Providing high-level oversight and final approval",
+    "explanation": "The Council's role is strategic and ethical oversight. They approve external investors, ratify amendments, and provide final approval for surplus allocations, ensuring alignment with the Constitution."
+  },
+  {
+    "question": "If a planet has a surplus, but is also facing a severe crisis, what can happen?",
+    "options": ["The surplus must be paid out regardless", "Up to 20% of the redistribution pool can be diverted to the USP", "The planet is shut down", "The founders must cover the costs personally"],
+    "correctAnswer": "Up to 20% of the redistribution pool can be diverted to the USP",
+    "explanation": "Article IX-B §3 includes a clause that in times of need, a portion of the distributable surplus can be sent to the Universal Support Pool to help with the crisis."
+  },
+  {
+    "question": "What is the core principle of the simplified Article X?",
+    "options": ["Every planet for itself", "A safety net woven from trust", "Growth at all costs", "Innovation over people"],
+    "correctAnswer": "A safety net woven from trust",
+    "explanation": "The simplified version of Article X uses this tagline to quickly communicate the purpose of the Universal Support Pool as a collective fund built on mutual trust and support."
+  },
+  {
+    "question": "What is the maximum percentage of its TOTAL profit a planet will contribute to the USP?",
+    "options": ["5%", "10%", "15%", "20%"],
+    "correctAnswer": "15%",
+    "explanation": "To ensure its own operational stability, a planet's contribution to the USP is capped. While it gives 10-20% of its SURPLUS, this amount cannot exceed 15% of its total profit. (Article X §1)"
+  },
+  {
+    "question": "Which document is the ultimate source for the Universe's core values, like 'Care' and 'Transparency'?",
+    "options": ["Article IX-A", "Article IX-B", "The main Constitution (Article II)", "The latest financial report"],
+    "correctAnswer": "The main Constitution (Article II)",
+    "explanation": "Article II of the main Constitution defines the core values of the Purrfect Universe, which are then referenced by other articles, such as the 'Ethical Investor Test' in Article IX-B."
+  },
+  {
+    "question": "What does the 'Reinvestment' layer of profit use prioritize?",
+    "options": ["Shareholder returns", "Executive bonuses", "Employee well-being, R&D, and infrastructure", "Marketing and sales"],
+    "correctAnswer": "Employee well-being, R&D, and infrastructure",
+    "explanation": "Article IX-B §3 makes it clear that the first use of surplus (after compliance) is to put it back into the health of the planet and its people."
+  },
+  {
+    "question": "The simplified financial rules emphasize that employee and community shares must never fall below what combined percentage?",
+    "options": ["25%", "40%", "50%", "60%"],
+    "correctAnswer": "40%",
+    "explanation": "The simplified guide for Article IX §2 reinforces this key safeguard: no matter how profit allocations are adjusted, the combined share for people and community must be at least 40%."
+  },
+  {
+    "question": "What is the purpose of having a fixed cap on leader bonuses in the profit redistribution?",
+    "options": ["To punish leaders for being successful", "To ensure fairness and prevent excessive pay gaps", "To save money for marketing", "It's a clerical error"],
+    "correctAnswer": "To ensure fairness and prevent excessive pay gaps",
+    "explanation": "The cap on leadership bonuses is a deliberate ethical choice to ensure that prosperity is shared broadly, reinforcing the 'profit serves people' principle. (Article IX-B §3)"
+  },
+  {
+    "question": "A planet launching a cross-planet venture would typically be in which Seed Stage?",
+    "options": ["Stage 1", "Stage 2", "Stage 3 (Expansion)", "Stage 0"],
+    "correctAnswer": "Stage 3 (Expansion)",
+    "explanation": "Seed Stage 3 is explicitly defined as the 'Expansion Seed' stage, where a mature planet can begin launching joint ventures with other planets. (Article IX-A §3)"
+  },
+  {
+    "question": "What is the relationship between Planet Credits (PCs) and surplus distribution for employees?",
+    "options": ["They are unrelated", "Distribution is weighted by PCs and tenure", "Only employees with no PCs get a share", "PCs are exchanged for surplus"],
+    "correctAnswer": "Distribution is weighted by PCs and tenure",
+    "explanation": "Article IX-B §3 states that the employee share of surplus is allocated based on a weighting of both their ownership stake (PCs) and their length of service (tenure)."
+  },
+  {
+    "question": "Which of these is NOT a core value mentioned in the Constitution?",
+    "options": ["Care", "Transparency", "Disruptive Innovation", "Play"],
+    "correctAnswer": "Disruptive Innovation",
+    "explanation": "While innovation is valued (e.g., R&D spending), 'Disruptive Innovation' is not one of the core ethical values listed in Article II. The values focus on how people treat each other: Care, Transparency, Empowerment, etc."
+  },
+  {
+    "question": "Who holds the ultimate authority for approving final surplus allocations?",
+    "options": ["The Planet Leader", "Fixer Labs", "The Council of the Universe", "The HR Department"],
+    "correctAnswer": "The Council of the Universe",
+    "explanation": "According to the governance chart in Article IX-B §6, while others calculate and audit, the Council of the Universe is the final approver, ensuring alignment with universal strategy."
+  },
+  {
+    "question": "If Fixer Labs suspects misuse of funds, what power do they have?",
+    "options": ["They can fire the Planet Leader", "They can freeze the funds pending a review", "They can only write a report", "They must ask the planet for permission to investigate"],
+    "correctAnswer": "They can freeze the funds pending a review",
+    "explanation": "The simplified guide for Article IX-A notes that as the independent auditor, Fixer Labs has the authority to freeze a planet's funds to prevent further issues until the Council can review the situation."
+  },
+  {
+    "question": "What is the main function of a 'Custodian' for a constitutional article?",
+    "options": ["To memorize the article", "To manage and be accountable for the principles within the article", "To rewrite the article annually", "The person who originally wrote the article"],
+    "correctAnswer": "To manage and be accountable for the principles within the article",
+    "explanation": "The 'Custodian' listed at the top of each article (e.g., 'Purrfect Treasury & Fixer Labs') is the entity responsible for upholding, managing, and answering for the rules defined in that document."
+  },
+  {
+    "question": "The principle 'The Universe lends gravity; the planets return light' is a metaphor for what?",
+    "options": ["A physics experiment", "The reciprocal relationship between the central entity and individual projects", "A new marketing slogan", "A line from a poem"],
+    "correctAnswer": "The reciprocal relationship between the central entity and individual projects",
+    "explanation": "This quote from Article IX-A §2 is a metaphor for the financial and supportive relationship: the Universe provides foundational support ('gravity'), and the planets create value and innovation ('light') in return."
+  },
+  {
+    "question": "What is the primary difference between Profit and Surplus?",
+    "options": ["They are the same thing", "Profit is before tax, Surplus is after tax", "Profit is the allowed 5% margin; Surplus is anything earned above that", "Profit is for planets, Surplus is for the Universe"],
+    "correctAnswer": "Profit is the allowed 5% margin; Surplus is anything earned above that",
+    "explanation": "Article IX §2 makes a clear distinction: 'Profit' is the constitutionally acceptable 5% margin, while 'Surplus' is the community-owned amount beyond that cap that must be redistributed."
+  },
+  {
+    "question": "An employee can invest up to 80% of their salary in sweat equity at which stage?",
+    "options": ["Seed 0", "Seed 1", "Seed 2", "Never"],
+    "correctAnswer": "Seed 1",
+    "explanation": "The simplified guide for Article IX-A specifies the highest level of sweat equity participation is allowed at Seed 1, when the planet is most reliant on its core team's commitment."
+  },
+  {
+    "question": "Where are all official financial documents and their version histories stored?",
+    "options": ["On the founder's personal computer", "In a public blockchain", "In the Google Workspace Treasury Archive", "They are deleted after one year"],
+    "correctAnswer": "In the Google Workspace Treasury Archive",
+    "explanation": "Article IX §3 mandates that for traceability and transparency, all financial records must be maintained in the official, shared Google Workspace archive."
+  },
+  {
+    "question": "What is the core idea of the 'Reinvestment' definition?",
+    "options": ["Buying stocks and bonds", "Putting money back into welfare, training, R&D, or infrastructure", "Giving money to external shareholders", "Saving money in a bank account"],
+    "correctAnswer": "Putting money back into welfare, training, R&D, or infrastructure",
+    "explanation": "Article IX §2 defines reinvestment specifically as allocating resources back into the planet and its people to improve its long-term health and capabilities."
+  },
+  {
+    "question": "An emergency release from the USP must be approved by which TWO groups?",
+    "options": ["Treasury and Fixer Labs", "Council and Founders", "HR and Council", "Planet Leader and HR"],
+    "correctAnswer": "HR and Council",
+    "explanation": "Article X §3 requires joint approval from both HR (representing people's welfare) and the Council (representing universal governance) for a fast, emergency disbursement."
+  },
+  {
+    "question": "What is the philosophical stance on profit stated in the Constitution?",
+    "options": ["It is the ultimate goal", "It is a necessary evil", "It is a tool, not a prize", "It is irrelevant"],
+    "correctAnswer": "It is a tool, not a prize",
+    "explanation": "The Preamble of the Constitution establishes this core philosophy, framing profit as a means to achieve stability and joy, rather than an end in itself."
+  },
+  {
+    "question": "What is the primary check on a Planet Leader's power regarding finances?",
+    "options": ["There are no checks", "They must have all spending approved by the founder", "Two people must always approve payments (e.g., Planet Leader + Treasury Officer)", "They are audited once every five years"],
+    "correctAnswer": "Two people must always approve payments (e.g., Planet Leader + Treasury Officer)",
+    "explanation": "The simplified guide for Article IX-A mentions this 'two-key' system as a fundamental rule for oversight and fairness, preventing any one person from having unilateral control over funds."
+  },
+  {
+    "question": "What does 'vested' mean in the context of Sweat Equity Holders' surplus share?",
+    "options": ["They have to wear a vest", "Their ownership credits are officially theirs and not subject to a clawback", "They have invested for more than 10 years", "They are part of the leadership team"],
+    "correctAnswer": "Their ownership credits are officially theirs and not subject to a clawback",
+    "explanation": "'Vested' is a standard financial term meaning the employee has met the requirements (usually time-based) for their equity to be non-forfeitable. Article IX-B §3 uses this to clarify who is eligible for a share."
+  },
+  {
+    "question": "Which of these is NOT part of the standard surplus redistribution for a planet?",
+    "options": ["Employee Well-being (30%)", "Emergency Reserves (20%)", "Founder's Vacation Fund (10%)", "Community & Environment (10%)"],
+    "correctAnswer": "Founder's Vacation Fund (10%)",
+    "explanation": "The Quarterly Surplus Redistribution Guideline in Article IX §1 specifies allocations for well-being, R&D, reserves, and community. A personal fund for a founder is not part of this ethical framework."
+  },
+  {
+    "question": "A 'Micro Biosphere' is a metaphor for what?",
+    "options": ["A small terrarium", "The universal-level entity", "An individual, autonomous planet", "The R&D department"],
+    "correctAnswer": "An individual, autonomous planet",
+    "explanation": "Article IX-A §2.1 uses this metaphor to describe a planet as its own small, self-sustaining ecosystem that operates within the larger universe."
+  },
+  {
+    "question": "What is the main purpose of the 'Compliance Layer' in the Hierarchy of Profit Use?",
+    "options": ["To comply with marketing trends", "To verify the profit is at or below the 5% cap", "To pay government taxes", "To ensure everyone is happy"],
+    "correctAnswer": "To verify the profit is at or below the 5% cap",
+    "explanation": "The first step in using profit, as defined in Article IX-B §3, is to ensure it complies with the Constitution's most fundamental financial rule: the 5% profit cap."
+  },
+  {
+    "question": "The simplified guide says 'Prosperity is to be shared, not stored.' Which article does this summarize?",
+    "options": ["Article IX (Framework)", "Article IX-A (Investment)", "Article IX-B (Profit Redistribution)", "Article X (Support Pool)"],
+    "correctAnswer": "Article IX-B (Profit Redistribution)",
+    "explanation": "This principle is the core idea of Article IX-B, which is entirely focused on the mechanisms for fairly distributing surplus profit rather than allowing it to be hoarded."
+  },
+  {
+    "question": "What happens if a planet consistently fails its Universal Alignment Score (UAS) check?",
+    "options": ["Nothing, the score is just for fun", "It is automatically shut down", "It cannot advance to the next Seed Stage and unlock more funding", "The Planet Leader is replaced"],
+    "correctAnswer": "It cannot advance to the next Seed Stage and unlock more funding",
+    "explanation": "The UAS is a critical gatekeeper for growth. As stated in the simplified guide for Article IX-A, failing the UAS means a planet is not considered mature enough to handle the responsibilities of the next stage."
+  },
+  {
+    "question": "Which of these is a key 'Fairness Rule' from the simplified profit guide?",
+    "options": ["Investors get paid double what employees get", "Founders can change the rules at any time", "Employees always get their share before outside investors", "Reports are only published if the planet is profitable"],
+    "correctAnswer": "Employees always get their share before outside investors",
+    "explanation": "This 'People First' rule is a cornerstone of the ethical framework, ensuring that the human contributors are prioritized over external capital. It is listed in the simplified guide for Article IX-B."
+  },
+  {
+    "question": "What is the purpose of the 'Emergency Reserve' in the surplus guideline?",
+    "options": ["A fund for parties and events", "A financial buffer for unforeseen crises", "Money set aside for founder bonuses", "To invest in high-risk stocks"],
+    "correctAnswer": "A financial buffer for unforeseen crises",
+    "explanation": "Article IX §1 allocates 20% of surplus to an Emergency Reserve, which acts as a planet's internal safety net for unexpected challenges or slow periods."
+  },
+  {
+    "question": "The Council of the Universe is composed of whom?",
+    "options": ["Only the original founders", "Elected Planet Leaders and Founders", "The top 10 highest-paid employees", "Representatives from Fixer Labs"],
+    "correctAnswer": "Elected Planet Leaders and Founders",
+    "explanation": "A tooltip in Article IX-A references Article III of the main Constitution, which defines the Council's composition as a representative body of both founders and elected planet leaders."
+  },
+  {
+    "question": "A planet at 'Seed Stage 4' is best described as:",
+    "options": ["A brand new idea", "Just starting to make money", "Mature, audited, and sustainable", "In a state of crisis"],
+    "correctAnswer": "Mature, audited, and sustainable",
+    "explanation": "Stage 4, 'Universal Alignment,' is the final stage in the lifecycle, representing a planet that is stable, fully aligned with the constitution, and a pillar of the Universe. (Article IX-A §3)"
+  },
+  {
+    "question": "The 'Reinvestment Choice' gives surplus recipients the power to do what?",
+    "options": ["Donate their share to the founder", "Increase their ownership stake in the planet", "Demand a larger share next quarter", "Spend it only on approved items"],
+    "correctAnswer": "Increase their ownership stake in the planet",
+    "explanation": "The simplified guide for Article IX-B highlights this option, which empowers individuals to choose between immediate cash and long-term ownership by converting their share into more Planet Credits."
+  },
+  {
+    "question": "What is the primary role of the Purrfect Treasury?",
+    "options": ["To design new products", "To manage universal funds and ensure financial stability", "To run marketing campaigns", "To handle customer support"],
+    "correctAnswer": "To manage universal funds and ensure financial stability",
+    "explanation": "The Treasury is the central financial body of the Universe, responsible for managing the UTF, auditing planets, and providing financial oversight and stability, as mentioned in various articles."
+  },
+  {
+    "question": "What does the phrase 'not a company, a living Universe' signify?",
+    "options": ["It is a registered nonprofit organization", "It prioritizes organic, ethical growth and relationships over mechanical profit extraction", "It operates exclusively in outer space", "It is an internal joke"],
+    "correctAnswer": "It prioritizes organic, ethical growth and relationships over mechanical profit extraction",
+    "explanation": "This tagline, found in the footer and main Constitution, encapsulates the core philosophy: the organization is viewed as a complex, interconnected ecosystem of care, not a simple machine for making money."
+  },
+  {
+    "question": "In the surplus redistribution, tenure is considered alongside Planet Credits for which group?",
+    "options": ["Founders", "External Investors", "Employees", "The Council"],
+    "correctAnswer": "Employees",
+    "explanation": "Article IX-B §3 specifies that the employee share is weighted by both their ownership stake (PCs) AND their length of service (tenure), rewarding both investment and loyalty."
+  },
+  {
+    "question": "If a planet needs emergency aid, which fund would it most likely receive it from?",
+    "options": ["The Marketing Budget", "The Universal Support Pool (USP)", "The R&D Fund", "The Founder's personal account"],
+    "correctAnswer": "The Universal Support Pool (USP)",
+    "explanation": "Article X defines the entire purpose of the USP as a collective safety net designed specifically to provide aid to planets or individuals during a crisis."
+  },
+  {
+    "question": "An 'Ethical Alignment Test' is required for which group?",
+    "options": ["New employees", "External Investors", "Founders", "Planet Leaders"],
+    "correctAnswer": "External Investors",
+    "explanation": "Article IX-A §5 mandates that any external investor must pass this test, administered by the Council, to ensure their values align with the Universe's before they are allowed to invest."
+  },
+  {
+    "question": "What is the primary theme of Article IX-B's philosophical clause?",
+    "options": ["The importance of high profits", "That success is measured by gratitude distributed", "The need for rapid expansion", "The superiority of founders"],
+    "correctAnswer": "That success is measured by gratitude distributed",
+    "explanation": "The final clause of Article IX-B §8 states, 'The measure of success is not wealth retained but gratitude distributed,' summarizing its focus on sharing and appreciation."
+  },
+  {
+    "question": "A 'Convertible Advance' is a form of what?",
+    "options": ["An employee bonus", "A type of loan from the Universe to a Planet", "A marketing budget", "A planet's payment to the Universe"],
+    "correctAnswer": "A type of loan from the Universe to a Planet",
+    "explanation": "Mentioned in Article IX-A §2.2 B, a convertible advance is a form of downstream capital, essentially a loan that can later be converted into equity or ownership."
+  },
+  {
+    "question": "Who is the custodian for the Profit Redistribution article (IX-B)?",
+    "options": ["Fixer Labs only", "The Planet Leaders", "Purrfect Treasury & Council of the Universe", "The HR Department"],
+    "correctAnswer": "Purrfect Treasury & Council of the Universe",
+    "explanation": "The header of Article IX-B lists the Treasury (which executes the distribution) and the Council (which provides final oversight) as the joint custodians."
+  }
+]

@@ -75,8 +75,13 @@
                 <p class="mt-4 text-lg text-gray-300">Test your knowledge of Articles IX, IX-A, and IX-B.</p>
             </header>
 
+            <!-- Loading State -->
+            <div id="loading-screen" class="card rounded-2xl p-8 text-center">
+                <p class="text-lg text-gray-300">Loading questions...</p>
+            </div>
+
             <!-- Quiz Setup -->
-            <div id="setup-screen" class="card rounded-2xl p-8 text-center">
+            <div id="setup-screen" class="card rounded-2xl p-8 text-center hidden">
                 <h2 class="text-2xl font-bold text-white mb-4">Quiz Settings</h2>
                 <div class="mb-6">
                     <label for="question-slider" class="block mb-2 text-lg text-gray-300">Number of Questions: <span id="slider-value" class="font-bold text-cyan-300">10</span></label>
@@ -122,274 +127,177 @@
     </div>
 
     <script>
-        const allQuestions = [
-            {
-                question: "What is the maximum net profit margin a planet is allowed to have under Article IX?",
-                options: ["3%", "5%", "10%", "There is no limit"],
-                correctAnswer: "5%",
-                explanation: "Article IX §1 explicitly states that the net profit margin for all planets is capped at 5% of total revenue to prioritize sustainability over extraction."
-            },
-            {
-                question: "Profit earned beyond the constitutional cap is called:",
-                options: ["Overflow", "Bonus", "Surplus", "Reserve"],
-                correctAnswer: "Surplus",
-                explanation: "According to Article IX §2, any profit exceeding the 5% margin is defined as 'Surplus' and becomes eligible for redistribution."
-            },
-            {
-                question: "What is the Universal Infrastructure Contribution (UIC)?",
-                options: ["A donation to charity", "A tax paid to a local government", "A fee of up to 5% of revenue for shared systems", "A 10% profit share for founders"],
-                correctAnswer: "A fee of up to 5% of revenue for shared systems",
-                explanation: "The UIC is a contribution of up to 5% of a planet's revenue to the Universal Treasury to maintain shared resources like legal, brand IP, and AI systems (Article IX-A §2.2 B)."
-            },
-            {
-                question: "The Universal Support Pool (USP) is primarily funded by:",
-                options: ["Founder contributions", "A 10-20% share of a planet's Surplus", "External investors", "A flat universal tax"],
-                correctAnswer: "A 10-20% share of a planet's Surplus",
-                explanation: "Article X §1 specifies that planets with surplus profits contribute 10-20% of that surplus to the USP to act as a universal safety net."
-            },
-            {
-                question: "What is 'Sweat Equity' in the Purrfect Universe?",
-                options: ["Physical labor on a project", "An employee investment mechanism using salary", "A type of cryptocurrency", "A bonus for working overtime"],
-                correctAnswer: "An employee investment mechanism using salary",
-                explanation: "The Sweat Equity Program allows employees to invest a portion of their net salary, which is converted into Planet Credits (PCs), representing ownership (Article IX-A §4.1)."
-            },
-            {
-                question: "At which Seed Stage can a planet start accepting ethically-aligned external investors?",
-                options: ["Stage 0 (Conception)", "Stage 1 (Operational)", "Stage 2 (Profitability)", "Stage 4 (Universal Alignment)"],
-                correctAnswer: "Stage 2 (Profitability)",
-                explanation: "Article IX-A §5 outlines that external investors are eligible to participate from Seed Stage 2 onwards, after the planet is post break-even and has passed an Ethical Alignment Test."
-            },
-            {
-                question: "According to the standard redistribution model in Article IX-B, what percentage of surplus is allocated to Employees?",
-                options: ["10%", "20%", "30%", "40%"],
-                correctAnswer: "30%",
-                explanation: "Article IX-B §3 specifies that 30% of the distributable surplus is allocated to active and eligible employees, weighted by their Planet Credits and tenure."
-            },
-            {
-                question: "What is the 'Human First Clause' in Article IX-B?",
-                options: ["Humans must be hired over AI", "Employee redistributions are paid before external investor returns", "All products must be tested by humans", "Human resources has final say on budgets"],
-                correctAnswer: "Employee redistributions are paid before external investor returns",
-                explanation: "The Human First Clause (Article IX-B §5) is an ethical rule ensuring that the people who built the value (employees) receive their share of profits before any capital investors."
-            },
-            {
-                question: "To advance to a new Seed Stage, a planet must achieve a Universal Alignment Score (UAS) of at least:",
-                options: ["60%", "75%", "80%", "95%"],
-                correctAnswer: "80%",
-                explanation: "Article IX-A §6 states that a minimum UAS of 80% is required to advance. The score measures cultural fit, ethics, welfare, and impact."
-            },
-            {
-                question: "Who performs the annual, independent, cross-planet audits to ensure transparency?",
-                options: ["The Council of the Universe", "The Purrfect Treasury", "Fixer Labs", "A team of rotating founders"],
-                correctAnswer: "Fixer Labs",
-                explanation: "Fixer Labs serves as the Universe's independent auditor, responsible for verifying financial accuracy and compliance across all planets (Article IX §3)."
-            },
-            {
-                question: "What is the purpose of the 'Planetary Tithe'?",
-                options: ["To fund the military", "To pay for marketing", "A 1-3% profit contribution to community projects", "To repay initial founder investment"],
-                correctAnswer: "A 1-3% profit contribution to community projects",
-                explanation: "The Planetary Tithe is a donation of 1-3% of profit that flows into the Universal Treasury Fund (UTF) to seed new planets and provide stability during crises. (IX-A §2.2 B)"
-            },
-            {
-                question: "What is the standard allocation of surplus for Research & Innovation?",
-                options: ["10%", "40%", "20%", "30%"],
-                correctAnswer: "40%",
-                explanation: "Under the Quarterly Surplus Redistribution Guideline (Article IX §1), 40% is allocated to Research & Innovation, for R&D and continuous improvement."
-            },
-            {
-                question: "What are Planet Credits (PCs)?",
-                options: ["A form of currency", "Vacation days", "Internal units of ownership from sweat equity", "Company awards"],
-                correctAnswer: "Internal units of ownership from sweat equity",
-                explanation: "Planet Credits (PCs) are the internal units that represent an employee's ownership stake in their planet, earned through the Sweat Equity program. (Article IX §2)"
-            },
-            {
-                question: "What does the 'Ethical Investment Clause' prohibit?",
-                options: ["Investing in competing planets", "Partnerships that harm people, animals, or the environment", "Investing less than a certain amount", "Taking on debt"],
-                correctAnswer: "Partnerships that harm people, animals, or the environment",
-                explanation: "This clause in Article IX §3 explicitly forbids any partnership or reinvestment that could cause harm, ensuring all financial activities align with core values."
-            },
-            {
-                question: "Who can invest using 'Seed Tokens'?",
-                options: ["Anyone", "Only founders", "Friends & Family during early stages", "Accredited external investors"],
-                correctAnswer: "Friends & Family during early stages",
-                explanation: "Seed Tokens are a specific, non-tradable investment vehicle for friends and family to support a planet during its Seed 1-2 stages. (Article IX-A §4.2)"
-            },
-            {
-                question: "In the profit redistribution hierarchy (Article IX-B), what happens immediately after verifying the 5% profit cap?",
-                options: ["Pay out all investors", "A minimum of 40% of surplus is reinvested", "Give bonuses to the founders", "Donate to the USP"],
-                correctAnswer: "A minimum of 40% of surplus is reinvested",
-                explanation: "Article IX-B §3 specifies a clear hierarchy. After the Compliance Layer (checking the cap), the next step is the Reinvestment Layer, where at least 40% of surplus goes back into the planet."
-            },
-            {
-                question: "Which two groups govern the Universal Support Pool (USP)?",
-                options: ["Founders and Fixer Labs", "Treasury and Planet Leaders", "HR and the Council of the Universe", "Marketing and R&D"],
-                correctAnswer: "HR and the Council of the Universe",
-                explanation: "Article X §3 states that disbursements from the USP are reviewed quarterly by a joint body of HR and the Council of the Universe to ensure funds are used properly."
-            },
-            {
-                question: "What is the purpose of a QSAR?",
-                options: ["A report on employee happiness", "A quarterly report on how surplus was allocated", "A sales and marketing report", "A technical systems report"],
-                correctAnswer: "A quarterly report on how surplus was allocated",
-                explanation: "A Quarterly Surplus Allocation Report (QSAR) is a mandatory transparency document that details a planet's profit, surplus, and how that surplus was redistributed. (Article IX §3)"
-            },
-            {
-                question: "The ethos of Article X (USP) states that the Universe's strength is measured by what?",
-                options: ["Total revenue", "Number of planets", "Retained profit", "The safety of its weakest orbit"],
-                correctAnswer: "The safety of its weakest orbit",
-                explanation: "Article X §4 concludes with the ethos: 'The Universe’s strength is measured not by retained profit but by the safety of its weakest orbit,' emphasizing collective care."
-            },
-            {
-                question: "Under Article IX-B, what share of surplus is reserved for the 'Community & Compassion Funds'?",
-                options: ["5%", "10%", "15%", "20%"],
-                correctAnswer: "10%",
-                explanation: "The redistribution schema in Article IX-B §3 allocates 10% of the surplus to Community & Compassion Funds, which are governed by the Council and HR for welfare and aid."
-            },
-        ].sort(() => 0.5 - Math.random()); // Add more questions here...
-        
-        allQuestions.push(...allQuestions, ...allQuestions.slice(0, 10)); // Duplicate to ensure we can always get 50
+        document.addEventListener('DOMContentLoaded', async () => {
+            // DOM Elements
+            const loadingScreen = document.getElementById('loading-screen');
+            const setupScreen = document.getElementById('setup-screen');
+            const quizScreen = document.getElementById('quiz-screen');
+            const resultsScreen = document.getElementById('results-screen');
+            const startBtn = document.getElementById('start-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const questionText = document.getElementById('question-text');
+            const optionsContainer = document.getElementById('options-container');
+            const progressText = document.getElementById('progress-text');
+            const scoreText = document.getElementById('score-text');
+            const gradeText = document.getElementById('grade-text');
+            const explanationContainer = document.getElementById('explanation-container');
+            const explanationText = document.getElementById('explanation-text');
+            const resultsSummary = document.getElementById('results-summary');
+            const slider = document.getElementById('question-slider');
+            const sliderValue = document.getElementById('slider-value');
 
-        // DOM Elements
-        const setupScreen = document.getElementById('setup-screen');
-        const quizScreen = document.getElementById('quiz-screen');
-        const resultsScreen = document.getElementById('results-screen');
-        const startBtn = document.getElementById('start-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const restartBtn = document.getElementById('restart-btn');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const progressText = document.getElementById('progress-text');
-        const scoreText = document.getElementById('score-text');
-        const gradeText = document.getElementById('grade-text');
-        const explanationContainer = document.getElementById('explanation-container');
-        const explanationText = document.getElementById('explanation-text');
-        const resultsSummary = document.getElementById('results-summary');
-        const slider = document.getElementById('question-slider');
-        const sliderValue = document.getElementById('slider-value');
-        
-        const questionCounts = [10, 20, 30, 40, 50];
+            const questionCounts = [10, 20, 30, 40, 50];
+            let allQuestions = [];
 
-        // State
-        let selectedQuestions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let userAnswers = [];
+            // State
+            let selectedQuestions = [];
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let userAnswers = [];
 
-        // Slider Logic
-        slider.addEventListener('input', () => {
-            sliderValue.textContent = questionCounts[slider.value];
-        });
-
-        // Event Listeners
-        startBtn.addEventListener('click', startQuiz);
-        nextBtn.addEventListener('click', nextQuestion);
-        restartBtn.addEventListener('click', restartQuiz);
-
-        function startQuiz() {
-            const numQuestions = questionCounts[slider.value];
-            selectedQuestions = allQuestions.slice(0, numQuestions);
-            currentQuestionIndex = 0;
-            score = 0;
-            userAnswers = [];
-
-            setupScreen.classList.add('hidden');
-            resultsScreen.classList.add('hidden');
-            quizScreen.classList.remove('hidden');
-            displayQuestion();
-        }
-
-        function displayQuestion() {
-            explanationContainer.classList.add('hidden');
-            nextBtn.disabled = true;
-
-            if (currentQuestionIndex < selectedQuestions.length) {
-                const question = selectedQuestions[currentQuestionIndex];
-                progressText.textContent = `Question ${currentQuestionIndex + 1} of ${selectedQuestions.length}`;
-                questionText.textContent = question.question;
-                
-                optionsContainer.innerHTML = '';
-                question.options.forEach(option => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.className = 'option-btn';
-                    button.onclick = () => selectAnswer(option, button);
-                    optionsContainer.appendChild(button);
-                });
-            } else {
-                showResults();
-            }
-        }
-
-        function selectAnswer(selectedOption, btn) {
-            const question = selectedQuestions[currentQuestionIndex];
-            const isCorrect = selectedOption === question.correctAnswer;
-
-            if (isCorrect) {
-                score++;
-                btn.classList.add('correct');
-            } else {
-                btn.classList.add('incorrect');
-            }
-            
-            userAnswers.push({
-                question: question.question,
-                selected: selectedOption,
-                correct: question.correctAnswer,
-                explanation: question.explanation
-            });
-            
-            Array.from(optionsContainer.children).forEach(button => {
-                button.disabled = true;
-                if (button.textContent === question.correctAnswer) {
-                    button.classList.add('correct');
+            // --- Fetch Questions ---
+            async function fetchQuestions() {
+                try {
+                    const response = await fetch('questions.json');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    allQuestions = data;
+                    loadingScreen.classList.add('hidden');
+                    setupScreen.classList.remove('hidden');
+                } catch (error) {
+                    loadingScreen.innerHTML = `<p class="text-red-400">Error loading questions. Please try refreshing the page.</p>`;
+                    console.error("Failed to fetch questions:", error);
                 }
+            }
+
+            // Slider Logic
+            slider.addEventListener('input', () => {
+                sliderValue.textContent = questionCounts[slider.value];
             });
 
-            explanationText.textContent = question.explanation;
-            explanationContainer.classList.remove('hidden');
-            nextBtn.disabled = false;
-        }
+            // Event Listeners
+            startBtn.addEventListener('click', startQuiz);
+            nextBtn.addEventListener('click', nextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
 
-        function nextQuestion() {
-            currentQuestionIndex++;
-            displayQuestion();
-        }
+            function startQuiz() {
+                const numQuestions = questionCounts[slider.value];
+                // Shuffle all questions and take the desired number
+                selectedQuestions = [...allQuestions].sort(() => 0.5 - Math.random()).slice(0, numQuestions);
+                
+                currentQuestionIndex = 0;
+                score = 0;
+                userAnswers = [];
 
-        function showResults() {
-            quizScreen.classList.add('hidden');
-            resultsScreen.classList.remove('hidden');
+                setupScreen.classList.add('hidden');
+                resultsScreen.classList.add('hidden');
+                quizScreen.classList.remove('hidden');
+                displayQuestion();
+            }
 
-            const percentage = Math.round((score / selectedQuestions.length) * 100);
-            scoreText.textContent = `You scored ${score} out of ${selectedQuestions.length} (${percentage}%)`;
+            function displayQuestion() {
+                explanationContainer.classList.add('hidden');
+                nextBtn.disabled = true;
 
-            let grade, gradeColor;
-            if (percentage >= 90) { grade = "Grade: Cosmic Guardian"; gradeColor = "text-cyan-300"; }
-            else if (percentage >= 75) { grade = "Grade: Planet Leader"; gradeColor = "text-green-400"; }
-            else if (percentage >= 50) { grade = "Grade: Seed Investor"; gradeColor = "text-yellow-400"; }
-            else { grade = "Grade: Curious Observer"; gradeColor = "text-orange-400"; }
-            
-            gradeText.textContent = grade;
-            gradeText.className = `text-xl ${gradeColor} mb-6`;
+                if (currentQuestionIndex < selectedQuestions.length) {
+                    const question = selectedQuestions[currentQuestionIndex];
+                    progressText.textContent = `Question ${currentQuestionIndex + 1} of ${selectedQuestions.length}`;
+                    questionText.textContent = question.question;
+                    
+                    optionsContainer.innerHTML = '';
+                    // Shuffle options for each question
+                    const shuffledOptions = [...question.options].sort(() => 0.5 - Math.random());
+                    shuffledOptions.forEach(option => {
+                        const button = document.createElement('button');
+                        button.textContent = option;
+                        button.className = 'option-btn';
+                        button.onclick = () => selectAnswer(option, button);
+                        optionsContainer.appendChild(button);
+                    });
+                } else {
+                    showResults();
+                }
+            }
 
-            // Build summary
-            resultsSummary.innerHTML = '<h3 class="font-orbitron text-2xl text-white my-6 text-center">Review Your Answers</h3>';
-            userAnswers.forEach((answer, index) => {
-                const isCorrect = answer.selected === answer.correct;
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'card rounded-lg p-4 mb-4';
-                resultDiv.innerHTML = `
-                    <p class="font-bold text-white">${index + 1}. ${answer.question}</p>
-                    <p class="mt-2 ${isCorrect ? 'text-green-400' : 'text-red-400'}">Your answer: ${answer.selected} ${isCorrect ? '✔' : '✖'}</p>
-                    ${!isCorrect ? `<p class="mt-1 text-green-400">Correct answer: ${answer.correct}</p>` : ''}
-                    <p class="mt-2 text-sm text-gray-400"><strong class="text-purple-300">Explanation:</strong> ${answer.explanation}</p>
-                `;
-                resultsSummary.appendChild(resultDiv);
-            });
-        }
+            function selectAnswer(selectedOption, btn) {
+                const question = selectedQuestions[currentQuestionIndex];
+                const isCorrect = selectedOption === question.correctAnswer;
 
-        function restartQuiz() {
-            resultsScreen.classList.add('hidden');
-            quizScreen.classList.add('hidden');
-            setupScreen.classList.remove('hidden');
-        }
+                if (isCorrect) {
+                    score++;
+                    btn.classList.add('correct');
+                } else {
+                    btn.classList.add('incorrect');
+                }
+                
+                userAnswers.push({
+                    question: question.question,
+                    selected: selectedOption,
+                    correct: question.correctAnswer,
+                    explanation: question.explanation
+                });
+                
+                Array.from(optionsContainer.children).forEach(button => {
+                    button.disabled = true;
+                    if (button.textContent === question.correctAnswer) {
+                        button.classList.add('correct');
+                    }
+                });
+
+                explanationText.textContent = question.explanation;
+                explanationContainer.classList.remove('hidden');
+                nextBtn.disabled = false;
+            }
+
+            function nextQuestion() {
+                currentQuestionIndex++;
+                displayQuestion();
+            }
+
+            function showResults() {
+                quizScreen.classList.add('hidden');
+                resultsScreen.classList.remove('hidden');
+
+                const percentage = Math.round((score / selectedQuestions.length) * 100);
+                scoreText.textContent = `You scored ${score} out of ${selectedQuestions.length} (${percentage}%)`;
+
+                let grade, gradeColor;
+                if (percentage >= 90) { grade = "Grade: Cosmic Guardian"; gradeColor = "text-cyan-300"; }
+                else if (percentage >= 75) { grade = "Grade: Planet Leader"; gradeColor = "text-green-400"; }
+                else if (percentage >= 50) { grade = "Grade: Seed Investor"; gradeColor = "text-yellow-400"; }
+                else { grade = "Grade: Curious Observer"; gradeColor = "text-orange-400"; }
+                
+                gradeText.textContent = grade;
+                gradeText.className = `text-xl ${gradeColor} mb-6`;
+
+                // Build summary
+                resultsSummary.innerHTML = '<h3 class="font-orbitron text-2xl text-white my-6 text-center">Review Your Answers</h3>';
+                userAnswers.forEach((answer, index) => {
+                    const isCorrect = answer.selected === answer.correct;
+                    const resultDiv = document.createElement('div');
+                    resultDiv.className = 'card rounded-lg p-4 mb-4';
+                    resultDiv.innerHTML = `
+                        <p class="font-bold text-white">${index + 1}. ${answer.question}</p>
+                        <p class="mt-2 ${isCorrect ? 'text-green-400' : 'text-red-400'}">Your answer: ${answer.selected} ${isCorrect ? '✔' : '✖'}</p>
+                        ${!isCorrect ? `<p class="mt-1 text-green-400">Correct answer: ${answer.correct}</p>` : ''}
+                        <p class="mt-2 text-sm text-gray-400"><strong class="text-purple-300">Explanation:</strong> ${answer.explanation}</p>
+                    `;
+                    resultsSummary.appendChild(resultDiv);
+                });
+            }
+
+            function restartQuiz() {
+                resultsScreen.classList.add('hidden');
+                quizScreen.classList.add('hidden');
+                setupScreen.classList.remove('hidden');
+            }
+
+            // --- Initialize ---
+            fetchQuestions();
+        });
     </script>
 </body>
 </html>
