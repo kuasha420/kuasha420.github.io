@@ -180,6 +180,11 @@
         }
         
         /* --- Toggle Switch Styles --- */
+        /* * Note on Layout Shift: This component is designed to prevent layout shifts.
+         * The main '.toggle-switch' container has a fixed width and remains static in the page flow.
+         * The moving '.toggle-switch-handle' uses `position: absolute` and `transform`, which do not
+         * affect the layout of surrounding elements, ensuring a smooth visual transition without reflow.
+        */
         .toggle-switch {
             display: inline-flex;
             align-items: center;
@@ -195,12 +200,15 @@
             width: 50%;
             text-align: center;
             font-size: 0.875rem;
-            font-weight: 500;
+            font-weight: 600; /* Increased font weight for clarity */
             transition: color 0.3s ease;
-            z-index: 10; /* Ensure labels are clickable and above the handle */
+            z-index: 10; /* Ensure labels are clickable and render above the handle */
+            color: #a0a0b0; /* Slightly muted color for inactive state */
         }
+        /* Accessibility Update: Changed active color to white for high contrast */
         .toggle-switch-label.active {
-            color: #1abc9c;
+            color: #FFFFFF;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add a subtle glow to active text */
         }
         .toggle-switch-handle {
             position: absolute;
@@ -208,7 +216,8 @@
             left: 4px;
             width: calc(50% - 4px); /* Half the width minus padding offset */
             height: 30px;
-            background-color: #8e44ad;
+            /* Accessibility Update: Slightly brightened purple for better vibrancy */
+            background-color: #9b59b6;
             border-radius: 9999px;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 5; /* Place it below the labels */
@@ -231,20 +240,22 @@
             <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
                 Seeds of Creation & Ownership
             </h2>
-            <div id="detailed-header-info">
-                 <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                    Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
-                </p>
-                <div class="mt-4 text-sm text-gray-400">
-                    <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
-                    <span class="mx-2">|</span>
-                    <span>Applies To: All planets and entities</span>
+            <div class="grid"> <!-- Grid container to stack headers and prevent layout shift -->
+                <div id="detailed-header-info" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out">
+                     <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                        Universal Investment Schema · <span class="tooltip">Companion to Articles IX & X<span class="tooltip-text"><strong>ARTICLES IX & X:</strong> "Govern profit, surplus, shared prosperity, compensation, and welfare. They ensure profit is a tool, not a prize, and guarantee a Minimum Living Standard for all."</span></span> · <span class="tooltip">Ratified October 2025<span class="tooltip-text"><strong>ARTICLE XV §3:</strong> "Amendments to the Constitution require a 66% supermajority vote from the Council after a public Request for Comments (RFC) period."</span></span>
+                    </p>
+                    <div class="mt-4 text-sm text-gray-400">
+                        <span>Custodian: <span class="tooltip">Purrfect Treasury & Fixer Labs<span class="tooltip-text"><strong>CUSTODIANS:</strong> The Treasury manages universal funds and financial stability, while Fixer Labs serves as the independent auditor, ensuring transparency and accountability.</span></span></span>
+                        <span class="mx-2">|</span>
+                        <span>Applies To: All planets and entities</span>
+                    </div>
                 </div>
-            </div>
-             <div id="simplified-header-info" class="hidden">
-                 <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                    A simple guide to how investment, salary-sharing, and universe money work.
-                </p>
+                 <div id="simplified-header-info" style="grid-area: 1 / 1" class="transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
+                     <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                        A simple guide to how investment, salary-sharing, and universe money work.
+                    </p>
+                </div>
             </div>
         </header>
 
@@ -671,17 +682,25 @@
                 const isSimplified = toggle.classList.toggle('simplified');
                 
                 if (isSimplified) {
+                    // Toggle main content visibility
                     detailedView.classList.add('hidden');
                     simplifiedView.classList.remove('hidden');
-                    detailedHeader.classList.add('hidden');
-                    simplifiedHeader.classList.remove('hidden');
+                    
+                    // Animate header with opacity to prevent layout shift
+                    detailedHeader.classList.add('opacity-0', 'pointer-events-none');
+                    simplifiedHeader.classList.remove('opacity-0', 'pointer-events-none');
+
                     labels[0].classList.remove('active');
                     labels[1].classList.add('active');
                 } else {
+                    // Toggle main content visibility
                     detailedView.classList.remove('hidden');
                     simplifiedView.classList.add('hidden');
-                    detailedHeader.classList.remove('hidden');
-                    simplifiedHeader.classList.add('hidden');
+
+                    // Animate header with opacity
+                    detailedHeader.classList.remove('opacity-0', 'pointer-events-none');
+                    simplifiedHeader.classList.add('opacity-0', 'pointer-events-none');
+
                     labels[0].classList.add('active');
                     labels[1].classList.remove('active');
                 }
@@ -690,5 +709,4 @@
     </script>
 </body>
 </html>
-
 
