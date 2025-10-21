@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Universe | Article XV-A — Seeds of Creation & Ownership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the cosmic theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated starry background */
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat top left;
+            animation: move-stars 200s linear infinite;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Custom gradient text */
+        .text-gradient {
+            background-image: linear-gradient(to right, #8e44ad, #3498db, #1abc9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Glassmorphism card effect */
+        .card {
+            background: rgba(23, 23, 43, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(142, 68, 173, 0.5);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 2rem;
+            bottom: -2rem;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #8e44ad, transparent);
+        }
+        
+        .timeline-item:last-child::before {
+           display: none;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 2rem;
+            left: -11px;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #0a0a1a;
+            border: 2px solid #8e44ad;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .timeline-dot-inner {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #3498db;
+            box-shadow: 0 0 10px #3498db;
+        }
+        
+        .table-custom th, .table-custom td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+        }
+        
+        .table-custom thead {
+            background-color: rgba(142, 68, 173, 0.2);
+        }
+        
+        .table-custom tbody tr {
+             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .table-custom tbody tr:last-child {
+            border-bottom: none;
+        }
+
+    </style>
+</head>
+<body class="bg-[#0a0a1a]">
+    <div class="stars"></div>
+    <div class="content-wrapper">
+
+        <!-- Header Section -->
+        <header class="text-center py-20 px-4">
+            <h1 class="font-orbitron text-4xl md:text-6xl font-bold tracking-wider text-white">
+                Article XV-A
+            </h1>
+            <h2 class="text-gradient font-orbitron text-3xl md:text-5xl font-bold mt-2">
+                Seeds of Creation & Ownership
+            </h2>
+            <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                Universal Investment Schema · Companion to Articles IX & X · Ratified October 2025
+            </p>
+            <div class="mt-4 text-sm text-gray-400">
+                <span>Custodian: Purrfect Treasury & Fixer Labs</span>
+                <span class="mx-2">|</span>
+                <span>Applies To: All planets and entities</span>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 pb-20">
+            
+            <!-- 1. Purpose & Philosophy -->
+            <section id="philosophy" class="mb-16">
+                 <div class="card rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+                    <h3 class="font-orbitron text-3xl text-white mb-4"><span class="text-2xl mr-2">🌌</span> Purpose & Philosophy</h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        The Seeds of Creation & Ownership framework defines how capital, sweat, and belief combine to build and sustain life within the Universe. Every planet begins as a seed — nourished by intent, community, and care.
+                    </p>
+                    <div class="mt-6 border-t-2 border-dashed border-purple-500/30 pt-6">
+                        <p class="text-xl font-semibold text-cyan-300 italic">"No seed shall grow faster than its roots. Funding follows maturity, not vanity."</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2. Investment Structure -->
+            <section id="structure" class="mb-16">
+                 <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪴</span> Investment Structure Overview</h3>
+                 <div class="grid md:grid-cols-2 gap-8 mb-12">
+                     <div class="card rounded-2xl p-8">
+                         <h4 class="font-orbitron text-xl text-white mb-3">Universal <span class="text-gray-400">(Macro Gravity)</span></h4>
+                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> Purrfect Treasury + Council</p>
+                         <p><span class="font-semibold text-gray-200">Purpose:</span> Holds brand IP, legal identity, shared systems and AI infrastructure. Seeds and stabilizes planets.</p>
+                     </div>
+                     <div class="card rounded-2xl p-8">
+                         <h4 class="font-orbitron text-xl text-white mb-3">Planetary <span class="text-gray-400">(Micro Biosphere)</span></h4>
+                         <p class="text-gray-400 mb-2"><span class="font-semibold text-gray-200">Custodian:</span> Planet Leader + Local Treasury</p>
+                         <p><span class="font-semibold text-gray-200">Purpose:</span> Operates autonomously within constitutional ethos; returns value to the Universe through surplus and shared fees.</p>
+                     </div>
+                 </div>
+
+                 <div class="card rounded-2xl p-8 md:p-10">
+                    <h4 class="font-orbitron text-2xl text-white mb-6">Capital Interaction & Usage Framework</h4>
+                    <div class="space-y-8">
+                        <div>
+                           <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">A. Capital Streams and Purposes</h5>
+                           <div class="overflow-x-auto">
+                                <table class="w-full table-custom">
+                                    <thead>
+                                        <tr>
+                                            <th>Level</th>
+                                            <th>Capital Name</th>
+                                            <th>Custodian</th>
+                                            <th>Primary Purpose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Universal Capital</td>
+                                            <td>Universal Treasury Fund (UTF)</td>
+                                            <td>Treasury + Council</td>
+                                            <td>Seeding, stabilization & maintenance</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Planetary Capital</td>
+                                            <td>Planet Operating Fund (POF)</td>
+                                            <td>Planet Leader + Local Treasury</td>
+                                            <td>Daily operations & growth</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                           </div>
+                        </div>
+
+                        <div>
+                            <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">B. Capital Flow Dynamics</h5>
+                            <ul class="list-disc list-inside space-y-3 text-gray-300 pl-2">
+                                <li><span class="font-bold text-white">Downstream (Universe → Planet):</span> Mission-aligned Seed Grants or Convertible Advances.</li>
+                                <li><span class="font-bold text-white">Upstream (Planet → Universe):</span> ≤ 5% Universal Infrastructure Contribution (UIC) + 1-3% Planetary Tithe.</li>
+                                <li><span class="font-bold text-white">Cross-Planet Exchange (Planet ↔ Planet):</span> Governed by audited Interplanetary Agreements (IAs).</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-semibold text-lg text-cyan-300 border-b border-cyan-300/20 pb-2 mb-4">C. Planetary Capital Use Hierarchy (% of gross revenue)</h5>
+                            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">40-50%</div>
+                                    <div class="text-sm">Compensation & Welfare</div>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">20-25%</div>
+                                    <div class="text-sm">Operational Expenses</div>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">10-15%</div>
+                                    <div class="text-sm">R&D & Innovation</div>
+                                </div>
+                                 <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">5-10%</div>
+                                    <div class="text-sm">Marketing & Expansion</div>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">5%</div>
+                                    <div class="text-sm">Planet Reserve Fund</div>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">0-5%</div>
+                                    <div class="text-sm">UIC Contribution</div>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-teal-300">1-3%</div>
+                                    <div class="text-sm">Universal Tithe</div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div>
+                             <p class="italic text-center text-purple-300 mt-6 text-lg">"The Universe lends gravity; the planets return light. This reciprocal orbit ensures that no world shines alone."</p>
+                        </div>
+
+                    </div>
+                 </div>
+            </section>
+            
+            <!-- 3. Seed Stages & Life Cycle -->
+            <section id="stages" class="mb-16">
+                 <h3 class="font-orbitron text-3xl text-white mb-12 text-center"><span class="text-2xl mr-2">🌱</span> Seed Stages & Life Cycle</h3>
+                 <div class="relative max-w-2xl mx-auto pl-8">
+                     <!-- Timeline Item 0 -->
+                     <div class="timeline-item relative pb-12">
+                         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                         <div class="card rounded-xl p-6">
+                            <p class="text-purple-300 font-semibold mb-1">Stage 0</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Conception Seed</h4>
+                            <p class="text-gray-400">Validate concept and achieve the first milestone. Capital comes from founding equity or concept credits.</p>
+                         </div>
+                     </div>
+                     <!-- Timeline Item 1 -->
+                     <div class="timeline-item relative pb-12">
+                         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                          <div class="card rounded-xl p-6">
+                            <p class="text-purple-300 font-semibold mb-1">Stage 1</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Operational / Sweat Round</h4>
+                            <p class="text-gray-400">Operate for ~12 months and establish team ownership. Capital from employees and friends via cash or sweat equity.</p>
+                         </div>
+                     </div>
+                     <!-- Timeline Item 2 -->
+                     <div class="timeline-item relative pb-12">
+                         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                          <div class="card rounded-xl p-6">
+                            <p class="text-purple-300 font-semibold mb-1">Stage 2</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Profitability Seed</h4>
+                            <p class="text-gray-400">Expand post break-even. Open to aligned external investors via equity or revenue share.</p>
+                         </div>
+                     </div>
+                     <!-- Timeline Item 3 -->
+                     <div class="timeline-item relative pb-12">
+                         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                          <div class="card rounded-xl p-6">
+                            <p class="text-purple-300 font-semibold mb-1">Stage 3</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Expansion Seed</h4>
+                            <p class="text-gray-400">Launch cross-planet ventures. Funded by other planets and the Treasury through cross-equity or JVs.</p>
+                         </div>
+                     </div>
+                     <!-- Timeline Item 4 -->
+                     <div class="timeline-item relative pb-8">
+                         <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+                          <div class="card rounded-xl p-6">
+                            <p class="text-purple-300 font-semibold mb-1">Stage 4</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Universal Alignment</h4>
+                            <p class="text-gray-400">Mature, audited, and sustainable. Access to Council-approved externals via long-term equity or trust.</p>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+            
+            <!-- 4 & 5. Modalities & Governance -->
+            <section id="modalities" class="mb-16">
+                <div class="grid md:grid-cols-2 gap-8">
+                     <!-- Investment Modalities -->
+                    <div class="w-full">
+                        <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">💎</span> Investment Modalities</h3>
+                        <div class="card rounded-2xl p-8 space-y-6 h-full">
+                             <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Sweat Equity Program</h4>
+                                <p class="text-gray-400">Employees may invest a portion of their net salary, converted monthly to Planet Credits (PCs). Safeguarded by a Minimum Living Standard (MLS) review.</p>
+                             </div>
+                              <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Micro-Investment Pools</h4>
+                                <p class="text-gray-400">Friends & family may buy non-tradable Seed Tokens until the planet reaches Seed Stage 2.</p>
+                             </div>
+                              <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Surplus Redistribution</h4>
+                                <p class="text-gray-400">Surplus above the 5% profit cap is redistributed: 40% to Employees, 20% to R&D, 20% to Community, and 20% to the Treasury.</p>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- Governance & Access -->
+                    <div class="w-full">
+                         <h3 class="font-orbitron text-3xl text-white mb-8 text-center"><span class="text-2xl mr-2">🪐</span> Governance & Access Rules</h3>
+                         <div class="card rounded-2xl p-8 h-full overflow-x-auto">
+                            <table class="w-full table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Entity</th>
+                                        <th>Eligibility</th>
+                                        <th>Oversight</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Founders</td><td>All stages</td><td>Council + Treasury</td></tr>
+                                    <tr><td>Employees</td><td>Seed 1+</td><td>Planet Leader + Fixer Labs</td></tr>
+                                    <tr><td>Friends / Family</td><td>Seed 1–2</td><td>Planet Leader</td></tr>
+                                    <tr><td>External Investors</td><td>Seed 2+</td><td>Council of Universe</td></tr>
+                                    <tr><td>Other Planets</td><td>Seed 3+</td><td>Treasury Council</td></tr>
+                                </tbody>
+                            </table>
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6, 7, 8. UAS, Auditing & Significance -->
+            <section id="conclusion">
+                 <div class="grid md:grid-cols-3 gap-8">
+                     <!-- Universal Alignment Score -->
+                     <div class="card rounded-2xl p-8">
+                        <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🌍</span> UAS</h3>
+                        <p class="text-center text-gray-400 mb-6">A minimum score of 80% is required to advance stages.</p>
+                        <div class="space-y-3">
+                            <p class="flex justify-between"><span>Cultural Fit & Ethics</span> <span class="font-bold text-cyan-300">30%</span></p>
+                            <p class="flex justify-between"><span>Operational Clarity</span> <span class="font-bold text-cyan-300">25%</span></p>
+                            <p class="flex justify-between"><span>Employee Welfare</span> <span class="font-bold text-cyan-300">25%</span></p>
+                            <p class="flex justify-between"><span>Social/Environmental Impact</span> <span class="font-bold text-cyan-300">20%</span></p>
+                        </div>
+                     </div>
+                     <!-- Auditing & Transparency -->
+                     <div class="card rounded-2xl p-8">
+                        <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">⚖️</span> Auditing</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Each planet issues Quarterly Transparency Reports (QTRs) covering finance, Planet Credit status, and investors. Fixer Labs conducts annual audits for Treasury and Council records to ensure full transparency and accountability.
+                        </p>
+                     </div>
+                     <!-- Significance -->
+                     <div class="card rounded-2xl p-8">
+                        <h3 class="font-orbitron text-2xl text-white mb-4 text-center"><span class="text-xl mr-2">🐾</span> Significance</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            This article extends Articles IX and X to honor ethical capital and shared ownership. It ensures that those who build and heal the Universe share its prosperity without corrupting its core values.
+                        </p>
+                     </div>
+                 </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center py-12 px-4 border-t border-white/10">
+            <p class="text-xl italic text-gradient font-semibold">
+                "The Purrfect Universe grows not by wealth accumulated, but by belief multiplied."
+            </p>
+            <p class="mt-4 text-gray-500">Purrfect Universe — Not a company, a living Universe.</p>
+        </footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arafat Zahan's CV (Heavily Supervised by Cats)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #1a202c;
+        }
+        h1, h2, h3 {
+            font-family: 'Space Mono', monospace;
+        }
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+        }
+        #cat-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <canvas id="cat-canvas"></canvas>
+
+    <div class="content-wrapper container mx-auto p-4 md:p-8 max-w-4xl">
+        <main class="card rounded-2xl shadow-2xl p-6 md:p-10">
+            <!-- Header Section -->
+            <header class="text-center mb-10 border-b border-gray-200 pb-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Arafat Zahan</h1>
+                <p class="text-lg md:text-xl text-indigo-600 mt-2">Founder & Chief Universe Architect</p>
+                <p class="text-md text-gray-500 italic">Professional Chaos Manager, Cat Butler, and Dream Farmer</p>
+                
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-gray-600">
+                    <span class="flex items-center">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        Purrfect HQ
+                    </span>
+                    <a href="mailto:arafat@purrfecthq.com" class="flex items-center hover:text-indigo-600 transition-colors">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        arafat@purrfecthq.com
+                    </a>
+                    <a href="http://www.purrfecthq.com" target="_blank" class="flex items-center hover:text-indigo-600 transition-colors">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        purrfecthq.com
+                    </a>
+                </div>
+            </header>
+
+            <!-- Sections -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="md:col-span-2 space-y-8">
+                    <!-- Objective -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🧭</span> Objective
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed">To continue pretending the multiverse was a strategic roadmap from day one, while being quietly guided by the Heavenly Council of Fur, an unhealthy amount of coffee, and inconveniently timed epiphanies. Also: to make HR smile, sigh, and archive this under “culture.”</p>
+                    </section>
+
+                    <!-- Professional Experience -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="text-indigo-500 mr-3">🚀</span> Professional Experience
+                        </h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900">Founder, Builder of Planets, Collector of Souls</h3>
+                                <p class="font-semibold text-indigo-700">Purrfect Universe <span class="text-gray-500 font-normal ml-2">| 0000 – Present</span></p>
+                                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                    <li>Founded a multi-planetary ecosystem while trying to ship a to-do app.</li>
+                                    <li>Created The Heavenly Council of Fur — seven cats with superior governance instincts.</li>
+                                    <li>Drafted a constitution longer than some software licenses and with more paw-prints.</li>
+                                    <li>Instituted a 40-hour max week policy (personal adherence: interpretive).</li>
+                                    <li>Frequently authors policies at 03:00 with a cat on the keyboard for quality assurance.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900">Senior JavaScript Engineer</h3>
+                                <p class="font-semibold text-indigo-700">10up <span class="text-gray-500 font-normal ml-2">| 2021 – Present</span></p>
+                                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                    <li>Builds scalable frontends and brittle metaphors with equal care.</li>
+                                    <li>Reviews PRs and life choices in the same sitting.</li>
+                                    <li>Specializes in turning ambiguous product requirements into working features… and stories.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-lg font-bold text-gray-900">Side-Quest Commander</h3>
+                                <p class="font-semibold text-indigo-700">Purrfect Hustles Initiative <span class="text-gray-500 font-normal ml-2">| 2025 – Present</span></p>
+                                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                    <li>Launches rapid prototypes that sometimes evolve into actual companies.</li>
+                                    <li>Master of “let’s just test it” until it becomes a payroll item.</li>
+                                    <li>Runs on optimism, insomnia, and cat hair.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                     <!-- Mission Statement -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                           <span class="text-indigo-500 mr-3">🌌</span> Mission Statement
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed">To build worlds where kindness is currency, work feels like purpose, and cats are always part of the executive team — even if they never reply to Discord.</p>
+                    </section>
+                </div>
+
+                <div class="md:col-span-1 space-y-8">
+                    <!-- Education -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🎓</span> Education
+                        </h2>
+                        <p class="font-semibold text-gray-800">B.Sc. in Computer Science & Engineering</p>
+                        <p class="text-gray-600 italic">Majored in Stack Overflow, Minored in Existential Dread.</p>
+                        <p class="mt-2 text-gray-600"><strong>Continuing Studies:</strong> Cat Diplomacy, Storytelling for Founders, How to Make HR Laugh.</p>
+                    </section>
+
+                    <!-- Core Skills -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🪄</span> Core Skills
+                        </h2>
+                        <p class="font-semibold text-gray-800">Technical:</p>
+                        <p class="text-gray-600">JavaScript (React, Node.js), product architecture, AI prompt design, systems thinking.</p>
+                        <p class="font-semibold text-gray-800 mt-2">Leadership & Strategy:</p>
+                        <p class="text-gray-600">Vision building, radical transparency, storytelling, culture design.</p>
+                         <p class="font-semibold text-gray-800 mt-2">Feline Qualifications:</p>
+                        <p class="text-gray-600">Treat distribution logistics, nap optimization, strategic silent judgment.</p>
+                    </section>
+
+                     <!-- Achievements -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🏆</span> Notable Achievements
+                        </h2>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Founded Purrfect Software Limited.</li>
+                            <li>Formalized cats as part of the executive fabric.</li>
+                            <li>Balanced fatherhood, leadership, and debugging.</li>
+                            <li>Survived product launches with team intact.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Philosophy -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                           <span class="text-indigo-500 mr-3">🧘‍♂️</span> Philosophy
+                        </h2>
+                        <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-gray-700">
+                            “Build with love. Ship with humility. Nap when the cats permit.”
+                            <cite class="block not-italic mt-2 text-sm text-gray-500">— Misty, Keeper of Wisdom</cite>
+                        </blockquote>
+                    </section>
+                    
+                    <!-- Fun Facts -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🎭</span> Fun Facts
+                        </h2>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                           <li>Once wrote an HR policy to legitimize cat cuddling breaks.</li>
+                            <li>Believes a warm laptop is a sign of productive collaboration.</li>
+                            <li>Considers “console.log” a valid form of meditation.</li>
+                            <li>Has a baby daughter, Jimha, who outranks most org charts.</li>
+                        </ul>
+                    </section>
+
+                     <!-- References -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                            <span class="text-indigo-500 mr-3">🐾</span> References
+                        </h2>
+                        <p class="text-sm text-gray-600 mb-2">Authorized by the Council of Fur</p>
+                        <div class="space-y-2 text-gray-700">
+                           <p><strong>Misty:</strong> “He listens when I stare long enough.”</p>
+                           <p><strong>Chini:</strong> “Approves all plans that involve naps.”</p>
+                           <p><strong>Bundle:</strong> “He tried. That’s what matters.”</p>
+                           <p><strong>HR Dept:</strong> “We’ll file this under ‘culture enrichment.’”</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <footer class="text-center mt-10 pt-6 border-t border-gray-200">
+                <p class="text-gray-500 text-sm">Signed (metaphorically):</p>
+                <p class="text-gray-700 font-semibold mt-1">— Misty, Keeper of Wisdom, on behalf of Arafat Zahan and The Heavenly Council of Fur</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Three.js Cat Animation
+        let scene, camera, renderer, cat;
+        const canvas = document.getElementById('cat-canvas');
+
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
+            directionalLight.position.set(5, 10, 7.5);
+            scene.add(directionalLight);
+
+            // Create Cat
+            createCat();
+
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize, false);
+
+            // Start animation
+            animate();
+        }
+
+        function createCat() {
+            cat = new THREE.Group();
+            
+            const catMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x333333, // Dark grey
+                roughness: 0.8,
+                metalness: 0.1
+            });
+
+            // Body
+            const bodyGeometry = new THREE.SphereGeometry(0.8, 32, 16);
+            const body = new THREE.Mesh(bodyGeometry, catMaterial);
+            body.scale.z = 0.6; // make it more oval
+            cat.add(body);
+
+            // Head
+            const headGeometry = new THREE.SphereGeometry(0.5, 32, 16);
+            const head = new THREE.Mesh(headGeometry, catMaterial);
+            head.position.set(0, 0.9, 0);
+            cat.add(head);
+            
+            // Ears
+            const earGeometry = new THREE.ConeGeometry(0.2, 0.4, 8);
+            const leftEar = new THREE.Mesh(earGeometry, catMaterial);
+            leftEar.position.set(-0.3, 1.3, 0);
+            leftEar.rotation.z = -Math.PI / 8;
+            cat.add(leftEar);
+            
+            const rightEar = new THREE.Mesh(earGeometry, catMaterial);
+            rightEar.position.set(0.3, 1.3, 0);
+            rightEar.rotation.z = Math.PI / 8;
+            cat.add(rightEar);
+
+            // Tail
+            cat.tail = new THREE.Group();
+            const tailMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x444444,
+                roughness: 0.8
+            });
+            let parentSegment = cat.tail;
+            for (let i = 0; i < 6; i++) {
+                const segmentGeometry = new THREE.SphereGeometry(0.1 - i * 0.005, 8, 8);
+                const segment = new THREE.Mesh(segmentGeometry, tailMaterial);
+                segment.position.y = -0.15;
+                parentSegment.add(segment);
+                parentSegment = segment;
+            }
+            cat.tail.position.set(0, -0.7, -0.3);
+            cat.tail.rotation.x = Math.PI / 4;
+            cat.add(cat.tail);
+            
+            cat.position.set(3, 1, -2); // Initial position
+            cat.rotation.y = -Math.PI / 4;
+            scene.add(cat);
+        }
+        
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+            
+            // Floating animation
+            if (cat) {
+                cat.position.y = Math.sin(elapsedTime * 0.7) * 0.3 + 1;
+                cat.rotation.y += 0.002;
+                
+                // Tail animation
+                let segment = cat.tail.children[0];
+                let i = 0;
+                while(segment) {
+                    segment.rotation.x = Math.sin(elapsedTime * 2 + i * 0.5) * 0.3;
+                    if(segment.children.length > 0){
+                        segment = segment.children[0];
+                        i++;
+                    } else {
+                        segment = null;
+                    }
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Mouse move interaction
+        function onDocumentMouseMove(event) {
+            if (!cat) return;
+            const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            // Move cat based on mouse position
+            const vector = new THREE.Vector3(mouseX * 5, mouseY * 2, 0.5);
+            vector.unproject(camera);
+            const dir = vector.sub(camera.position).normalize();
+            const distance = -camera.position.z / dir.z;
+            const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+            
+            // Smoothly move the cat towards the target position
+            cat.position.lerp(new THREE.Vector3(pos.x, cat.position.y, pos.z - 2), 0.03);
+        }
+        document.addEventListener('mousemove', onDocumentMouseMove);
+
+        init();
+    </script>
+</body>
+</html>
