@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed of Creation | Purrfect Universe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0e0;
+            overflow: hidden; /* Prevent scrollbars from 3D canvas */
+        }
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        #three-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #8e44ad, #3498db, #1abc9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Glassmorphism UI */
+        .ui-panel {
+            background: rgba(10, 10, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            z-index: 10;
+            position: absolute;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        /* Action Buttons */
+        .action-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #e0e0e0;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+        }
+        .action-btn:hover:not(:disabled) {
+            background-color: rgba(142, 68, 173, 0.5);
+            border-color: #8e44ad;
+            transform: translateY(-2px);
+        }
+        .action-btn:disabled {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: #555;
+            cursor: not-allowed;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        .action-btn .desc {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        /* Message Log */
+        #message-log {
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 0.875rem;
+            scrollbar-width: thin;
+            scrollbar-color: #8e44ad #0a0a1a;
+        }
+        #message-log p {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted rgba(52, 152, 219, 0.6);
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: #1f1f3d;
+            color: #e0e0e0;
+            text-align: left;
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            z-index: 20;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            border: 1px solid #8e44ad;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            font-size: 0.875rem;
+            transform: translateY(10px);
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Progress Bar */
+        .progress-bar {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 99px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .progress-bar-inner {
+            height: 12px;
+            border-radius: 99px;
+            background-image: linear-gradient(to right, #3498db, #1abc9c);
+            transition: width 0.5s ease;
+        }
+        /* Win Modal */
+        #win-modal {
+            z-index: 100;
+        }
+    </style>
+    <!-- Import Map to resolve bare specifiers for THREE.js modules -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.min.js",
+          "three/examples/jsm/controls/OrbitControls.js": "https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/controls/OrbitControls.js"
+        }
+      }
+    </script>
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- 3D Canvas -->
+        <canvas id="three-canvas"></canvas>
+
+        <!-- Top Header -->
+        <div class="ui-panel top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-xl p-4 text-center">
+            <h1 class="font-orbitron text-2xl font-bold text-white">Seed of Creation</h1>
+            <p class="text-gradient font-semibold">Help Planet Genesis reach Seed Stage 4</p>
+        </div>
+
+        <!-- Player Actions (Left) -->
+        <div class="ui-panel bottom-4 left-4 w-[calc(100%-2rem)] md:w-auto md:max-w-sm p-6 space-y-3">
+            <h2 class="font-orbitron text-xl text-white border-b border-white/10 pb-2 mb-3">Monthly Actions</h2>
+            
+            <button id="action-work-product" class="action-btn">
+                <strong>Work: Focus on Product</strong>
+                <div class="desc">+Revenue, +UAS (Operations)</div>
+            </button>
+            <button id="action-work-culture" class="action-btn">
+                <strong>Work: Focus on Culture</strong>
+                <div class="desc">+UAS (Culture/Welfare), +Happiness</div>
+            </button>
+            
+            <button id="action-invest-sweat" class="action-btn" disabled>
+                <strong>Invest: Sweat Equity (10% Salary)</strong>
+                <div class="desc">+Planet Credits (PCs), +Planet Treasury</div>
+            </button>
+            
+            <button id="action-invest-usp" class="action-btn">
+                <strong>Invest: Contribute to USP (5% Salary)</strong>
+                <div class="desc">+UAS (Ethics), +Happiness</div>
+            </button>
+
+            <button id="action-rest" class="action-btn">
+                <strong>Rest: Recover</strong>
+                <div class="desc">++Happiness</div>
+            </button>
+
+            <button id="next-month-btn" class="w-full mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all">
+                End Month
+            </button>
+        </div>
+
+        <!-- Stats (Right) -->
+        <div class="ui-panel top-24 right-4 w-[calc(100%-2rem)] md:w-auto md:max-w-sm p-6 space-y-4">
+            <div>
+                <h3 class="font-orbitron text-lg text-white">Player Stats</h3>
+                <div class="text-sm space-y-1 mt-2">
+                    <p><strong>Month:</strong> <span id="stat-month" class="text-cyan-300">1</span></p>
+                    <p><strong>Cash:</strong> <span id="stat-cash" class="text-green-400">$1,000</span></p>
+                    <p class="tooltip">
+                        <strong>Happiness:</strong> <span id="stat-happiness" class="text-yellow-400">100%</span>
+                        <span class="tooltip-text">If happiness hits 0%, you burn out and leave the planet! Rest and investing in culture/community restores it.</span>
+                    </p>
+                    <p class="tooltip">
+                        <strong>Planet Credits (PCs):</strong> <span id="stat-pcs" class="text-purple-300">0</span>
+                         <span class="tooltip-text">Your personal "Sweat Equity" ownership. Increases your influence on the planet's success.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-4">
+                <h3 class="font-orbitron text-lg text-white">Planet: Genesis</h3>
+                 <div class="text-sm space-y-1 mt-2">
+                    <p class="tooltip">
+                        <strong>Seed Stage:</strong> <span id="stat-stage" class="text-cyan-300">0 (Conception)</span>
+                        <span class="tooltip-text">Your goal is to reach Seed Stage 4. Advance stages by increasing your UAS score to 80.</span>
+                    </p>
+                    <p class="tooltip">
+                        <strong>Planet Treasury (POF):</strong> <span id="stat-pof" class="text-green-400">$5,000</span>
+                        <span class="tooltip-text">The planet's operating fund. If this hits 0, the UAS score will drop rapidly!</span>
+                    </p>
+                    <p class="tooltip">
+                        <strong>Universal Alignment (UAS):</strong> <span id="stat-uas" class="text-yellow-400">0 / 80</span>
+                        <span class="tooltip-text">Measures ethical, cultural, and operational health. Reach 80 to advance to the next Seed Stage.</span>
+                    </p>
+                    <div class="progress-bar mt-2">
+                        <div id="uas-progress-bar" class="progress-bar-inner" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Log (Mobile: above actions, Desktop: bottom-right) -->
+        <div class="ui-panel bottom-[32rem] left-4 right-4 md:left-auto md:bottom-4 md:right-4 md:w-auto md:max-w-sm p-6">
+             <h3 class="font-orbitron text-lg text-white border-b border-white/10 pb-2 mb-3">Event Log</h3>
+             <div id="message-log">
+                <p>You've joined Planet Genesis as a new hire. Welcome to the Universe!</p>
+             </div>
+        </div>
+        
+        <!-- Win Modal -->
+        <div id="win-modal" class="hidden ui-panel top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 text-center max-w-lg w-[calc(100%-2rem)]">
+            <h2 class="font-orbitron text-3xl text-gradient font-bold mb-4">You did it!</h2>
+            <p class="text-xl text-white mb-6">In <span id="win-months"></span> months, your dedication and ethical investment helped Planet Genesis reach <strong class="text-cyan-300">Seed Stage 4!</strong></p>
+            <p class="text-gray-300 mb-2">You personally acquired <strong id="win-pcs" class="text-purple-300"></strong> Planet Credits, becoming a true guardian of the planet's spirit.</p>
+            <p class="text-lg italic text-purple-300 mb-8">"The Purrfect Universe grows not by wealth accumulated, but by belief multiplied."</p>
+            <button id="restart-btn" class="w-full mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Three.js and game logic script -->
+    <script type="module">
+        // Use bare specifiers, which are now resolved by the importmap
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+        // --- DOM Elements ---
+        // We must wait for the DOM to be fully loaded before trying to access elements
+        let canvas, actionBtns, statsUI, winModal;
+
+        // --- Game State ---
+        let gameState = {};
+        let activeAction = 'work_product'; // Default action
+        let isGameOver = false;
+
+        // --- THREE.JS Scene Refs ---
+        let scene, camera, renderer, controls, universe, planet, playerShip;
+        let planetGroup = new THREE.Group();
+        let beams = []; // Array to hold investment beams
+        let planetMeshes = [];
+
+        // --- Main Initializer ---
+        function initializeGame() {
+            // Now we can safely query the DOM
+            canvas = document.getElementById('three-canvas');
+            actionBtns = {
+                product: document.getElementById('action-work-product'),
+                culture: document.getElementById('action-work-culture'),
+                sweat: document.getElementById('action-invest-sweat'),
+                usp: document.getElementById('action-invest-usp'),
+                rest: document.getElementById('action-rest'),
+                nextMonth: document.getElementById('next-month-btn')
+            };
+            statsUI = {
+                month: document.getElementById('stat-month'),
+                cash: document.getElementById('stat-cash'),
+                happiness: document.getElementById('stat-happiness'),
+                pcs: document.getElementById('stat-pcs'),
+                stage: document.getElementById('stat-stage'),
+                pof: document.getElementById('stat-pof'),
+                uas: document.getElementById('stat-uas'),
+                uasBar: document.getElementById('uas-progress-bar'),
+                log: document.getElementById('message-log'),
+            };
+            winModal = {
+                modal: document.getElementById('win-modal'),
+                months: document.getElementById('win-months'),
+                pcs: document.getElementById('win-pcs'),
+                restartBtn: document.getElementById('restart-btn')
+            };
+            
+            initializeGameState();
+            
+            // --- Event Listeners ---
+            actionBtns.product.onclick = () => { activeAction = 'work_product'; updateUI(); };
+            actionBtns.culture.onclick = () => { activeAction = 'work_culture'; updateUI(); };
+            actionBtns.sweat.onclick = () => { activeAction = 'invest_sweat'; updateUI(); };
+            actionBtns.usp.onclick = () => { activeAction = 'invest_usp'; updateUI(); };
+            actionBtns.rest.onclick = () => { activeAction = 'rest'; updateUI(); };
+            actionBtns.nextMonth.onclick = endMonth;
+            winModal.restartBtn.onclick = restartGame;
+
+            updateUI();
+            initThree();
+        }
+
+        function initializeGameState() {
+            gameState = {
+                month: 1,
+                cash: 1000,
+                happiness: 100,
+                pcs: 0,
+                salary: 1000,
+                stage: 0,
+                pof: 5000,
+                uas: 0,
+                uasGoal: 80,
+                employees: 5,
+                planetExpenses: 3000,
+            };
+            isGameOver = false;
+        }
+
+        // --- Message Log Utility ---
+        function logMessage(message, type = 'info') {
+            const p = document.createElement('p');
+            if (type === 'good') p.className = 'text-green-400';
+            if (type === 'bad') p.className = 'text-red-400';
+            if (type === 'special') p.className = 'text-purple-300 font-bold';
+            p.textContent = message;
+            statsUI.log.prepend(p);
+            // Limit log entries
+            while (statsUI.log.children.length > 20) {
+                statsUI.log.removeChild(statsUI.log.lastChild);
+            }
+        }
+
+        // --- UI Update ---
+        function updateUI() {
+            statsUI.month.textContent = gameState.month;
+            statsUI.cash.textContent = `$${gameState.cash.toLocaleString()}`;
+            statsUI.happiness.textContent = `${gameState.happiness}%`;
+            statsUI.pcs.textContent = gameState.pcs.toLocaleString();
+            statsUI.stage.textContent = `${gameState.stage} (${getStageName(gameState.stage)})`;
+            statsUI.pof.textContent = `$${gameState.pof.toLocaleString()}`;
+            statsUI.uas.textContent = `${gameState.uas} / ${gameState.uasGoal}`;
+            statsUI.uasBar.style.width = `${(gameState.uas / gameState.uasGoal) * 100}%`;
+
+            // Update button states
+            actionBtns.sweat.disabled = gameState.stage < 1 || gameState.cash < (gameState.salary * 0.1);
+            actionBtns.usp.disabled = gameState.cash < (gameState.salary * 0.05);
+
+            if (gameState.stage < 1) {
+                actionBtns.sweat.querySelector('.desc').textContent = "Unlocks at Seed Stage 1";
+            } else {
+                actionBtns.sweat.querySelector('.desc').textContent = `-$${(gameState.salary * 0.1).toLocaleString()} | +Planet Credits (PCs), +Planet Treasury`;
+            }
+
+            // Highlight active action
+            document.querySelectorAll('.action-btn').forEach(btn => btn.style.borderColor = 'rgba(255, 255, 255, 0.2)');
+            if (activeAction === 'work_product') actionBtns.product.style.borderColor = '#3498db';
+            if (activeAction === 'work_culture') actionBtns.culture.style.borderColor = '#3498db';
+            if (activeAction === 'invest_sweat') actionBtns.sweat.style.borderColor = '#3498db';
+            if (activeAction === 'invest_usp') actionBtns.usp.style.borderColor = '#3498db';
+            if (activeAction === 'rest') actionBtns.rest.style.borderColor = '#3498db';
+        }
+
+        function getStageName(stage) {
+            switch (stage) {
+                case 0: return "Conception";
+                case 1: return "Operational";
+                case 2: return "Profitability";
+                case 3: return "Expansion";
+                case 4: return "Universal Alignment";
+                default: return "Unknown";
+            }
+        }
+
+        // --- Game Loop ---
+        function endMonth() {
+            if (isGameOver) return;
+
+            // 1. Resolve Player Action
+            let uasGain = 0;
+            let happinessChange = -5; // Base work stress
+            
+            switch (activeAction) {
+                case 'work_product':
+                    let revenue = 1000 + (Math.random() * 2000);
+                    gameState.pof += Math.floor(revenue);
+                    uasGain = 2;
+                    logMessage(`Your product focus generated $${Math.floor(revenue).toLocaleString()} for the planet.`);
+                    break;
+                case 'work_culture':
+                    uasGain = 5;
+                    happinessChange = 5;
+                    logMessage("You focus on culture, boosting morale and UAS.");
+                    break;
+                case 'invest_sweat':
+                    let sweatCost = Math.floor(gameState.salary * 0.1);
+                    if (gameState.cash >= sweatCost) {
+                        gameState.cash -= sweatCost;
+                        gameState.pof += sweatCost; // Your investment goes into the planet!
+                        let newPCs = Math.floor(sweatCost / 10); // $10 = 1 PC
+                        gameState.pcs += newPCs;
+                        happinessChange = 10;
+                        logMessage(`You invest $${sweatCost.toLocaleString()} in Sweat Equity for ${newPCs} PCs!`, 'good');
+                        // Trigger 3D effect
+                        createBeam(playerShip, planet, 0x8e44ad);
+                    }
+                    break;
+                case 'invest_usp':
+                    let uspCost = Math.floor(gameState.salary * 0.05);
+                    if (gameState.cash >= uspCost) {
+                        gameState.cash -= uspCost;
+                        uasGain = 3; // Contributing to universe = good ethics
+                        happinessChange = 15;
+                        logMessage(`You contribute $${uspCost.toLocaleString()} to the Universal Support Pool. You feel proud!`, 'good');
+                        // Trigger 3D effect
+                        createBeam(playerShip, universe, 0x1abc9c);
+                    }
+                    break;
+                case 'rest':
+                    happinessChange = 25;
+                    logMessage("You take the month off to rest and recover.", 'info');
+                    break;
+            }
+
+            // 2. Planet Lifecycle
+            gameState.pof -= gameState.planetExpenses;
+            if (gameState.pof < 0) {
+                uasGain -= 10;
+                happinessChange -= 10;
+                logMessage("The Planet Treasury is in the red! UAS and happiness are falling!", 'bad');
+                gameState.pof = 0; // Don't go into deep debt
+            } else {
+                logMessage(`Planet expenses of $${gameState.planetExpenses.toLocaleString()} paid.`);
+            }
+
+            // 3. Player Influence
+            // Your total ownership (PCs) boosts UAS gains
+            let playerBoost = 1 + (gameState.pcs / 1000);
+            let finalUASGain = Math.floor(uasGain * playerBoost);
+            gameState.uas += finalUASGain;
+            
+            if (uasGain > 0) {
+                logMessage(`Your influence boosted UAS gain by an extra ${Math.round((playerBoost - 1) * 100)}% (+${finalUASGain} total).`);
+            }
+
+            // 4. Update Player Stats
+            gameState.month++;
+            gameState.happiness = Math.max(0, Math.min(100, gameState.happiness + happinessChange));
+            gameState.cash += gameState.salary;
+            logMessage(`You receive your salary of $${gameState.salary.toLocaleString()}.`, 'info');
+
+            // 5. Check Conditions
+            if (gameState.happiness <= 0) {
+                logMessage("You've burned out! Your happiness hit 0. Game Over.", 'bad');
+                isGameOver = true;
+                actionBtns.nextMonth.disabled = true;
+                winModal.modal.classList.remove('hidden');
+                winModal.modal.innerHTML = `
+                    <h2 class="font-orbitron text-3xl text-red-500 font-bold mb-4">Game Over</h2>
+                    <p class="text-xl text-white mb-6">You burned out and left Planet Genesis in month ${gameState.month}.</p>
+                    <p class="text-gray-300 mb-8">Remember, the Constitution values balance and well-being. Take care of yourself!</p>
+                    <button id="restart-btn-gameover" class="w-full mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all">Try Again</button>
+                `;
+                document.getElementById('restart-btn-gameover').onclick = restartGame;
+                return;
+            }
+
+            if (gameState.uas >= gameState.uasGoal) {
+                gameState.stage++;
+                gameState.uas = 0; // Reset for next stage
+                logMessage(`ADVANCEMENT! Planet Genesis has reached Seed Stage ${gameState.stage}!`, 'special');
+                
+                // Grant rewards
+                let pofBonus = 10000 * gameState.stage;
+                gameState.pof += pofBonus;
+                gameState.salary += 500 * gameState.stage;
+                logMessage(`Planet receives $${pofBonus.toLocaleString()} in new funding. Your salary increases to $${gameState.salary.toLocaleString()}!`, 'good');
+                
+                // Update 3D visual
+                updatePlanetVisual(gameState.stage);
+
+                if (gameState.stage === 4) {
+                    // WIN!
+                    isGameOver = true;
+                    winModal.modal.classList.remove('hidden');
+                    winModal.months.textContent = gameState.month;
+                    winModal.pcs.textContent = gameState.pcs.toLocaleString();
+                    actionBtns.nextMonth.disabled = true;
+                    return;
+                }
+            }
+            
+            // 6. Final UI Update
+            updateUI();
+        }
+
+        function restartGame() {
+            // Find the correct restart button (win or lose modal)
+            const restartBtnWin = document.getElementById('restart-btn');
+            const restartBtnGameOver = document.getElementById('restart-btn-gameover');
+            
+            if (restartBtnWin) restartBtnWin.onclick = restartGame; // Re-assign
+            if (restartBtnGameOver) restartBtnGameOver.onclick = restartGame; // Re-assign
+            
+            winModal.modal.classList.add('hidden');
+            // If the game over modal was shown, we need to reset its content
+            if (restartBtnGameOver) {
+                 winModal.modal.innerHTML = `
+                    <h2 class="font-orbitron text-3xl text-gradient font-bold mb-4">You did it!</h2>
+                    <p class="text-xl text-white mb-6">In <span id="win-months"></span> months, your dedication and ethical investment helped Planet Genesis reach <strong class="text-cyan-300">Seed Stage 4!</strong></p>
+                    <p class="text-gray-300 mb-2">You personally acquired <strong id="win-pcs" class="text-purple-300"></strong> Planet Credits, becoming a true guardian of the planet's spirit.</p>
+                    <p class="text-lg italic text-purple-300 mb-8">"The Purrfect Universe grows not by wealth accumulated, but by belief multiplied."</p>
+                    <button id="restart-btn" class="w-full mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 px-4 rounded-lg transition-all">Play Again</button>
+                `;
+                // Re-find the elements inside the modal
+                winModal.months = document.getElementById('win-months');
+                winModal.pcs = document.getElementById('win-pcs');
+                winModal.restartBtn = document.getElementById('restart-btn');
+                winModal.restartBtn.onclick = restartGame;
+            }
+
+            initializeGameState();
+            updateUI();
+            updatePlanetVisual(0);
+            statsUI.log.innerHTML = '<p>You\'ve joined Planet Genesis as a new hire. Welcome to the Universe!</p>';
+            actionBtns.nextMonth.disabled = false;
+        }
+
+        // --- THREE.JS SCENE SETUP ---
+        function initThree() {
+            scene = new THREE.Scene();
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 20;
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambientLight);
+
+            // Universe (Star)
+            const starLight = new THREE.PointLight(0xffffff, 2, 1000);
+            starLight.position.set(0, 0, 0);
+            scene.add(starLight);
+            
+            const starGeo = new THREE.IcosahedronGeometry(2, 3);
+            const starMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+            universe = new THREE.Mesh(starGeo, starMat);
+            scene.add(universe);
+
+            // Planet
+            scene.add(planetGroup);
+            const planetGeo = new THREE.IcosahedronGeometry(3, 4);
+            const planetMat = new THREE.MeshStandardMaterial({ color: 0x888888, roughness: 1 });
+            planet = new THREE.Mesh(planetGeo, planetMat);
+            planetGroup.add(planet);
+
+            // Player Ship
+            const shipGeo = new THREE.ConeGeometry(0.1, 0.4, 8);
+            const shipMat = new THREE.MeshBasicMaterial({ color: 0x3498db });
+            playerShip = new THREE.Mesh(shipGeo, shipMat);
+            playerShip.position.set(4, 0, 0);
+            playerShip.rotation.z = -Math.PI / 2;
+            planetGroup.add(playerShip); // Add ship to planet's orbit group
+
+            // Controls
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.enablePan = false;
+            controls.minDistance = 5;
+            controls.maxDistance = 100;
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            updatePlanetVisual(0); // Set initial barren state
+            animate();
+        }
+
+        // --- 3D Visual Updates ---
+        function updatePlanetVisual(stage) {
+            // Clear old meshes
+            planetMeshes.forEach(m => planet.remove(m));
+            planetMeshes = [];
+
+            switch (stage) {
+                case 0: // Barren rock
+                    planet.material.color.set(0x888888);
+                    planet.material.map = null;
+                    planet.material.emissive = new THREE.Color(0x000000);
+                    planet.material.emissiveIntensity = 0;
+                    break;
+                case 1: // Patch of green
+                    planet.material.color.set(0x778899);
+                    const patchGeo = new THREE.CircleGeometry(1, 32);
+                    const patchMat = new THREE.MeshBasicMaterial({ color: 0x27ae60, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
+                    const patch = new THREE.Mesh(patchGeo, patchMat);
+                    patch.position.z = 2.9; // On the surface
+                    patch.lookAt(0, 5, 5);
+                    planet.add(patch);
+                    planetMeshes.push(patch);
+                    break;
+                case 2: // Buildings
+                    planet.material.color.set(0x556B2F);
+                    for (let i = 0; i < 5; i++) {
+                        const building = new THREE.Mesh(
+                            new THREE.BoxGeometry(0.2, 0.2, Math.random() * 0.8 + 0.2),
+                            new THREE.MeshStandardMaterial({ color: 0xbdc3c7, emissive: 0x111111 })
+                        );
+                        // Get a point on the sphere and place building there
+                        const phi = Math.random() * Math.PI;
+                        const theta = Math.random() * 2 * Math.PI;
+                        building.position.setFromSphericalCoords(3.1, phi, theta);
+                        building.lookAt(0, 0, 0);
+                        planet.add(building);
+                        planetMeshes.push(building);
+                    }
+                    break;
+                case 3: // Trade routes (glowing rings)
+                    planet.material.color.set(0x4682B4);
+                    const ringGeo = new THREE.RingGeometry(4, 4.1, 64);
+                    const ringMat = new THREE.MeshBasicMaterial({ color: 0xe67e22, side: THREE.DoubleSide, transparent: true, opacity: 0.7 });
+                    const ring = new THREE.Mesh(ringGeo, ringMat);
+                    ring.rotation.x = Math.PI / 2;
+                    planet.add(ring);
+                    planetMeshes.push(ring);
+                    break;
+                case 4: // Vibrant, glowing planet
+                    planet.material.color.set(0x1abc9c);
+                    planet.material.emissive = new THREE.Color(0x1abc9c);
+                    planet.material.emissiveIntensity = 0.2;
+                    break;
+            }
+            planet.material.needsUpdate = true;
+        }
+
+        function createBeam(fromObj, toObj, color) {
+            const points = [
+                fromObj.getWorldPosition(new THREE.Vector3()),
+                toObj.getWorldPosition(new THREE.Vector3())
+            ];
+            const geo = new THREE.BufferGeometry().setFromPoints(points);
+            const mat = new THREE.LineBasicMaterial({ color: color, linewidth: 2, transparent: true });
+            const beam = new THREE.Line(geo, mat);
+            beam.userData.startTime = Date.now();
+            beams.push(beam);
+            scene.add(beam);
+        }
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (!renderer) return; // Exit if not initialized
+
+            const time = Date.now() * 0.0001;
+            
+            // Animate planet group (planet + ship) orbiting the star
+            planetGroup.position.x = Math.sin(time) * 15;
+            planetGroup.position.z = Math.cos(time) * 15;
+            
+            // Animate planet rotating on its axis
+            planet.rotation.y += 0.005;
+
+            // Animate beams (investment effects)
+            const now = Date.now();
+            for (let i = beams.length - 1; i >= 0; i--) {
+                const beam = beams[i];
+                const life = (now - beam.userData.startTime) / 1000; // 1 second life
+                if (life > 1) {
+                    scene.remove(beam);
+                    beam.geometry.dispose();
+                    beam.material.dispose();
+                    beams.splice(i, 1);
+                } else {
+                    beam.material.opacity = 1.0 - life;
+                }
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // --- Start Game ---
+        // Wait for the document to be fully loaded before starting the game
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeGame);
+        } else {
+            initializeGame();
+        }
+
+    </script>
+</body>
+</html>

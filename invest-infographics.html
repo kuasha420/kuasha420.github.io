@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Universe: An Economic Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B3954;
+            color: #BFD7EA;
+        }
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .card {
+            background-color: rgba(8, 126, 139, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(191, 215, 234, 0.2);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .stat-card {
+            border-left: 4px solid #FF5A5F;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #BFD7EA;
+            line-height: 1;
+        }
+        .flow-box {
+            border: 2px solid #087E8B;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="text-center p-8 md:p-12 bg-opacity-50">
+        <h1 class="font-orbitron text-4xl md:text-6xl font-bold text-white tracking-wider">A New Economic Cosmos</h1>
+        <p class="mt-4 text-lg md:text-xl text-BFD7EA max-w-3xl mx-auto">An analysis of the Purrfect Universe framework — a model designed for sustainability, stability, and shared prosperity, not just profit.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-3 text-center">
+                <h2 class="font-orbitron text-2xl text-white">The Founding Principle</h2>
+                <p class="mt-2 text-5xl font-bold text-white tracking-tight">"Profit is a <span class="text-[#FF5A5F]">Tool</span>, Not a Prize."</p>
+                <p class="mt-3 text-base text-BFD7EA max-w-2xl mx-auto">Purrfect Universe redefines a company as a living ecosystem. Growth is not for vanity, but for securing stability, time, and joy for its members. This principle underpins every financial decision.</p>
+            </div>
+
+            <div class="card rounded-lg shadow-2xl p-6 md:col-span-2 lg:col-span-1">
+                <h2 class="font-orbitron text-2xl text-white mb-4">Initial Investment Flow</h2>
+                <p class="text-BFD7EA mb-6">When capital enters the ecosystem, it is not treated as owner's equity but as foundational energy. It's immediately allocated into three specialized funds, each with a distinct purpose, ensuring a balanced and resilient start for any project or "Planet".</p>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#087E8B] mr-3"></div>
+                        <div><strong class="text-white">70% Planet Fund:</strong> Operations, R&D, salaries.</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#BFD7EA] mr-3"></div>
+                        <div><strong class="text-white">20% Guardian Fund:</strong> A critical safety net.</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#FF5A5F] mr-3"></div>
+                        <div><strong class="text-white">10% Universe Fund:</strong> A tax for shared infrastructure.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-2">
+                <h3 class="font-orbitron text-2xl text-white text-center mb-4">Capital Allocation at Inception</h3>
+                 <div class="chart-container">
+                    <canvas id="investmentChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-3 stat-card">
+                <h2 class="font-orbitron text-4xl text-white">100%</h2>
+                <p class="text-xl text-BFD7EA">Of all surplus (profit) is reinvested back into the ecosystem. No dividends are ever paid to external shareholders, breaking the traditional cycle of value extraction.</p>
+            </div>
+            
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-2">
+                <h3 class="font-orbitron text-2xl text-white text-center mb-4">The Surplus Reinvestment Cycle</h3>
+                 <div class="chart-container">
+                    <canvas id="surplusChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card rounded-lg shadow-2xl p-6 md:col-span-2 lg:col-span-1">
+                <h2 class="font-orbitron text-2xl text-white mb-4">The Engine of Growth</h2>
+                <p class="text-BFD7EA mb-6">Instead of being extracted, surplus becomes the fuel for the next cycle of growth and stability. The allocation is strategically weighted towards reinforcing the safety net, ensuring long-term resilience is prioritized.</p>
+                <div class="space-y-4">
+                     <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#087E8B] mr-3"></div>
+                        <div><strong class="text-white">50% to Guardian Fund:</strong> Fortifying the safety net.</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#BFD7EA] mr-3"></div>
+                        <div><strong class="text-white">30% to Planet Fund:</strong> Fueling new projects and bonuses.</div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 rounded-full bg-[#FF5A5F] mr-3"></div>
+                        <div><strong class="text-white">20% to Universe Fund:</strong> Expanding shared services.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-3">
+                <h2 class="font-orbitron text-3xl text-white text-center mb-6">The Guardian Fund: A Pillar of Stability</h2>
+                <p class="text-center max-w-3xl mx-auto text-BFD7EA mb-8">This is the framework's most crucial innovation. By consistently feeding the Guardian Fund from both initial investment and surplus, the ecosystem builds a powerful buffer against economic shocks, creating a secure environment for its members.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flow-box p-4 rounded-lg text-center">
+                        <div class="text-4xl mb-2">🛡️</div>
+                        <h3 class="font-bold text-white">Economic Stability</h3>
+                        <p class="text-sm">Acts as a primary buffer against market downturns.</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">→</div>
+                    <div class="flow-arrow md:hidden">↓</div>
+                     <div class="flow-box p-4 rounded-lg text-center">
+                        <div class="text-4xl mb-2"> Crisis Response</div>
+                        <h3 class="font-bold text-white">Crisis Response</h3>
+                        <p class="text-sm">Provides capital for unforeseen emergencies.</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">→</div>
+                    <div class="flow-arrow md:hidden">↓</div>
+                    <div class="flow-box p-4 rounded-lg text-center">
+                        <div class="text-4xl mb-2">🌙</div>
+                        <h3 class="font-bold text-white">Sabbatical Eclipse</h3>
+                        <p class="text-sm">Funds paid leave for members, preventing burnout.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card rounded-lg shadow-2xl p-6 lg:col-span-3">
+                <h2 class="font-orbitron text-3xl text-white text-center mb-2">Projected 5-Year Growth Trajectory</h2>
+                <p class="text-center max-w-3xl mx-auto text-BFD7EA mb-6">This chart models the compounding growth of the three funds from a hypothetical $10M initial investment and a 20% annual surplus rate. The powerful self-reinforcing nature of the model becomes clear, with the Guardian Fund growing into a substantial stabilizing force.</p>
+                <div class="w-full max-w-4xl mx-auto h-[400px] md:h-[500px]">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center p-8 mt-8">
+        <p class="font-orbitron text-xl text-white">Purrfect Universe</p>
+        <p class="text-BFD7EA">Not a company, a living Universe of fairness, trust, and curiosity.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const FONT_COLOR = '#BFD7EA';
+            const GRID_COLOR = 'rgba(191, 215, 234, 0.2)';
+            const FONT_FAMILY = "'Inter', sans-serif";
+
+            const brilliantBluesPalette = {
+                darkBlue: '#0B3954',
+                teal: '#087E8B',
+                lightBlue: '#BFD7EA',
+                coral: '#FF5A5F',
+                red: '#C81D25'
+            };
+
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine) {
+                    lines.push(currentLine.trim());
+                }
+                return lines;
+            };
+            
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const universalOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: FONT_COLOR,
+                            font: {
+                                family: FONT_FAMILY
+                            }
+                        }
+                    },
+                    tooltip: {
+                        titleFont: { family: FONT_FAMILY, size: 14 },
+                        bodyFont: { family: FONT_FAMILY, size: 12 },
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+            
+            const investmentCtx = document.getElementById('investmentChart');
+            if(investmentCtx) {
+                new Chart(investmentCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Planet Fund', 'Guardian Fund', 'Universe Fund'],
+                        datasets: [{
+                            label: 'Initial Investment Allocation',
+                            data: [70, 20, 10],
+                            backgroundColor: [brilliantBluesPalette.teal, brilliantBluesPalette.lightBlue, brilliantBluesPalette.coral],
+                            borderColor: brilliantBluesPalette.darkBlue,
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: { ...universalOptions }
+                });
+            }
+
+            const surplusCtx = document.getElementById('surplusChart');
+             if(surplusCtx) {
+                new Chart(surplusCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Guardian Fund', 'Planet Fund', 'Universe Fund'],
+                        datasets: [{
+                            label: 'Surplus Reinvestment Allocation',
+                            data: [50, 30, 20],
+                            backgroundColor: [brilliantBluesPalette.teal, brilliantBluesPalette.lightBlue, brilliantBluesPalette.coral],
+                            borderColor: brilliantBluesPalette.darkBlue,
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: { ...universalOptions }
+                });
+            }
+            
+            const growthCtx = document.getElementById('growthChart');
+            if (growthCtx) {
+                const initialInvestment = 10;
+                const surplusRate = 0.20;
+                const years = ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
+
+                let planetFund = [initialInvestment * 0.7];
+                let guardianFund = [initialInvestment * 0.2];
+                let universeFund = [initialInvestment * 0.1];
+                
+                for (let i = 0; i < 5; i++) {
+                    let total = planetFund[i] + guardianFund[i] + universeFund[i];
+                    let surplus = total * surplusRate;
+                    
+                    guardianFund.push(guardianFund[i] + surplus * 0.5);
+                    planetFund.push(planetFund[i] + surplus * 0.3);
+                    universeFund.push(universeFund[i] + surplus * 0.2);
+                }
+
+                new Chart(growthCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: years,
+                        datasets: [
+                            {
+                                label: 'Planet Fund ($M)',
+                                data: planetFund.map(v => v.toFixed(2)),
+                                backgroundColor: brilliantBluesPalette.lightBlue,
+                            },
+                            {
+                                label: 'Guardian Fund ($M)',
+                                data: guardianFund.map(v => v.toFixed(2)),
+                                backgroundColor: brilliantBluesPalette.teal,
+                            },
+                            {
+                                label: 'Universe Fund ($M)',
+                                data: universeFund.map(v => v.toFixed(2)),
+                                backgroundColor: brilliantBluesPalette.coral,
+                            }
+                        ]
+                    },
+                    options: {
+                        ...universalOptions,
+                        scales: {
+                            x: {
+                                stacked: true,
+                                ticks: { color: FONT_COLOR, font: { family: FONT_FAMILY } },
+                                grid: { color: GRID_COLOR }
+                            },
+                            y: {
+                                stacked: true,
+                                beginAtZero: true,
+                                ticks: { color: FONT_COLOR, font: { family: FONT_FAMILY } },
+                                grid: { color: GRID_COLOR },
+                                title: {
+                                    display: true,
+                                    text: 'Total Value ($ Millions)',
+                                    color: FONT_COLOR,
+                                    font: { family: FONT_FAMILY, size: 14 }
+                                }
+                            }
+                        },
+                        plugins: {
+                           ...universalOptions.plugins,
+                           title: {
+                                display: false
+                           }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
