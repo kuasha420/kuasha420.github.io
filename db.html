@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Universe DB | Developer Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* gray-900 */
+            color: #d1d5db; /* gray-300 */
+        }
+        .dark {
+            --bg-color: #111827;
+            --text-color: #d1d5db;
+            --card-bg: #1f2937; /* gray-800 */
+            --border-color: #374151; /* gray-700 */
+            --primary-color: #60a5fa; /* blue-400 */
+            --code-bg: #0d1117; /* Very dark */
+        }
+        .code-block {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .code-block .comment { color: #8b949e; }
+        .code-block .keyword { color: #ff7b72; }
+        .code-block .string { color: #a5d6ff; }
+        .code-block .function { color: #d2a8ff; }
+        .code-block .variable { color: #ffa657; }
+        .code-block .type { color: #79c0ff; }
+        
+        /* Tabs */
+        .tab-button {
+            transition: all 0.2s ease-in-out;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .tab-panel {
+            display: none;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-button svg {
+            transition: transform 0.2s ease-in-out;
+        }
+        .accordion-button.open svg {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-12">
+
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- Header -->
+        <header class="text-center mb-12 border-b border-gray-700 pb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2">
+                Purrfect Universe DB
+            </h1>
+            <p class="text-xl text-gray-400">An Interactive Guide for Constitutional Engineers</p>
+        </header>
+
+        <!-- Core Philosophy -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-blue-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Core Philosophy: The Hybrid Approach
+            </h2>
+            <p class="text-lg text-gray-300 mb-6">
+                Our database isn't just a datastore; it's a <strong class="text-purple-300">constitutional engine</strong>. We use a hybrid model to get the best of both worlds:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-card-bg p-6 rounded-lg border border-border-color">
+                    <h3 class="text-xl font-semibold text-white mb-3">1. Application-Layer (Prisma)</h3>
+                    <p class="text-gray-400 mb-2">
+                        <strong class="text-green-400">For Developer Experience (95% of tasks).</strong>
+                    </p>
+                    <p class="text-gray-300">
+                        We use Prisma as our primary client. It defines the schema, manages migrations, and provides a fully type-safe API for all standard CRUD operations.
+                    </p>
+                </div>
+                <div class="bg-card-bg p-6 rounded-lg border border-border-color">
+                    <h3 class="text-xl font-semibold text-white mb-3">2. Database-Layer (SQL)</h3>
+                    <p class="text-gray-400 mb-2">
+                        <strong class="text-red-400">For Constitutional Integrity (5% of tasks).</strong>
+                    </p>
+                    <p class="text-gray-300">
+                        We use PostgreSQL functions and triggers as non-bypassable "guardrails" for sacred rules (like the Human-First Clause). The database *must* be correct.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-blue-900/30 border border-blue-700 text-blue-300 rounded-lg">
+                <strong class="text-blue-200">The Golden Rule:</strong> The application <em class="font-semibold">should</em> be constitutionally correct. The database <em class="font-semibold">must</em> be.
+            </div>
+        </section>
+
+        <!-- The Two Patterns -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-blue-400"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                The Two Developer Patterns
+            </h2>
+            
+            <!-- Tab Buttons -->
+            <div class="flex border-b border-border-color mb-6">
+                <button class="tab-button active text-lg font-medium py-3 px-6" data-tab="pattern-1">
+                    Pattern 1: Standard CRUD (95%)
+                </button>
+                <button class="tab-button text-lg font-medium py-3 px-6" data-tab="pattern-2">
+                    Pattern 2: Sacred Actions (5%)
+                </button>
+            </div>
+
+            <!-- Tab Panels -->
+            <div>
+                <!-- Pattern 1 Panel -->
+                <div id="pattern-1" class="tab-panel active">
+                    <p class="text-lg mb-4">This is your day-to-day pattern for reading data and writing simple, non-constitutional records. You use the standard, generated Prisma Client.</p>
+                    
+                    <h4 class="text-xl font-semibold text-white mt-6 mb-3">When to use it:</h4>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1 mb-6">
+                        <li>Reading/listing `Planets`, `Users`, or `Employees`.</li>
+                        <li>Generating reports by reading `EntityFinancialPeriods`.</li>
+                        <li>Creating simple records like a `Transaction` or `AuditLog`.</li>
+                    </ul>
+
+                    <h4 class="text-xl font-semibold text-white mb-3">Example:</h4>
+                    <div class="code-block">
+<pre><span class="comment">// Example: Reading an employee's profile</span>
+<span class="keyword">const</span> <span class="variable">employeeProfile</span> <span class="keyword">=</span> <span class="keyword">await</span> <span class="variable">prisma</span>.<span class="variable">employees</span>.<span class="function">findFirst</span>({
+  <span class="variable">where</span>: { <span class="variable">user_id</span>: <span class="variable">userId</span> },
+  <span class="variable">include</span>: { 
+    <span class="variable">user</span>: <span class="keyword">true</span>, 
+    <span class="variable">planet</span>: <span class="keyword">true</span> 
+  }
+});
+
+<span class="comment">// Example: Creating a new (valid) transaction</span>
+<span class="keyword">const</span> <span class="variable">newTx</span> <span class="keyword">=</span> <span class="keyword">await</span> <span class="variable">prisma</span>.<span class="variable">transactions</span>.<span class="function">create</span>({
+  <span class="variable">data</span>: {
+    <span class="variable">description</span>: <span class="string">"Office supplies for Hawa"</span>,
+    <span class="variable">amount</span>: <span class="string">150.00</span>,
+    <span class="variable">debit_fund_id</span>: <span class="variable">hawaPOF</span>.<span class="variable">fund_id</span>,
+    <span class="variable">credit_fund_id</span>: <span class="variable">vendor</span>.<span class="variable">fund_id</span>,
+    <span class="variable">transaction_type</span>: <span class="string">'Expense'</span>,
+    <span class="variable">related_period_id</span>: <span class="variable">currentPeriod</span>.<span class="variable">period_id</span>
+  }
+});</pre>
+                    </div>
+                </div>
+
+                <!-- Pattern 2 Panel -->
+                <div id="pattern-2" class="tab-panel">
+                    <p class="text-lg mb-4">This pattern is for executing complex, multi-step actions that the Constitution governs. <strong class="text-red-400">DO NOT</strong> use a simple `prisma.update()` for these.</p>
+
+                    <h4 class="text-xl font-semibold text-white mt-6 mb-3">When to use it:</h4>
+                    <ul class="list-disc list-inside text-red-300 space-y-1 mb-6">
+                        <li>"Approving" a `SurplusDistributionEvents` (Human-First Clause).</li>
+                        <li>"Closing" an `EntityFinancialPeriods` record (Profit-Cap).</li>
+                        <li>"Approving" a `USP_EmergencyDisbursements` (72-hour rule).</li>
+                        <li>"Creating" `SeedTokenLogs` (Ethical Alignment).</li>
+                    </ul>
+                    
+                    <h4 class="text-xl font-semibold text-white mb-3">Example:</h4>
+                    <div class="code-block">
+<pre><span class="comment">// Example: Approving a surplus distribution (Human-First Clause)</span>
+<span class="keyword">try</span> {
+  <span class="comment">// We call our custom SQL function, which contains the constitutional logic</span>
+  <span class="keyword">await</span> <span class="variable">prisma</span>.<span class="function">$executeRaw</span>\`
+    <span class="keyword">SELECT</span> <span class="function">sp_approve_surplus_distribution</span>(
+      <span class="variable">_event_id</span> <span class="keyword">:=</span> <span class="variable">${eventId}</span>, 
+      <span class="variable">_approving_user_id</span> <span class="keyword">:=</span> <span class="variable">${session.userId}</span>
+    );
+  \`;
+  <span class="comment">// If this succeeds, the DB has verified all human payouts and updated the status.</span>
+
+} <span class="keyword">catch</span> (<span class="variable">error</span>) {
+  <span class="keyword">if</span> (<span class="variable">error</span>.<span class="variable">code</span> <span class="keyword">===</span> <span class="string">'P2010'</span>) { <span class="comment">// Raw query failed</span>
+    <span class="keyword">if</span> (<span class="variable">error</span>.<span class="variable">message</span>.<span class="function">includes</span>(<span class="string">'ERR_HUMAN_FIRST_VIOLATION'</span>)) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"Human-First Clause Violation: Cannot approve event."</span>);
+    }
+  }
+  <span class="keyword">throw</span> <span class="variable">error</span>;
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Constitutional Guardrails -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-blue-400"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                The Constitutional Guardrails (v3.0)
+            </h2>
+            <p class="text-lg text-gray-300 mb-6">
+                Here’s a breakdown of the key "guardrails" implemented directly in the database. These are the rules that make our system "bulletproof."
+            </p>
+            
+            <div class="space-y-4" id="accordion-container">
+                
+                <!-- Accordion Item 1 -->
+                <div class="bg-card-bg border border-border-color rounded-lg">
+                    <button class="accordion-button flex justify-between items-center w-full p-5 text-left">
+                        <span class="text-lg font-medium text-white">🧮 The 5% Profit-Cap Guardrail (Art. IX §1)</span>
+                        <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <div class="accordion-content px-5 pb-5">
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">What it does:</strong> Enforces the 5% profit cap by preventing an `EntityFinancialPeriods` record from being "Closed" or "Audited" if the `surplus_amount` is calculated incorrectly.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">Implementation:</strong> `BEFORE UPDATE TRIGGER` on `EntityFinancialPeriods`.
+                        </p>
+                        <h5 class="text-md font-semibold text-gray-200 mb-2">Conceptual SQL:</h5>
+                        <div class="code-block">
+<pre><span class="keyword">CREATE FUNCTION</span> <span class="function">fn_check_profit_cap</span>() <span class="keyword">RETURNS TRIGGER AS</span> $$
+<span class="keyword">BEGIN</span>
+  <span class="comment">-- Logic 1: If over cap, surplus MUST be calculated</span>
+  <span class="keyword">IF</span> <span class="variable">NEW</span>.<span class="variable">net_profit</span> > <span class="variable">NEW</span>.<span class="variable">profit_cap_amount</span> <span class="keyword">AND</span> 
+     <span class="variable">NEW</span>.<span class="variable">surplus_amount</span> != (<span class="variable">NEW</span>.<span class="variable">net_profit</span> - <span class="variable">NEW</span>.<span class="variable">profit_cap_amount</span>) <span class="keyword">THEN</span>
+    <span class="keyword">RAISE EXCEPTION</span> <span class="string">'Profit-Cap Violation: Surplus calculated incorrectly.'</span>;
+  <span class="keyword">END IF</span>;
+  <span class="comment">-- Logic 2: If under cap, surplus MUST be 0</span>
+  <span class="keyword">IF</span> <span class="variable">NEW</span>.<span class="variable">net_profit</span> <= <span class="variable">NEW</span>.<span class="variable">profit_cap_amount</span> <span class="keyword">AND</span> <span class="variable">NEW</span>.<span class="variable">surplus_amount</span> != 0 <span class="keyword">THEN</span>
+    <span class="keyword">RAISE EXCEPTION</span> <span class="string">'Profit-Cap Violation: Surplus must be 0.'</span>;
+  <span class="keyword">END IF</span>;
+  <span class="keyword">RETURN NEW</span>;
+<span class="keyword">END</span>;
+$$ <span class="keyword">LANGUAGE</span> <span class="variable">plpgsql</span>;</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="bg-card-bg border border-border-color rounded-lg">
+                    <button class="accordion-button flex justify-between items-center w-full p-5 text-left">
+                        <span class="text-lg font-medium text-white">🐾 The Human-First Priority (Art. IX-B §5)</span>
+                        <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <div class="accordion-content px-5 pb-5">
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">What it does:</strong> Enforces the "Human First Clause" by preventing a `SurplusDistributionEvents` status from being set to 'Approved' until *all* payouts to 'Employees', 'DAFs', and 'SweatEquity' holders are marked as 'Paid' or 'Reinvested'.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">Implementation:</strong> Stored Procedure `sp_approve_surplus_distribution(...)`. This is a **Pattern 2** action.
+                        </p>
+                        <h5 class="text-md font-semibold text-gray-200 mb-2">Conceptual SQL:</h5>
+                        <div class="code-block">
+<pre><span class="keyword">CREATE FUNCTION</span> <span class="function">sp_approve_surplus_distribution</span>(<span class="variable">_event_id</span> <span class="type">INT</span>, <span class="variable">_user_id</span> <span class="type">INT</span>) ... $$
+<span class="keyword">DECLARE</span>
+  <span class="variable">unpaid_human_payouts</span> <span class="type">INT</span>;
+<span class="keyword">BEGIN</span>
+  <span class="comment">-- 1. Check Authorization (if _user_id is on Council, etc)</span>
+  ...
+  <span class="comment">-- 2. Check Human-First Clause</span>
+  <span class="keyword">SELECT</span> <span class="function">COUNT</span>(*) <span class="keyword">INTO</span> <span class="variable">unpaid_human_payouts</span>
+  <span class="keyword">FROM</span> <span class="string">"DistributionPayouts"</span> p
+  <span class="keyword">JOIN</span> <span class="string">"DistributionBreakdown"</span> b <span class="keyword">ON</span> p.<span class="variable">breakdown_id</span> = b.<span class="variable">breakdown_id</span>
+  <span class="keyword">WHERE</span> b.<span class="variable">event_id</span> = <span class="variable">_event_id</span>
+    <span class="keyword">AND</span> b.<span class="variable">recipient_category</span> <span class="keyword">IN</span> (<span class="string">'Employees'</span>, <span class="string">'DAFs'</span>, <span class="string">'SweatEquity'</span>)
+    <span class="keyword">AND</span> p.<span class="variable">status</span> <span class="keyword">NOT IN</span> (<span class="string">'Paid'</span>, <span class="string">'Reinvested'</span>);
+
+  <span class="keyword">IF</span> <span class="variable">unpaid_human_payouts</span> > 0 <span class="keyword">THEN</span>
+    <span class="keyword">RAISE EXCEPTION</span> <span class="string">'ERR_HUMAN_FIRST_VIOLATION: % human payouts pending.'</span>, <span class="variable">unpaid_human_payouts</span>;
+  <span class="keyword">END IF</span>;
+
+  <span class="comment">-- 3. If check passes, update status & log vote</span>
+  <span class="keyword">UPDATE</span> <span class="string">"SurplusDistributionEvents"</span> <span class="keyword">SET</span> <span class="variable">status</span> = <span class="string">'Approved'</span> ...
+  <span class="keyword">INSERT INTO</span> <span class="string">"CouncilVotes"</span> ...
+<span class="keyword">END</span>;
+$$ <span class="keyword">LANGUAGE</span> <span class="variable">plpgsql</span>;</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="bg-card-bg border border-border-color rounded-lg">
+                    <button class="accordion-button flex justify-between items-center w-full p-5 text-left">
+                        <span class="text-lg font-medium text-white">🧭 The Ethical Constraint (Art. IX-A §5)</span>
+                        <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <div class="accordion-content px-5 pb-5">
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">What it does:</strong> Prevents any `SeedTokenLogs` (new investments) or `DistributionPayouts` (profit sharing) from being created for an `ExternalInvestors` record where `ethical_alignment_passed = false`.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            <strong class="text-white">Implementation:</strong> `BEFORE INSERT TRIGGER` on `SeedTokenLogs` and `DistributionPayouts`.
+                        </p>
+                        <h5 class="text-md font-semibold text-gray-200 mb-2">Conceptual SQL:</h5>
+                        <div class="code-block">
+<pre><span class="keyword">CREATE FUNCTION</span> <span class="function">fn_check_investor_ethics</span>() <span class="keyword">RETURNS TRIGGER AS</span> $$
+<span class="keyword">DECLARE</span>
+  <span class="variable">is_aligned</span> <span class="type">BOOLEAN</span>;
+<span class="keyword">BEGIN</span>
+  <span class="keyword">SELECT</span> <span class="variable">ethical_alignment_passed</span> <span class="keyword">INTO</span> <span class="variable">is_aligned</span>
+  <span class="keyword">FROM</span> <span class="string">"ExternalInvestors"</span> <span class="keyword">WHERE</span> <span class="variable">investor_id</span> = <span class="variable">NEW</span>.<span class="variable">investor_id</span>;
+
+  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="variable">is_aligned</span> <span class="keyword">THEN</span>
+    <span class="keyword">RAISE EXCEPTION</span> <span class="string">'Ethical Constraint Violation: Investor % is not approved.'</span>, <span class="variable">NEW</span>.<span class="variable">investor_id</span>;
+  <span class="keyword">END IF</span>;
+  <span class="keyword">RETURN NEW</span>;
+<span class="keyword">END</span>;
+$$ <span class="keyword">LANGUAGE</span> <span class="variable">plpgsql</span>;</pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Migrations Workflow -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-blue-400"><path d="M16 3h5v5"></path><path d="M4 20L20 4"></path><path d="M21 16v5h-5"></path><path d="M4 4l16 16"></path></svg>
+                The Migrations Workflow
+            </h2>
+            <p class="text-lg text-gray-300 mb-6">
+                We use `prisma migrate` to manage *both* the Prisma-generated schema and our custom SQL guardrails. The process is simple:
+            </p>
+            <ol class="list-decimal list-inside text-gray-300 space-y-4 mb-6">
+                <li>Run `prisma migrate dev` to create a new migration folder.</li>
+                <li>Prisma automatically creates a `migration.sql` file in that folder (this has all your `CREATE TABLE...` logic from `schema.prisma`).</li>
+                <li>
+                    You <strong class="text-white">manually create a second file</strong> (e.g., `02_constitutional_guardrails.sql`) in the <strong class="text-white">same folder</strong>.
+                </li>
+                <li>In this new file, you write your `CREATE FUNCTION` and `CREATE TRIGGER` SQL.</li>
+                <li>When `prisma migrate deploy` runs, it executes *all* `.sql` files in order.</li>
+            </ol>
+            
+            <h5 class="text-md font-semibold text-gray-200 mb-2">Example Directory:</h5>
+            <div class="code-block">
+<pre><span class="variable">prisma</span>/
+└── <span class="variable">migrations</span>/
+    └── <span class="variable">20251112_init</span>/
+        ├── <span class="string">migration.sql</span>         <span class="comment">(Auto-generated by Prisma)</span>
+        └── <span class="string">02_guardrails.sql</span>     <span class="comment">(Manually created by you!)</span></pre>
+            </div>
+        </section>
+
+        <!-- Analytics -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-blue-400"><path d="M3 3v18h18"></path><path d="M18.7 8a6 6 0 0 0-9.4 0l-4.3 4.3"></path><path d="M14 17.7a6 6 0 0 0 0-9.4l-4.3-4.3"></path></svg>
+                Analytics: The Compassion Index
+            </h2>
+            <p class="text-lg text-gray-300">
+                To measure our adherence to the Constitution's spirit, the `Analytics_CompassionMetrics` table is implemented as a <strong class="text-purple-300">Materialized View</strong> in PostgreSQL.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-1 mt-4">
+                <li>It is <strong class="text-white">refreshed nightly</strong> by a scheduled job (e.g., `pg_cron`).</li>
+                <li>The application (Prisma) <strong class="text-white">only reads</strong> from this view.</li>
+                <li>This provides our "Compassion Index" (like the 40% human-share rule) without burdening the main application with complex queries.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 pt-8 border-t border-gray-700">
+            <p class="text-gray-500">
+                A constitutional-engineering collaboration.
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Tab Logic ---
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Deactivate all buttons and panels
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+
+                    // Activate the clicked button and corresponding panel
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // --- Accordion Logic ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    button.classList.toggle('open');
+                    
+                    if (content.style.maxHeight) {
+                        // Close
+                        content.style.maxHeight = null;
+                    } else {
+                        // Open
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+
+                    // Optional: Close other accordions
+                    // accordionButtons.forEach(otherButton => {
+                    //     if (otherButton !== button) {
+                    //         otherButton.classList.remove('open');
+                    //         otherButton.nextElementSibling.style.maxHeight = null;
+                    //     }
+                    // });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
