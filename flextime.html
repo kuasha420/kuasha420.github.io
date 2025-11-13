@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Mechanics — FlexTime™ Model</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#EAF0EB', // MM Light
+                            DEFAULT: '#2A513D', // MM Green
+                            dark: '#1B3A2A',  // MM Dark Green
+                            accent: '#7CB85A', // MM Light Green
+                            secondary: '#E86441', // PU Orange (RADICAL)
+                            wood: '#A1662F', // PU Wood (RADICAL)
+                            highlight: '#3B82F6' // PU Blue (RADICAL)
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <!-- Page Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        /* Custom slider styles */
+        input[type='range'] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #A1662F; /* brand-wood */
+            outline: none;
+            opacity: 0.8;
+            transition: opacity .2s;
+        }
+        input[type='range']:hover {
+            opacity: 1;
+        }
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #E86441; /* brand-secondary */
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        input[type='range']::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #E86441; /* brand-secondary */
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        /* Dark mode toggle styles */
+        #theme-toggle .sun-icon,
+        .dark #theme-toggle .moon-icon {
+            display: block;
+        }
+        #theme-toggle .moon-icon,
+        .dark #theme-toggle .sun-icon {
+            display: none;
+        }
+        /* Tab styles */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-200">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 dark:bg-gray-800/80">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- PU Logo as icon -->
+                <img src="assets/images/pu-logo-tp.png" alt="Purrfect Universe Logo" class="h-10 w-10 rounded-full"
+                     onerror="this.src='https://placehold.co/40x40/E86441/ffffff?text=PU'; this.onerror=null;">
+                <!-- MM Logo with text -->
+                <img src="assets/images/mm-logo-tp.png" alt="Motion Mechanics Logo" class="h-10"
+                     onerror="this.src='https://placehold.co/150x40/2A513D/ffffff?text=Motion+Mechanics'; this.onerror=null;">
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#model" class="text-gray-600 hover:text-brand-secondary dark:text-gray-400 dark:hover:text-brand-secondary transition">Service Model</a>
+                <a href="#staffing" class="text-gray-600 hover:text-brand-secondary dark:text-gray-400 dark:hover:text-brand-secondary transition">Staffing</a>
+                <a href="#financials" class="text-gray-600 hover:text-brand-secondary dark:text-gray-400 dark:hover:text-brand-secondary transition">Financials</a>
+                <a href="#accesscare" class="text-gray-600 hover:text-brand-secondary dark:text-gray-400 dark:hover:text-brand-secondary transition">AccessCare™</a>
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 moon-icon"></i>
+                    <i data-lucide="sun" class="w-5 h-5 sun-icon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section class="text-center mb-20">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-brand-dark dark:text-brand-light mb-4">
+                FlexTime™ Operations
+            </h1>
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-secondary dark:text-brand-secondary mb-6">& Financial Model</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                A strategic proposal for premium, accessible, and sustainable physiotherapy care in Bangladesh.
+            </p>
+        </section>
+
+        <!-- Overview -->
+        <section class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-8 text-center">Executive Overview</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="layers" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">Multi-Shift Operations</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Structured framework for steady, scalable, and inclusive care across all day parts.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="dollar-sign" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">Value-Aligned Pricing</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Tiered session models and pricing to match patient needs and clinical value.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="database" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">Data-Driven Financials</h4>
+                    <p class="text-gray-600 dark:text-gray-400">A robust financial backbone to ensure sustainability and staff well-being.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Model -->
+        <section id="model" class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-8 text-center">FlexTime™ Service Model</h3>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-brand-light/50 dark:bg-brand-dark/30 p-6 rounded-2xl border-2 border-dashed border-brand/50 dark:border-brand-accent/50">
+                    <span class="text-sm font-semibold text-brand-dark dark:text-brand-light">09:00 – 10:00</span>
+                    <h4 class="font-bold text-2xl text-brand-dark dark:text-brand-light my-2">FlexStart</h4>
+                    <p class="text-gray-700 dark:text-gray-300">Staff prep, calibration, and early-day emergency cases.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <span class="text-sm font-semibold text-brand dark:text-brand-accent">10:00 – 13:00</span>
+                    <h4 class="font-bold text-2xl text-brand-dark dark:text-brand-light my-2">FlexShift A</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Morning care block. Focus on Neuro and Pediatrics.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <span class="text-sm font-semibold text-brand dark:text-brand-accent">14:00 – 17:00</span>
+                    <h4 class="font-bold text-2xl text-brand-dark dark:text-brand-light my-2">FlexShift B</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Afternoon block for evaluations and long-duration cases.</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-2xl shadow-lg">
+                    <span class="text-sm font-semibold text-brand-secondary">19:00 – 22:00</span>
+                    <h4 class="font-bold text-2xl text-white my-2">FlexShift C</h4>
+                    <p class="text-gray-200 dark:text-gray-300">Evening block for office-goers and acute pain cases.</p>
+                    <span class="mt-4 inline-block text-xs font-bold text-brand-secondary bg-black/20 px-2 py-1 rounded-full">Night Relief Lab™</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Staffing & Salary -->
+        <section id="staffing" class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-8 text-center">Staffing & Payroll</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border dark:border-gray-700">
+                    <h4 class="text-5xl font-extrabold text-brand-dark dark:text-brand-light">26</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-medium">Total Staff</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border dark:border-gray-700">
+                    <h4 class="text-5xl font-extrabold text-brand-dark dark:text-brand-light">17 FT / 9 PT</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-medium">Employment Mix</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg text-center border dark:border-gray-700">
+                    <h4 class="text-5xl font-extrabold text-brand-dark dark:text-brand-light">~928k</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-medium">Total Monthly Payroll (BDT)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Staffing Chart -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-xl font-bold text-brand-dark dark:text-brand-light mb-4">Staffing by Department</h4>
+                    <div class="chart-container">
+                        <canvas id="staffingChart"></canvas>
+                    </div>
+                </div>
+                <!-- Salary Table -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-xl font-bold text-brand-dark dark:text-brand-light mb-4">Salary Framework</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-brand-light/50 dark:bg-brand-dark/50 text-brand-dark dark:text-brand-light">
+                                <tr>
+                                    <th class="p-3 rounded-l-lg font-semibold">Level</th>
+                                    <th class="p-3 font-semibold">Full-Time (Monthly)</th>
+                                    <th class="p-3 rounded-r-lg font-semibold">Part-Time (4 hr)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100 dark:border-gray-700">
+                                    <td class="p-3 font-medium">Lead</td>
+                                    <td class="p-3">77,500 BDT</td>
+                                    <td class="p-3">—</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-gray-700">
+                                    <td class="p-3 font-medium">Senior</td>
+                                    <td class="p-3">52,500 BDT</td>
+                                    <td class="p-3">26,250 BDT</td>
+                                </tr>
+                                <tr class="border-b border-gray-100 dark:border-gray-700">
+                                    <td class="p-3 font-medium">Specialist</td>
+                                    <td class="p-3">35,000 BDT</td>
+                                    <td class="p-3">17,500 BDT</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Associate</td>
+                                    <td class="p-3">18,500 BDT</td>
+                                    <td class="p-3">9,250 BDT</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Model -->
+        <section class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-8 text-center">Pricing Model (BDT)</h3>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm md:text-base">
+                        <thead>
+                            <tr class="border-b-2 border-brand-dark dark:border-brand-accent">
+                                <th class="p-4 font-bold text-brand-dark dark:text-brand-light" rowspan="2">Department</th>
+                                <th class="p-4 font-bold text-brand-dark dark:text-brand-light text-center border-l border-gray-200 dark:border-gray-700" colspan="2">Foundation</th>
+                                <th class="p-4 font-bold text-brand-dark dark:text-brand-light text-center border-l border-gray-200 dark:border-gray-700" colspan="2">Standard</th>
+                                <th class="p-4 font-bold text-brand-dark dark:text-brand-light text-center border-l border-gray-200 dark:border-gray-700" colspan="2">Premium Recovery</th>
+                                <th class="p-4 font-bold text-brand-dark dark:text-brand-light text-center border-l border-gray-200 dark:border-gray-700" colspan="2">Express (C-Shift)</th>
+                            </tr>
+                            <tr class="bg-brand-light/50 dark:bg-brand-dark/50 text-brand-dark dark:text-brand-light">
+                                <th class="p-3 font-semibold text-center border-l border-gray-200 dark:border-gray-700">Regular</th>
+                                <th class="p-3 font-semibold text-center">FlexShift C</th>
+                                <th class="p-3 font-semibold text-center border-l border-gray-200 dark:border-gray-700">Regular</th>
+                                <th class="p-3 font-semibold text-center">FlexShift C</th>
+                                <th class="p-3 font-semibold text-center border-l border-gray-200 dark:border-gray-700">Regular</th>
+                                <th class="p-3 font-semibold text-center">FlexShift C</th>
+                                <th class="p-3 font-semibold text-center border-l border-gray-200 dark:border-gray-700">—</th>
+                                <th class="p-3 font-semibold text-center">FlexShift C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 dark:border-gray-700">
+                                <td class="p-4 font-bold">Neuro</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">2000</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">2400</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">1400</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">1600</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">2400</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">2800</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">—</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">1000</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-700">
+                                <td class="p-4 font-bold">MSK</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">1500</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">1800</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">900</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">1100</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">1600</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">2000</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">—</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">800</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold">Pediatrics</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">1800</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">2200</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">1200</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">1400</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">2000</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">2400</td>
+                                <td class="p-4 text-center border-l border-gray-200 dark:border-gray-700">—</td>
+                                <td class="p-4 text-center font-bold text-brand-secondary dark:text-brand-secondary">900</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Financial Projections -->
+        <section id="financials" class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-4 text-center">Interactive Occupancy Modeler</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-center mb-10">
+                Move the slider to see how revenue and profitability change with patient occupancy.
+            </p>
+
+            <!-- Interactive Slider -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 mb-12">
+                <div class="flex justify-between items-center mb-4">
+                    <label for="occupancySlider" class="text-xl font-bold text-brand-dark dark:text-brand-light">Occupancy Rate</label>
+                    <span id="occupancyValue" class="text-5xl font-extrabold text-brand-secondary dark:text-brand-secondary bg-brand-light/50 dark:bg-brand-dark/50 px-4 py-2 rounded-lg">60%</span>
+                </div>
+                <input type="range" id="occupancySlider" min="40" max="100" value="60" step="1" class="w-full">
+            </div>
+
+            <!-- Dynamic Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-brand-dark p-6 rounded-2xl shadow-lg text-white">
+                    <h4 class="text-sm font-semibold text-brand-light/70 uppercase tracking-wider">Monthly Revenue</h4>
+                    <span id="metricMonthlyRevenue" class="text-3xl sm:text-4xl lg:text-3xl font-extrabold block mt-2">...</span>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-2xl shadow-lg text-white">
+                    <h4 class="text-sm font-semibold text-brand-light/70 uppercase tracking-wider">Annual Revenue</h4>
+                    <span id="metricAnnualRevenue" class="text-3xl sm:text-4xl lg:text-3xl font-extrabold block mt-2">...</span>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Monthly Profit</h4>
+                    <span id="metricMonthlyProfit" class="text-3xl sm:text-4xl lg:text-3xl font-extrabold text-brand-dark dark:text-brand-light block mt-2">...</span>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Annual Profit</h4>
+                    <span id="metricAnnualProfit" class="text-3xl sm:text-4xl lg:text-3xl font-extrabold text-brand-dark dark:text-brand-light block mt-2">...</span>
+                </div>
+            </div>
+
+            <!-- Static Charts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-xl font-bold text-brand-dark dark:text-brand-light mb-4">Expected Visit Mix</h4>
+                    <div class="chart-container" style="height: 320px;">
+                        <canvas id="visitMixChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h4 class="text-xl font-bold text-brand-dark dark:text-brand-light mb-4">Max Daily Capacity (91 Sessions)</h4>
+                    <div class="chart-container" style="height: 320px;">
+                        <canvas id="capacityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: First-Year Launch Projections -->
+        <section id="launch-projections" class="mb-20">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-4 text-center">First-Year Launch Projections</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-center mb-10">
+                Analysis of two discount and occupancy ramp-up models for the first 12 months.
+            </p>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-0 rounded-t-lg overflow-hidden">
+                <button data-tab="model-a" class="tab-button active bg-brand-secondary text-white font-bold py-3 px-6 rounded-t-lg">
+                    Model A: Constant 60% Occupancy
+                </button>
+                <button data-tab="model-b" class="tab-button bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 font-bold py-3 px-6 rounded-t-lg">
+                    Model B: Realistic Ramp-Up
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-b-2xl rounded-tr-2xl shadow-xl border border-gray-100 dark:border-gray-700">
+                
+                <!-- Model A Content -->
+                <div id="model-a" class="tab-content active">
+                    <h4 class="text-2xl font-bold text-brand-dark dark:text-brand-light mb-6">Model A: Staggered Discount (Constant 60% Occupancy)</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">This model assumes a stable 60% occupancy from day one, with discounts decreasing over 6 months.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 1–3 (30% Discount)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-brand-secondary">+3.50 Lakh</span>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 4–6 (20% Discount)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-brand-secondary">+5.32 Lakh</span>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 7–12 (Full Price)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-brand-secondary">+8.84 Lakh</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-brand-light dark:bg-brand-dark/50 p-6 rounded-lg">
+                        <div>
+                            <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase">First-Year Total Revenue</h5>
+                            <span class="text-4xl font-extrabold text-brand-dark dark:text-white">1.91 Crore</span>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase">First-Year Total Profit</h5>
+                            <span class="text-4xl font-extrabold text-brand-secondary dark:text-brand-secondary">79.50 Lakh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model B Content -->
+                <div id="model-b" class="tab-content">
+                    <h4 class="text-2xl font-bold text-brand-dark dark:text-brand-light mb-6">Model B: Realistic Occupancy Ramp-Up</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">This model simulates natural growth, starting at 40% occupancy and ramping up to 60% while discounts are phased out.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 1–3 (40% Occ, 30% Off)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-red-500 dark:text-red-400">-0.82 Lakh</span>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 4–6 (50% Occ, 20% Off)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-brand-secondary">+2.80 Lakh</span>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-600">
+                            <span class="text-sm font-semibold text-brand-secondary dark:text-brand-secondary">Months 7–12 (60% Occ, Full)</span>
+                            <h5 class="text-xl font-bold text-gray-700 dark:text-gray-200 mt-1">Monthly Profit</h5>
+                            <span class="text-3xl font-extrabold text-brand-secondary">+8.84 Lakh</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-brand-light dark:bg-brand-dark/50 p-6 rounded-lg">
+                        <div>
+                            <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase">First-Year Total Revenue</h5>
+                            <span class="text-4xl font-extrabold text-brand-dark dark:text-white">1.70 Crore</span>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase">First-Year Total Profit</h5>
+                            <span class="text-4xl font-extrabold text-brand-secondary dark:text-brand-secondary">58.98 Lakh</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- AccessCare Program -->
+        <section id="accesscare" class="mb-20 bg-brand-light dark:bg-brand-dark/50 p-10 rounded-3xl">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-4">AccessCare™ Program</h3>
+                <p class="text-lg text-brand-dark/80 dark:text-brand-light/80 max-w-2xl mx-auto">
+                    A structured, sustainable system for ensuring care accessibility, building community trust, and reinforcing our social responsibility.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg text-center">
+                    <i data-lucide="heart-handshake" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mx-auto mb-3"></i>
+                    <h4 class="text-4xl font-extrabold text-brand-secondary dark:text-brand-secondary">8 / day</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg font-medium">Subsidized Slots (~9% cap)</p>
+                </div>
+                <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg text-center">
+                    <i data-lucide="trending-down" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mx-auto mb-3"></i>
+                    <h4 class="text-4xl font-extrabold text-brand-secondary dark:text-brand-secondary">30%</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg font-medium">Discount on Standard Sessions</p>
+                </div>
+                <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg text-center">
+                    <i data-lucide="users" class="w-12 h-12 text-brand-secondary dark:text-brand-secondary mx-auto mb-3"></i>
+                    <h4 class="text-4xl font-extrabold text-brand-secondary dark:text-brand-secondary">1.3M BDT</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-lg font-medium">Annual Financial Impact</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Strategic Advantages -->
+        <section class="mb-20 max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-brand-dark dark:text-brand-light mb-8 text-center">Strategic Advantages</h3>
+            <ul class="space-y-4">
+                <li class="flex items-start space-x-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1"></i>
+                    <span class="text-lg text-gray-700 dark:text-gray-300">Consistent, predictable multi-shift coverage</span>
+                </li>
+                <li class="flex items-start space-x-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1"></i>
+                    <span class="text-lg text-gray-700 dark:text-gray-300">Expanded hours for professionals and students</span>
+                </li>
+                <li class="flex items-start space-x-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1"></i>
+                    <span class="text-lg text-gray-700 dark:text-gray-300">High-quality differentiated session offerings</span>
+                </li>
+                <li class="flex items-start space-x-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1"></i>
+                    <span class="text-lg text-gray-700 dark:text-gray-300">Scalable staffing architecture with floaters</span>
+                </li>
+                <li class="flex items-start space-x-3 bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md border border-gray-100 dark:border-gray-700">
+                    <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1"></i>
+                    <span class="text-lg text-gray-700 dark:text-gray-300">Sustainable revenue model with low break-even threshold</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-light/70 dark:bg-gray-900 dark:text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Motion Mechanics. All rights reserved.</p>
+            <p class="text-sm mt-1">Strategic Proposal — Version 1.1</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Data from the markdown file
+        const staffingData = {
+            labels: ['Neuro', 'MSK', 'Pediatrics', 'Reception', 'Rehab Gym', 'Medical Asst.', 'Floaters'],
+            data: [6, 4, 4, 4, 2, 4, 2]
+        };
+        
+        const visitMixData = {
+            labels: ['Standard (50%)', 'Premium (25%)', 'Foundation (20%)', 'Express (5%)'],
+            data: [50, 25, 20, 5]
+        };
+        
+        const capacityData = {
+            labels: ['Neuro', 'MSK', 'Pediatrics'],
+            data: [40, 30, 21]
+        };
+        
+        const financials = {
+            maxDailyRevenue: 137305,
+            monthlyPayroll: 928000,
+            workingDaysPerMonth: 22,
+            workingDaysPerYear: 264
+        };
+
+        // Utility to format as BDT
+        const formatBDT = (value) => {
+            if (Math.abs(value) >= 10000000) { // Crores
+                return `+${(value / 10000000).toFixed(1)} Cr`;
+            }
+            if (Math.abs(value) >= 100000) { // Lakhs
+                return `+${(value / 100000).toFixed(1)} L`;
+            }
+            if (value < 0 && Math.abs(value) >= 100000) { // Negative Lakhs
+                 return `-${(Math.abs(value) / 100000).toFixed(1)} L`;
+            }
+            return `+${Math.round(value / 1000)}k`;
+        };
+        
+        const formatBDTFull = (value) => {
+             return new Intl.NumberFormat('en-IN', { 
+                style: 'currency', 
+                currency: 'BDT', 
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0 // Ensures rounding to whole number
+            }).format(value);
+        }
+
+        // --- Chart Generation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const charts = {}; // Store chart instances
+            let isDarkMode = document.documentElement.classList.contains('dark');
+
+            // Function to set chart colors
+            function getChartColors() {
+                isDarkMode = document.documentElement.classList.contains('dark');
+                return {
+                    textColor: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+                    gridColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                    legendColor: isDarkMode ? '#FFF' : '#333'
+                };
+            }
+
+            function updateChartColors() {
+                const colors = getChartColors();
+                
+                Chart.defaults.color = colors.textColor;
+                Chart.defaults.borderColor = colors.gridColor;
+
+                const chartInstances = Object.values(charts);
+                for (const chart of chartInstances) {
+                    if (chart) {
+                        chart.options.plugins.legend.labels.color = colors.legendColor;
+
+                        // Check if scales exist before updating them (fixes error on doughnut chart)
+                        if (chart.options.scales) {
+                            if (chart.options.scales.x) {
+                                chart.options.scales.x.ticks.color = colors.textColor;
+                                chart.options.scales.x.grid.color = colors.gridColor;
+                            }
+                            if (chart.options.scales.y) {
+                                chart.options.scales.y.ticks.color = colors.textColor;
+                                chart.options.scales.y.grid.color = colors.gridColor;
+                            }
+                        }
+
+                        chart.update();
+                    }
+                }
+            }
+
+
+            // Staffing Chart (Bar)
+            const staffCtx = document.getElementById('staffingChart').getContext('2d');
+            charts.staffing = new Chart(staffCtx, {
+                type: 'bar',
+                data: {
+                    labels: staffingData.labels,
+                    datasets: [{
+                        label: 'Staff Count',
+                        data: staffingData.data,
+                        backgroundColor: ['#2A513D', '#E86441', '#A1662F', '#2A513D', '#7CB85A', '#E86441', '#3B82F6'], // MM Green, PU Orange, PU Wood, MM Green, MM Accent, PU Orange, PU Blue
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { drawBorder: false } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Visit Mix Chart (Pie)
+            const visitCtx = document.getElementById('visitMixChart').getContext('2d');
+            charts.visit = new Chart(visitCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: visitMixData.labels,
+                    datasets: [{
+                        data: visitMixData.data,
+                        backgroundColor: ['#E86441', '#A1662F', '#3B82F6', '#7CB85A'], // PU Orange, PU Wood, PU Blue, MM Accent
+                        borderColor: '#ffffff',
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { 
+                                padding: 20, 
+                                font: { size: 14 }
+                            } 
+                        }
+                    }
+                }
+            });
+
+            // Capacity Chart (Bar)
+            const capacityCtx = document.getElementById('capacityChart').getContext('2d');
+            charts.capacity = new Chart(capacityCtx, {
+                type: 'bar',
+                data: {
+                    labels: capacityData.labels,
+                    datasets: [{
+                        label: 'Daily Sessions',
+                        data: capacityData.data,
+                        backgroundColor: ['#E86441', '#A1662F', '#3B82F6'], // PU Orange, PU Wood, PU Blue
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y', // Horizontal Bar Chart
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { drawBorder: false } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // --- Interactive Financials ---
+            const slider = document.getElementById('occupancySlider');
+            const occupancyValueEl = document.getElementById('occupancyValue');
+            
+            const monthlyRevenueEl = document.getElementById('metricMonthlyRevenue');
+            const annualRevenueEl = document.getElementById('metricAnnualRevenue');
+            const monthlyProfitEl = document.getElementById('metricMonthlyProfit');
+            const annualProfitEl = document.getElementById('metricAnnualProfit');
+
+            function updateMetrics(occupancyPercent) {
+                const occupancyRate = occupancyPercent / 100;
+                
+                // Calculations
+                const dailyRevenue = financials.maxDailyRevenue * occupancyRate;
+                const monthlyRevenue = dailyRevenue * financials.workingDaysPerMonth;
+                const annualRevenue = dailyRevenue * financials.workingDaysPerYear;
+                
+                const monthlyProfit = monthlyRevenue - financials.monthlyPayroll;
+                const annualProfit = (monthlyRevenue * 12) - (financials.monthlyPayroll * 12); // Using 12 months for payroll consistency
+                // Note: The doc's annual profit calc (264 days rev - 12mo payroll) is used here.
+
+                // Update UI
+                occupancyValueEl.textContent = `${occupancyPercent}%`;
+                
+                monthlyRevenueEl.textContent = formatBDTFull(monthlyRevenue);
+                annualRevenueEl.textContent = formatBDTFull(annualRevenue);
+                
+                // Format profit with sign and color
+                monthlyProfitEl.textContent = formatBDTFull(monthlyProfit);
+                monthlyProfitEl.style.color = monthlyProfit >= 0 ? (isDarkMode ? '#3B82F6' : '#E86441') : '#D32F2F'; // PU Blue for Dark, PU Orange for Light
+
+                annualProfitEl.textContent = formatBDTFull(annualProfit);
+                annualProfitEl.style.color = annualProfit >= 0 ? (isDarkMode ? '#3B82F6' : '#E86441') : '#D32F2F'; // PU Blue for Dark, PU Orange for Light
+            }
+
+            // Event Listener for Slider
+            slider.addEventListener('input', (e) => {
+                updateMetrics(parseInt(e.target.value));
+            });
+
+            // Initial Load
+            updateMetrics(parseInt(slider.value));
+
+            // --- Dark Mode Toggle Logic ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+
+            // On page load, set theme
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+            // Update charts and metrics for initial theme
+            updateChartColors();
+            updateMetrics(parseInt(slider.value));
+
+            themeToggle.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                
+                // Save theme preference
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                // Update charts and metrics for new theme
+                updateChartColors();
+                updateMetrics(parseInt(slider.value));
+            });
+
+
+            // --- Tab Logic for Launch Projections ---
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+
+                    // Update button styles
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-brand-secondary', 'text-white');
+                        btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-400');
+                    });
+                    button.classList.add('active', 'bg-brand-secondary', 'text-white');
+                    button.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-400');
+
+                    // Update content visibility
+                    tabContents.forEach(content => {
+                        if (content.id === targetTab) {
+                            content.classList.add('active');
+
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Initialize Lucide Icons
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
