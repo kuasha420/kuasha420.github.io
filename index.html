@@ -1,357 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-  <title>Arafat Zahan - Full-stack Web Developer</title>
-  <!-- 3rd Party Includes -->
-  <script src="vendor/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="vendor/semantic/dist/semantic.min.css">
-  <script src="vendor/semantic/dist/semantic.min.js"></script>
-  <!-- Custom Assets -->
-  <link rel="stylesheet" type="text/css" href="assets/custom/styles.css">
-  <script src="assets/custom/scripts.js"></script>
-</head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Arafat Zahan — Principal Systems Architect & Founding Engineer</title>
+  <meta name="description" content="10+ years of software craftsmanship across Google Site Kit, Jasper distributed streaming, healthcare technology, and 0-to-1 startups.">
+  <meta name="color-scheme" content="light dark">
 
+  <!-- Anti-FOUC Theme Initialization -->
+  <script>
+    {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    }
+  </script>
+
+  <!-- Modern Stylesheet -->
+  <link rel="stylesheet" href="assets/custom/modern.css">
+</head>
 <body>
 
-  <!-- Following Menu -->
-  <div class="ui large top fixed hidden menu">
-    <div class="ui container">
-      <a href="#top" class="active item">Home</a>
-      <a href="portfolio.html" class="item">Portfolio</a>
-      <a href="assets/doc/cv.pdf" download="Arafat-Zahan-CV.pdf" class="item">Resume</a>
-      <a href="#contact" class="item">Contact</a>
-      <div class="right menu">
-        <div class="item">
-          <a href="https://www.facebook.com/arafatzahan2018" target="_blank" rel="noopener noreferrer"
-            class="ui blue button"><i class="facebook icon"></i> Facebook</a>
-        </div>
-        <div class="item">
-          <a href="https://github.com/kuasha420" target="_blank" rel="noopener noreferrer" class="ui button"><i
-              class="github icon"></i> GitHub</a>
-        </div>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span>Arafat Zahan</span>
+        <span class="brand-badge">Systems</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#cv-suite">CV Suite</a></li>
+          <li><a href="#opensource">Open Source</a></li>
+          <li><a href="#story">Journey</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="assets/pdf/Arafat_Zahan_Master_CV.pdf" class="btn btn-primary btn-sm" download>
+          📄 Get CV
+        </a>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          🌙
+        </button>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Sidebar Menu -->
-  <div class="ui vertical inverted sidebar menu">
-    <a href="#top" class="active item">Home</a>
-    <a href="portfolio.html" class="item">Portfolio</a>
-    <a href="assets/doc/cv.pdf" download="Arafat-Zahan-CV.pdf" class="item">Resume</a>
-    <a href="#contact" class="item">Contact</a>
-  </div>
+  <!-- MAIN -->
+  <main id="top">
 
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              <span>Open to Principal, Staff & Founding Roles</span>
+            </div>
+            <h1 class="hero-title">
+              Architecting <span class="hero-title-accent">Resilient Systems</span> & High-Scale Platforms
+            </h1>
+            <p class="hero-subtitle">
+              High-agency systems engineer with a 10-year track record turning ambitious visions into production reality—spanning Google-scale web applications, distributed real-time audio infrastructure, outpatient physical healthcare facilities, and Linux systems.
+            </p>
+            <div class="hero-actions">
+              <a href="#cv-suite" class="btn btn-primary">
+                📑 Explore CV Suite
+              </a>
+              <a href="#systems" class="btn btn-secondary">
+                ⚡ Architectural Deep Dives
+              </a>
+              <a href="https://github.com/kuasha420" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                🐙 GitHub Profile
+              </a>
+            </div>
+          </div>
+          <div class="hero-avatar-wrap">
+            <img src="assets/images/me.jpg" alt="Arafat Zahan" class="hero-avatar" width="170" height="170">
+          </div>
+        </div>
 
-  <!-- Page Contents -->
-  <div class="pusher">
-    <div id="top" class="ui inverted vertical masthead center aligned segment">
+        <!-- STATS BAR -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-number">236</div>
+            <div class="stat-label">Google Site Kit Merged PRs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">695</div>
+            <div class="stat-label">Jasper Production Commits (93.4%)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">~4.1k/mo</div>
+            <div class="stat-label">Top NPM Package Downloads</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+ Yrs</div>
+            <div class="stat-label">Continuous Software Craftsmanship</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="ui container">
-        <div class="ui large secondary inverted pointing menu">
-          <a class="toc item">
-            <i class="sidebar icon"></i>
+    <!-- ARCHITECTURAL CASE STUDIES -->
+    <section id="systems" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Featured Architectures</div>
+          <h2 class="section-title">Verified Systems & Engineering Impact</h2>
+          <p class="section-desc">Production systems engineered at Google scale, high-concurrency real-time infrastructure, and physical-to-digital business launches.</p>
+        </div>
+
+        <div class="case-studies-grid">
+
+          <!-- GOOGLE SITE KIT -->
+          <article class="case-card">
+            <div class="case-header">
+              <h3 class="case-title">
+                <a href="https://github.com/google/site-kit-wp" target="_blank" rel="noopener noreferrer">
+                  Google Site Kit (google/site-kit-wp)
+                </a>
+              </h3>
+              <div class="case-role">Senior JavaScript Engineer (Technical Lead via 10up)</div>
+              <div class="case-meta">August 2021 – September 2024</div>
+            </div>
+            <p class="case-lead">
+              Dedicated core technical lead partnering directly with Google engineering leadership on Google’s official WordPress plugin, active on millions of production websites worldwide.
+            </p>
+            <ul class="case-bullets">
+              <li>
+                <strong>Massive Engineering Velocity:</strong> Directly authored and merged <strong>236 production pull requests</strong> across Google Analytics 4 (GA4), Reader Revenue Manager (RRM), AdSense, and Search Console.
+              </li>
+              <li>
+                <strong>Canonical Design Documents:</strong> Authored the approved <strong>User Input v2</strong> design doc (signed off by Google Tech Lead Felix Arntz & Lead PM Mariya Moeva) delivering state persistence and Key Metrics dashboard integration; authored the <strong>Ad Blocking Recovery (ABR)</strong> design doc approved by Google PM & 10up leadership.
+              </li>
+              <li>
+                <strong>Architecture & Process:</strong> Led the Existing Tags Simplification epic (<code>createExistingTagStore</code>), instituted the team-wide <strong>Mid-Point Review</strong> process, and won the <strong>10up Summit "Uppie" Award</strong> (Reykjavik, Iceland, 2023) for engineering excellence.
+              </li>
+            </ul>
+            <div class="tags-row">
+              <span class="tag">TypeScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Google Analytics 4</span>
+              <span class="tag">Jest</span>
+              <span class="tag">Visual Regression (VRT)</span>
+              <span class="tag">WordPress VIP</span>
+            </div>
+          </article>
+
+          <!-- JASPER -->
+          <article class="case-card">
+            <div class="case-header">
+              <h3 class="case-title">
+                <a href="https://github.com/sakibtamim/Jasper" target="_blank" rel="noopener noreferrer">
+                  Jasper Media Platform (sakibtamim/Jasper)
+                </a>
+              </h3>
+              <div class="case-role">Lead Systems Architect & Core Developer</div>
+              <div class="case-meta">2024 – Present</div>
+            </div>
+            <p class="case-lead">
+              Spearheaded architecture and hands-on implementation for <strong>93.4% of the codebase (695 production commits)</strong> of a distributed, fault-tolerant Discord audio streaming platform.
+            </p>
+            <ul class="case-bullets">
+              <li>
+                <strong>Externalized Streaming Engine:</strong> Eliminated stream dropouts and upstream 403 Forbidden throttling by designing an externalized streaming pipeline integrating <code>yt-dlp</code> and <code>FFmpeg</code>.
+              </li>
+              <li>
+                <strong>Distributed Topology:</strong> Designed distributed sharding and graceful drain contracts (<code>HJ-OSS-11</code>), alongside per-guild AFR leases and multi-guild concurrency (<code>HJ-OSS-04</code>).
+              </li>
+              <li>
+                <strong>Interactive Web Client & Plugin SDK:</strong> Built a real-time Next.js web application (<code>apps/web</code>) with cross-client seek bar synchronization, alongside a typed Plugin SDK (<code>HJ-OSS-10</code>, <code>HJ-OSS-12</code>) and checksum-tracked PostgreSQL migrations.
+              </li>
+            </ul>
+            <div class="tags-row">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Fastify</span>
+              <span class="tag">yt-dlp</span>
+              <span class="tag">FFmpeg</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Next.js 15</span>
+            </div>
+          </article>
+
+          <!-- MOTION MECHANICS -->
+          <article class="case-card">
+            <div class="case-header">
+              <h3 class="case-title">Motion Mechanics: Healing Reimagined</h3>
+              <div class="case-role">Co-Founder & Head of Technology / Operations</div>
+              <div class="case-meta">2024 – 2026</div>
+            </div>
+            <p class="case-lead">
+              Co-founded an outpatient physical rehabilitation clinic on CRP Road in Savar, bridging physical facility management with a paperless digital clinical ecosystem.
+            </p>
+            <ul class="case-bullets">
+              <li>
+                <strong>Clinic Launch & Physical Ops:</strong> Directed commercial lease negotiations, clinical space buildout, specialized medical hardware procurement, and clinical team staffing across Neurology, MSK, and Paediatrics.
+              </li>
+              <li>
+                <strong>mm-website (614 commits / 52.4% author):</strong> Architected high-performance clinical platform using Next.js 15, Turborepo, tRPC, Prisma ORM, PostgreSQL, TanStack Query, and Tailwind CSS.
+              </li>
+              <li>
+                <strong>sunshine-physio-universalapp (138 commits / 59.7% author):</strong> Engineered universal triage and appointment scheduling platform across Next.js and React Native / Expo with bilingual localization (English/Bengali).
+              </li>
+            </ul>
+            <div class="tags-row">
+              <span class="tag">Next.js 15</span>
+              <span class="tag">Turborepo</span>
+              <span class="tag">tRPC</span>
+              <span class="tag">Prisma ORM</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">React Native / Expo</span>
+            </div>
+          </article>
+
+          <!-- PAWTHY CLI -->
+          <article class="case-card">
+            <div class="case-header">
+              <h3 class="case-title">Pawthy Secrets CLI (@psl-oss/pawthy)</h3>
+              <div class="case-role">Author & Maintainer</div>
+              <div class="case-meta">2024 – Present</div>
+            </div>
+            <p class="case-lead">
+              Built and open-sourced a zero-trust developer secret synchronization CLI adopted across every repository at PSL and Motion Mechanics (<strong>462 commits / 94% author</strong>).
+            </p>
+            <ul class="case-bullets">
+              <li>
+                Implemented hexagonal architecture with DomainPorts, transactional outbox pattern, Fastify REST APIs, and Discord approval gate integrations.
+              </li>
+            </ul>
+            <div class="tags-row">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Hexagonal Architecture</span>
+              <span class="tag">Transactional Outbox</span>
+              <span class="tag">Fastify</span>
+              <span class="tag">CLI Tooling</span>
+            </div>
+          </article>
+
+          <!-- KNOT MESH -->
+          <article class="case-card">
+            <div class="case-header">
+              <h3 class="case-title">Knot Mesh (kuasha420/knot-mesh)</h3>
+              <div class="case-role">Personal Systems Architecture</div>
+              <div class="case-meta">2024 – Present</div>
+            </div>
+            <p class="case-lead">
+              Engineered a multi-node distributed Linux/Wayland workspace mesh connecting Arch Linux desktop, laptop, and Steam Deck (<strong>178 commits / 85.2% author</strong>).
+            </p>
+            <ul class="case-bullets">
+              <li>
+                Configured KRDP Wayland virtual monitors, remote PTY execution, and Linda Tuplespace batching for seamless multi-display distributed computing.
+              </li>
+            </ul>
+            <div class="tags-row">
+              <span class="tag">Arch Linux</span>
+              <span class="tag">KDE Plasma 6</span>
+              <span class="tag">Wayland / KRDP</span>
+              <span class="tag">Linda Tuplespace</span>
+              <span class="tag">Shell / Automation</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CV SUITE SHOWCASE -->
+    <section id="cv-suite" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Targeted Resumes</div>
+          <h2 class="section-title">Modular CV Suite</h2>
+          <p class="section-desc">Strictly calibrated against verified production metrics. Each variant is an exact 2-page vector PDF optimized for ATS parsers and human executive reviewers.</p>
+        </div>
+
+        <div class="cv-cards-grid">
+
+          <!-- MASTER CV -->
+          <div class="cv-card">
+            <div>
+              <span class="cv-badge">Principal / Systems</span>
+              <h3 class="cv-title">Master Principal CV</h3>
+              <p class="cv-desc">
+                Comprehensive 10-year systems craftsmanship profile detailing Google Site Kit technical leadership, Jasper media infrastructure, clinic co-founding, and open-source packages.
+              </p>
+              <div class="cv-meta-specs">
+                A4 Vector • 2 Pages • ATS-Certified
+              </div>
+            </div>
+            <div class="cv-actions">
+              <a href="assets/pdf/Arafat_Zahan_Master_CV.pdf" class="btn btn-primary btn-sm" download>
+                📥 Download PDF
+              </a>
+              <a href="https://github.com/kuasha420/cv-monorepo/blob/main/Arafat_Zahan_Master_CV.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                Markdown
+              </a>
+            </div>
+          </div>
+
+          <!-- STAFF FULL-STACK CV -->
+          <div class="cv-card">
+            <div>
+              <span class="cv-badge">Staff / Platform</span>
+              <h3 class="cv-title">Staff Full-Stack CV</h3>
+              <p class="cv-desc">
+                Targeted for Web Platform & Staff Full-Stack roles: Next.js 15, Turborepo, tRPC, React Native, Fastify microservices, sharding, and high-scale plugin architectures.
+              </p>
+              <div class="cv-meta-specs">
+                A4 Vector • 2 Pages • ATS-Certified
+              </div>
+            </div>
+            <div class="cv-actions">
+              <a href="assets/pdf/Arafat_Zahan_Staff_FullStack_CV.pdf" class="btn btn-primary btn-sm" download>
+                📥 Download PDF
+              </a>
+              <a href="https://github.com/kuasha420/cv-monorepo/blob/main/Arafat_Zahan_Staff_FullStack_CV.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                Markdown
+              </a>
+            </div>
+          </div>
+
+          <!-- FOUNDING ENGINEER CV -->
+          <div class="cv-card">
+            <div>
+              <span class="cv-badge">Founding / Startup</span>
+              <h3 class="cv-title">Founding Engineer CV</h3>
+              <p class="cv-desc">
+                Targeted for 0-to-1 startup leadership: physical outpatient clinic launch, paperless clinical platforms, real-time audio systems, and high-agency cross-functional execution.
+              </p>
+              <div class="cv-meta-specs">
+                A4 Vector • 2 Pages • ATS-Certified
+              </div>
+            </div>
+            <div class="cv-actions">
+              <a href="assets/pdf/Arafat_Zahan_Founding_Engineer_CV.pdf" class="btn btn-primary btn-sm" download>
+                📥 Download PDF
+              </a>
+              <a href="https://github.com/kuasha420/cv-monorepo/blob/main/Arafat_Zahan_Founding_Engineer_CV.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                Markdown
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <section id="opensource" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Community & Packages</div>
+          <h2 class="section-title">Open Source Ecosystem</h2>
+          <p class="section-desc">Libraries and tools authored and maintained for the global developer ecosystem.</p>
+        </div>
+
+        <div class="oss-grid">
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://www.npmjs.com/package/react-native-paper-phone-number-input" target="_blank" rel="noopener noreferrer" class="oss-name">
+                react-native-paper-phone-number-input
+              </a>
+              <span class="oss-badge">~4,100 / mo</span>
+            </div>
+            <p class="oss-desc">Standard international phone number input with search, flag emoji rendering, and E.164 validation for React Native Paper.</p>
+          </div>
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://www.npmjs.com/package/react-native-paper-toast" target="_blank" rel="noopener noreferrer" class="oss-name">
+                react-native-paper-toast
+              </a>
+              <span class="oss-badge">~2,140 / mo</span>
+            </div>
+            <p class="oss-desc">Imperative toast notifications component with seamless Material Design integration for cross-platform mobile apps.</p>
+          </div>
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://www.npmjs.com/package/react-native-paper-alerts" target="_blank" rel="noopener noreferrer" class="oss-name">
+                react-native-paper-alerts
+              </a>
+              <span class="oss-badge">~520 / mo</span>
+            </div>
+            <p class="oss-desc">Cross-platform imperative alert and prompt dialogs built for iOS, Android, and Web with zero boilerplate.</p>
+          </div>
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://www.npmjs.com/package/mst-persistent-store" target="_blank" rel="noopener noreferrer" class="oss-name">
+                mst-persistent-store
+              </a>
+              <span class="oss-badge">~240 / mo</span>
+            </div>
+            <p class="oss-desc">Persistent MobX-State-Tree store provider and custom hooks for React and React Native ecosystems.</p>
+          </div>
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://github.com/kuasha420/jimha" target="_blank" rel="noopener noreferrer" class="oss-name">
+                jimha (Toddler Tactile Shield)
+              </a>
+              <span class="oss-badge">Linux / evdev</span>
+            </div>
+            <p class="oss-desc">Fullscreen tactile sensory game intercepting raw Linux hardware input to protect the host OS while entertaining toddlers.</p>
+          </div>
+
+          <div class="oss-card">
+            <div class="oss-header">
+              <a href="https://aur.archlinux.org" target="_blank" rel="noopener noreferrer" class="oss-name">
+                antigravity-manager-bin
+              </a>
+              <span class="oss-badge">Arch AUR</span>
+            </div>
+            <p class="oss-desc">Official package maintainer on the Arch User Repository (AUR) for Antigravity desktop tools.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HUMAN STORY & CHICKENTECH -->
+    <section id="story" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Human Dimensions</div>
+          <h2 class="section-title">The Journey & The Horizon</h2>
+          <p class="section-desc">Engineering is about human agency, family commitments, and real-world impact.</p>
+        </div>
+
+        <div class="story-block">
+          <div class="story-content">
+            <p>
+              My journey began in 2012 as an inquisitive teenager in Savar exploring Linux kernels, web servers, and open-source software. After earning a <strong>4-Year Diploma in Computer Technology</strong> (conferred 2017) and Red Hat Certified Engineer (RHCE) certification, I entered the industry with a commitment to unyielding technical curiosity.
+            </p>
+            <p>
+              Along the way, life brought defining priorities: during my university degree, I chose to pause and step back after 6 of 10 semesters to ensure my wife Rehola could complete her own Computer Science & Engineering degree without interruption through pregnancy and motherhood, as we welcomed our daughter <strong>JimHa</strong>. Balancing intense production delivery at 10up with family education crystallized my pragmatic approach to systems: building things that genuinely endure under real-world pressure.
+            </p>
+            <p>
+              From architecting canonical design documents for <strong>Google Site Kit</strong> in Reykjavik, Iceland, to pouring concrete and configuring treatment beds for <strong>Motion Mechanics</strong> on CRP Road, I approach every challenge with zero boundaries between physical and digital execution.
+            </p>
+
+            <div class="chickentech-callout">
+              <div class="chickentech-title">
+                <span>🐔</span> The Long-Term Horizon: ChickenTech
+              </div>
+              <div class="chickentech-text">
+                Before retiring to a modern, technologically enhanced, free-range chicken farm—<strong>ChickenTech</strong>—where I plan to deploy distributed edge sensor networks, automated microclimates, and solar-backed monitoring systems, I remain dedicated to solving high-stakes architectural challenges for world-class engineering teams.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESERVED TOOLS DRAWER -->
+    <section id="tools" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Interactive Archives</div>
+          <h2 class="section-title">Legacy Tools & Infographics</h2>
+          <p class="section-desc">Preserved standalone interactive web tools, clinical simulators, and analytical reports.</p>
+        </div>
+
+        <div class="tools-grid">
+          <a href="mm-patient-flow.html" class="tool-card">
+            <div class="tool-title">Motion Mechanics Patient Flow Simulator</div>
+            <div class="tool-desc">Interactive clinical care workflow and triage queue modeling tool.</div>
           </a>
-          <a href="#top" class="active item">Home</a>
-          <a href="portfolio.html" class="item">Portfolio</a>
-          <a href="assets/doc/cv.pdf" download="Arafat-Zahan-CV.pdf" class="item">Resume</a>
-          <a href="#contact" class="item">Contact</a>
-          <div class="right item">
-            <a href="https://www.facebook.com/arafatzahan2018" target="_blank" rel="noopener noreferrer"
-              class="ui inverted blue button"><i class="facebook icon"></i> Facebook</a>
-            <a href="https://github.com/kuasha420" target="_blank" rel="noopener noreferrer"
-              class="ui inverted button"><i class="github icon"></i> Github</a>
-          </div>
+          <a href="invest.html" class="tool-card">
+            <div class="tool-title">Financial Investment Platform</div>
+            <div class="tool-desc">Asset allocation, risk profiling, and portfolio return calculators.</div>
+          </a>
+          <a href="constitution-bn-infographic.html" class="tool-card">
+            <div class="tool-title">Bangladesh Constitution Infographic</div>
+            <div class="tool-desc">Visual historical exploration and articles breakdown of Bangladesh's constitution.</div>
+          </a>
+          <a href="ppp-detailed.html" class="tool-card">
+            <div class="tool-title">Purchasing Power Parity Analysis</div>
+            <div class="tool-desc">Detailed macroeconomic comparative analysis of global purchasing parity.</div>
+          </a>
+          <a href="game.html" class="tool-card">
+            <div class="tool-title">Canvas Interactive Game</div>
+            <div class="tool-desc">Experimental HTML5 Canvas game prototype.</div>
+          </a>
+          <a href="report.html" class="tool-card">
+            <div class="tool-title">Analytical Research Reports</div>
+            <div class="tool-desc">Consolidated research briefings and interactive data visualizations.</div>
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="ui text container">
-        <h1 class="ui inverted header">
-          Arafat Zahan
-        </h1>
-        <h2>Full-stack Web Developer & DevOps Engineer</h2>
-        <div class="ui large primary button">Get in Touch <i class="right arrow icon"></i></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Arafat Zahan</strong> • Savar, Dhaka, Bangladesh<br>
+        <span style="font-size: 0.82rem; color: var(--text-tertiary);">
+          📧 <a href="mailto:kuasha420@gmail.com">kuasha420@gmail.com</a> • 📞 +880 1841 832 034
+        </span>
       </div>
-
+      <ul class="footer-links">
+        <li><a href="https://kuasha.xyz">kuasha.xyz</a></li>
+        <li><a href="https://github.com/kuasha420">GitHub</a></li>
+        <li><a href="https://github.com/kuasha420/cv-monorepo">CV Monorepo</a></li>
+        <li><a href="https://www.npmjs.com/~kuasha420">NPM</a></li>
+      </ul>
     </div>
+  </footer>
 
-    <div class="ui vertical stripe segment" id="mainInfo">
-      <div class="ui middle aligned stackable grid container">
-        <div class="row">
-          <div class="ten wide column">
-            <h3 class="ui header">Web Developer</h3>
-            <p>Professional web developer with more than seven years of experience in the industry. I create websites
-              ranging from a simple one page informational website to full featured complex web applications. Code
-              quality, cross-browser compatibility and responsibe design that scales perfectly to all devices are my top
-              priority when developing a website. I use modern web technologies like HTML5, CSS3, JQuery, Vue.JS,
-              Symfony, Laravel Framework etc when developing a website and always try to stay on the forefront of
-              exciting developments in the web design and development world.</p>
-            <h3 class="ui header">WordPress Enthusiast</h3>
-            <p>My love for WordPress began in 2012 when I first created my personal blog with it. It's the best CMS and
-              Website Builder in my opinion. I've created many WordPress based websites with various plugins and themes.
-              I'm fluent in custom theme and plugin development and customization. In the past, I've worked with top
-              WordPress plugins, themes and frameworks such as s2members, Woocommerce, W3 Total Cache, Divi, Elemantor
-              etc to develop highly specialized websites. Feel free to check out my portfolio to see some of my past
-              projects.</p>
-            <h3 class="ui header">App Development</h3>
-            <p>I develop highly complex and performance sensitive mobile applications using React Native and friends.
-              React Native is suitable for all kinds of cross platform mobile apps where performance and platform
-              integration is key. I have three years of experience in hybrid app development using modern web
-              technologies and frameworks such as ionic and cordova.</p>
-            <h3 class="ui header">DevOps and SysAdmin</h3>
-            <p>I've been using Linux based operating systems on my Desktop and Server since my childhood. I've completed
-              Red Hat Certified Engineer & Cisco Certified Network Associate courses to further sharpen my System
-              Administration and DevOps skills. My expertise includes VPS, Cloud Hosting and Server configuration and
-              management using LAMP/LEMP Stack, ISPConfig, WHM etc. I've configured, secured or managed many server
-              instances on Amazon AWS, Digital Ocean and other VPS and and clouds.</p>
-          </div>
-          <div class="six wide right floated column">
-            <img src="assets/images/me.jpg" class="ui large bordered rounded image">
-            <h3>Welcome to my website!</h3>
-            <p>My name is Arafat Zahan. I'm working as a freelance web developer since 2012. I started my development
-              career on microjob website Fiverr where I used to provide web design, development and WordPress related
-              services. Since then, I've acquired more knowledge and experience and moved onto bigger projects involving
-              more complex and challenging aspects. I've also expended my career as a Linux System Administrator and
-              Mobile Application Developer. I'm always learning new things and expending my knowledge to be able to up
-              my quality of service. I love WordPress and Modern JavaScript. Looking forward to work with you on your
-              next web advanture.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="center aligned column">
-            <a href="portfolio.html" class="ui huge button">Check Out My Projects</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Theme Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const getTheme = () => document.documentElement.getAttribute('data-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
+      const updateIcon = (theme) => {
+        if (toggleBtn) {
+          toggleBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        }
+      };
 
-    <div class="ui vertical inverted stripe quote segment">
-      <div class="ui equal width stackable internally  grid container">
+      updateIcon(getTheme());
 
-        <div class="center aligned column">
-          <h2 class="ui inverted header">Testimonials</h2>
-        </div>
-
-        <div class="center aligned row">
-
-          <div class="column">
-            <h3>"Web developers like him are rare to find. He's a God send, and I really am thankful that he helped me
-              with this project. His patience and understanding is amazing. Great job."</h3>
-            <p>
-              <img src="assets/images/testimonial-1.jpg" class="ui avatar image"> <a
-                href="https://www.facebook.com/AuthorDavidWeaver/"><b>David Weaver</b></a> - best-selling author.
-            </p>
-          </div>
-
-          <div class="column">
-            <h3>"Arafat is super fast, responsive, and really high quality. He's a gem on Elance. I'll be using him
-              again. "</h3>
-            <p>
-              <img src="assets/images/default.jpg" class="ui avatar image"> <a href="#" <b>San Bho (poutie)</b></a> - on
-              Upwork.
-            </p>
-          </div>
-
-          <div class="column">
-            <h3>"Great work on a very complex custom membership model. Excellent communication; went beyond just doing
-              the work by offering suggestions on features and setup."</h3>
-            <p>
-              <img src="assets/images/testimonial-2.jpg" class="ui avatar image"> <a
-                href="https://charleseisenstein.org/" <b>Charles Eisenstein</b></a> - renowned public speaker.
-            </p>
-          </div>
-
-          <div class="column">
-            <h3>"Very surprised by Arafat, he did a very good job exactly how I wanted. Will be using him again for
-              future projects! "</h3>
-            <p>
-              <img src="assets/images/testimonial-3.jpg" class="ui avatar image"> <a
-                href="http://www.webdesignsolutionsydney.com.au/" <b>Norman Mahmood</b></a> - Norman Web Design
-              Solutions.
-            </p>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="center aligned column">
-            <a href="#contact" class="ui huge blue button"><i class="handshake icon"></i> Hire Me Now!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="contact" class="ui vertical stripe segment">
-      <div class="ui stackable grid container">
-        <div class="row">
-          <div class="center aligned column">
-            <h2 class="ui header">Contact Me</h2>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="ten wide column">
-            <!-- formcarry form -->
-            <form class="ui large form ajaxForm" action="https://formcarry.com/s/OJ0DO-bO-of" accept-charset="UTF-8">
-              <div class="inline fields">
-                <div class="two wide field">
-                  <label>Name:</label>
-                </div>
-                <div class="six wide field">
-                  <input type="text" placeholder="First Name" name="fname">
-                </div>
-                <div class="eight wide field">
-                  <input type="text" placeholder="Last Name" name="lname">
-                </div>
-              </div>
-              <div class="inline fields">
-                <div class="two wide field">
-                  <label>Email:</label>
-                </div>
-                <div class="fourteen wide field">
-                  <input type="email" placeholder="noreply@example.com" name="email">
-                </div>
-              </div>
-              <div class="inline fields">
-                <div class="two wide field">
-                  <label>Subject:</label>
-                </div>
-                <div class="fourteen wide field">
-                  <input type="text" placeholder="Want to develop a new website" name="subject">
-                </div>
-              </div>
-              <div class="inline fields">
-                <div class="two wide field">
-                  <label>Message:</label>
-                </div>
-                <div class="fourteen wide field">
-                  <textarea rows="9" name="message" placeholder="Write down your message here!"></textarea>
-                </div>
-              </div>
-              <div class="inline fields">
-                <div class="two wide field"></div>
-                <div class="fourteen wide field">
-                  <button class="ui large blue submmit button" name="submit" type="submit"><i class="mail icon"></i>
-                    Send Message</button>
-                  <button class="ui large reset button" id="formReset" name="reset" type="reset"><i
-                      class="refresh icon"></i> Start Over</button>
-                </div>
-              </div>
-              <div class="inline fields">
-                <div class="two wide field"></div>
-                <div class="fourteen wide field">
-                  <div class="ui error message">
-                    <div class="header">Message Sending Failed!</div>
-                    <p>Please try again later or contact me directly using other options from the right side..</p>
-                  </div>
-                  <div class="ui success message">
-                    <div class="header"><i class="pegion icon"></i> Message Sent!</div>
-                    <p>Thank you for your message. I'll get back to you shortly.</p>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="six wide column">
-            <div class="ui large vertical stripe grid container"></div>
-            <div class="row">
-              <p><i class="mail icon"></i> <b>Email:</b> <a href="mailto:arafatzahan2018@gmail.com">arafatzahan2018 [at]
-                  gmail.com</a></p>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="row">
-              <p><i class="phone icon"></i> <b>Cell:</b> <a href="tel:+8801841832034">+880 1841 832 034</a></p>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="row">
-              <p><i class="facebook icon"></i> <b>Facebook:</b> <a href="https://www.facebook.com/arafatzahan2018"
-                  target="_blank" rel="noopener noreferrer">Arafat Zahan</a></p>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="row">
-              <p><i class="twitter icon"></i> <b>Twitter:</b> <a href="https://www.twitter.com/kuasha420"
-                  target="_blank" rel="noopener noreferrer">Arafat Zahan</a></p>
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div class="row">
-              <p><i class="home icon"></i> <b>Address:</b> <a href="https://goo.gl/maps/pbPJ2UPM1eLudkrD6"
-                  target="_blank" rel="noopener noreferrer">30/53 Shahibag, Savar, Dhaka - 1340</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="ui inverted vertical footer segment">
-      <div class="ui container">
-        <div class="ui stackable inverted divided equal height stackable grid">
-          <div class="four wide column">
-            <h4 class="ui inverted header">Links</h4>
-            <div class="ui inverted link list">
-              <a href="portfolio.html" class="item">Portfolio</a>
-              <a href="assets/doc/cv.pdf" download="Arafat-Zahan-CV.pdf" class="item">Resume</a>
-              <a href="#contact" class="item">Contact</a>
-            </div>
-          </div>
-          <div class="four wide column">
-            <h4 class="ui inverted header">Services</h4>
-            <div class="ui inverted link list">
-              <a href="#" class="item">Web Development</a>
-              <a href="#" class="item">App Development</a>
-              <a href="#" class="item">Server Administration</a>
-            </div>
-          </div>
-          <div class="eight wide column">
-            <h4 class="ui inverted header">Acknowledgement</h4>
-            <p>All information provided on this website are licensed under Free Documentation License 1.0 or later
-              version unless otherwise noted.</p>
-            <p>Built with <i class="red heart icon"></i> using <a href="https://fomantic-ui.com" target="_blank"
-                rel="noopener noreferrer">Fomantic-UI</a>. Contact form submission is handled by <a
-                href="https://formcarry.com/" target="_blank" rel="noopener noreferrer">Formcarry</a>. Hosted on <a
-                href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">Github Pages</a>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal UI -->
-  <div class="ui inverted modal">
-    <h2 class="ui center aligned header">
-      Connect with Me!
-    </h2>
-    <div class="ui center aligned content">
-      <p>You can easily get in touch with me using any of the following options. I am very active on social media,
-        come by to say hi!</p>
-      <p>
-        <a href="https://www.facebook.com/arafatzahan2018" target="_blank" rel="noopener noreferrer">
-          <i class="huge facebook icon"></i>
-        </a>
-        <a href="https://www.twitter.com/kuasha420" target="_blank" rel="noopener noreferrer">
-          <i class="huge twitter icon"></i>
-        </a>
-        <a href="https://www.github.com/kuasha420" target="_blank" rel="noopener noreferrer">
-          <i class="huge github icon"></i>
-        </a>
-      </p>
-      <p>Or, feel free to keep exploring my website to-</p>
-    </div>
-    <div class="ui center aligned actions">
-      <button class="ui blue left labeled icon button" id="learnMore">
-        Learn more about me
-        <i class="eye icon"></i>
-      </button>
-      <button class="ui blue left labeled icon button" id="sendMail">
-        Send me a message
-        <i class="mail icon"></i>
-      </button>
-    </div>
-  </div>
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const nextTheme = getTheme() === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('theme', nextTheme);
+          updateIcon(nextTheme);
+        });
+      }
+    });
+  </script>
 
 </body>
-
 </html>
